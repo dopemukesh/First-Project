@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar'
 import Home from './Components/Home/Home'
 import Members from './Components/Pages/Members'
@@ -12,16 +12,14 @@ const App = () => {
   return (
     <>
       <Loader />
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" index element={<Home />} />
-          <Route path="/members" element={<Members />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" index element={<Home />} />
+        <Route path="/members" element={<Members />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </>
   )
 }
