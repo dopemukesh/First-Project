@@ -54,7 +54,7 @@ const Navbar = () => {
                 <div className={`fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} w-64 bg-white dark:bg-gray-900 overflow-y-auto transition duration-300 ease-in-out md:hidden z-50`}>
                     <div className="py-5 px-4">
                         {/* Mobile menu header */}
-                        <div className="flex items-center justify-between mb-8 bg-gray-800/50 p-2 rounded-md">
+                        <div className="flex items-center justify-between mb-8 bg-gray-50 dark:bg-gray-800/50 p-2 rounded-md">
                             <NavLink to="/" className="flex items-center gap-2">
                                 <img src="./logo/cwtLogo-animatedColor.svg" alt="site-logo" className='w-8 h-8 mr-2' />
                                 <span className="text-xl font-semibold text-gray-800 dark:text-gray-200">CWT</span>
