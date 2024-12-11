@@ -49,7 +49,7 @@ We appreciate all contributors who help improve CodeWithTechries. Special thanks
 
 <div align="start">
   <a href="https://github.com/dopemukesh">
-    <img src="https://avatars.githubusercontent.com/dopemukesh" width="56px" alt="Mukesh Yadav" style="border-radius:50%"/>
+    <img src="https://avatars.githubusercontent.com/dopemukesh" width="56px" alt="Mukesh Yadav" style="border-radius:51%"/>
   </a>
 </div>
 
