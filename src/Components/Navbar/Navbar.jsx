@@ -1,3 +1,6 @@
+// Designed and developed by:
+// - Mukesh Yadav
+
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import ThemeChange from './ThemeChange';
@@ -11,9 +14,9 @@ const Navbar = () => {
                 <div className='max-w-6xl mx-auto flex items-center justify-between'>
                     {/* Left side - hidden on mobile */}
                     <div className='hidden md:flex items-center space-x-4'>
-                        <NavLink to="/" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500' : ''}`}>Home</NavLink>
-                        <NavLink to="/members" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500' : ''}`}>Members</NavLink>
-                        <NavLink to="/resources" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500' : ''}`}>Resources</NavLink>
+                        <NavLink to="/" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Home</NavLink>
+                        <NavLink to="/members" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Members</NavLink>
+                        <NavLink to="/resources" className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Resources</NavLink>
                     </div>
 
                     {/* Center - visible on all screens */}
@@ -23,8 +26,8 @@ const Navbar = () => {
 
                     {/* Right side - hidden on mobile */}
                     <div className='md:flex items-center space-x-4'>
-                        <NavLink to="/store" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500' : ''}`}>Store</NavLink>
-                        <NavLink to="/about" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500' : ''}`}>About Us</NavLink>
+                        <NavLink to="/store" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Store</NavLink>
+                        <NavLink to="/about" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>About Us</NavLink>
 
 
                         {/* Mobile menu button - only visible on mobile */}
@@ -72,35 +75,35 @@ const Navbar = () => {
                         <div className="flex flex-col space-y-4">
                             <NavLink
                                 to="/"
-                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500' : ''}`}
+                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}
                                 onClick={() => setIsSidebarOpen(false)}
                             >
                                 Home
                             </NavLink>
                             <NavLink
                                 to="/members"
-                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500' : ''}`}
+                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}
                                 onClick={() => setIsSidebarOpen(false)}
                             >
                                 Members
                             </NavLink>
                             <NavLink
                                 to="/resources"
-                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500' : ''}`}
+                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}
                                 onClick={() => setIsSidebarOpen(false)}
                             >
                                 Resources
                             </NavLink>
                             <NavLink
                                 to="/store"
-                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500' : ''}`}
+                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}
                                 onClick={() => setIsSidebarOpen(false)}
                             >
                                 Store
                             </NavLink>
                             <NavLink
                                 to="/about"
-                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500' : ''}`}
+                                className={({isActive}) => `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}
                                 onClick={() => setIsSidebarOpen(false)}
                             >
                                 About Us

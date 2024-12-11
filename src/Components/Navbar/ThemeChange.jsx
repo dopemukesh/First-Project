@@ -1,3 +1,6 @@
+// Designed and developed by:
+// - Mukesh Yadav
+
 import React, { useEffect, useState } from 'react'
 import { BiMoon } from "react-icons/bi";
 import { MdOutlineWbSunny } from "react-icons/md";
