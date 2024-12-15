@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Home from './Components/Home/Home'
 import Members from './Components/Pages/Members'
 import Resources from './Components/Pages/Resources'
+import Projects from './Components/Pages/Projects'
 import Store from './Components/Pages/Store'
 import About from './Components/Pages/About'
 import Loader from './Loader'
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" index element={<Home />} />
         <Route path="/members" element={<Members />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/store" element={<Store />} />
         <Route path="/about" element={<About />} />
       </Routes>

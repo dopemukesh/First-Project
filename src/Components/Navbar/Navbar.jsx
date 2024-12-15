@@ -26,6 +26,7 @@ const Navbar = () => {
 
                     {/* Right side - hidden on mobile */}
                     <div className='md:flex items-center space-x-4'>
+                        <NavLink to="/projects" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Projects</NavLink>
                         <NavLink to="/store" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>Store</NavLink>
                         <NavLink to="/about" className={({isActive}) => `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? 'text-yellow-500 dark:text-yellow-500' : ''}`}>About Us</NavLink>
 
