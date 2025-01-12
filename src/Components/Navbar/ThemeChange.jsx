@@ -48,9 +48,9 @@ const ThemeChange = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-900 md:hover:bg-gray-300 dark:md:hover:bg-gray-600 transition-colors"
+            className="p-2 rounded-xl bg-gray-100 dark:bg-gray-900 md:hover:bg-gray-300 dark:md:hover:bg-gray-600 transition-colors"
         >
-            {isDark ? <MdOutlineWbSunny className='w-6 h-6 dark:text-gray-200 text-gray-800' /> : <BiMoon className='w-6 h-6 text-gray-800 dark:text-gray-200' />}
+            {isDark ? <MdOutlineWbSunny className='w-5 h-5 dark:text-gray-200 text-gray-800' /> : <BiMoon className='w-5 h-5 text-gray-800 dark:text-gray-200' />}
         </button>
     )
 }

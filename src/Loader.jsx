@@ -20,7 +20,7 @@ const Loader = () => {
 
         const hideTimer = setTimeout(() => {
             setIsVisible(false)
-        }, 2000)
+        }, 1000)
 
         return () => {
             clearTimeout(fadeTimer)

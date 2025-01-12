@@ -11,6 +11,8 @@ import Loader from "./Loader";
 import StoreBooks from "./Components/Pages/store/StoreBooks";
 import StoreProducts from "./Components/Pages/store/StoreProducts";
 import StoreTranings from "./Components/Pages/store/StoreTranings";
+import Footer from "./Components/Footer/Footer";
+import Error404 from "./Components/Error/Error404";
 
 const App = () => {
   return (
@@ -29,7 +31,9 @@ const App = () => {
           <Route path="tranings" element={<StoreTranings />} />
         </Route>
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
+      <Footer />
     </>
   );
 };
