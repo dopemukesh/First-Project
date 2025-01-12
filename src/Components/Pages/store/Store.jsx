@@ -1,52 +1,39 @@
 // Designed and developed by:
 // - Ankush Kumar
+// ReDesigned and developed by:
+// - Mukesh Yadav
 
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Store = () => {
+  const tabs = [
+    { to: "books", text: "Books", color: "yellow-500", darkColor: "dark:text-yellow-500" },
+    { to: "products", text: "Products", color: "yellow-500", darkColor: "dark:text-yellow-500" },
+    { to: "tranings", text: "Trainings", color: "yellow-500", darkColor: "dark:text-yellow-500" }
+  ];
+
   return (
     <>
-      <div className="max-w-6xl mx-auto bg-gray-50 dark:bg-gray-900 h-auto mt-2">
+      <div className="max-w-7xl mx-auto h-auto mt-2">
         <div className="h-8 flex justify-around w-full p-4">
-          <NavLink
-            to="books"
-            className={({ isActive }) =>
-              `font-bold text-xl active ${
-                isActive
-                  ? "text-yellow-500 dark:text-yellow-500"
-                  : "text-black dark:text-white"
-              }`
-            }
-          >
-            Books
-          </NavLink>
-          <NavLink
-            to="products"
-            className={({ isActive }) =>
-              `font-bold text-xl active ${
-                isActive
-                  ? "text-orange-600 dark:text-yellow-500"
-                  : "text-black dark:text-white"
-              }`
-            }
-          >
-            <div className="">Products</div>
-          </NavLink>
-          <NavLink
-            to="tranings"
-            className={({ isActive }) =>
-              `font-bold text-xl active ${
-                isActive
-                  ? "text-yellow-500 dark:text-yellow-500"
-                  : "text-black dark:text-white"
-              }`
-            }
-          >
-            Trainings
-          </NavLink>
+          {tabs.map((tab) => (
+            <NavLink
+              to={tab.to}
+              key={tab.to}
+              className={({ isActive }) =>
+                `font-semibold text-xl active ${
+                  isActive
+                    ? `text-${tab.color} ${tab.darkColor}`
+                    : "text-gray-800 dark:text-white"
+                }`
+              }
+            >
+              {tab.text}
+            </NavLink>
+          ))}
         </div>
-        <div className="p-4">
+        <div className="py-4">
           <Outlet />
         </div>
       </div>
