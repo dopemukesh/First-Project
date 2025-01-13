@@ -1,39 +1,47 @@
-// Designed and developed by:
-// - Uday Thanki
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import ProjectHeroSection from '../Hero/ProjectHeroSection';
+import ProjectDetails from '../Pages/ProjectDetails';
+import Footer from '../Footer/Footer';
+
 const Projects = () => {
+    const navigate = useNavigate();
+
     const ProjectsList = [
         {
             title: "Project No.1",
             description:
                 "Project Description",
-            image: "https://via.placeholder.com/400",
-            link: "#",
+            image: "https://img.icons8.com/color/144/000000/programming.png",
+            link: "/project-details", // Updated the link to navigate to the details page
         },
         {
             title: "Project No.2",
             description:
                 "Project Description",
-            image: "https://via.placeholder.com/400",
-            link: "#",
+            image: "https://img.icons8.com/color/144/000000/programming.png",
+            link: "/project-details",
         },
         {
             title: "Project No.3",
             description:
                 "Project Description",
-            image: "https://via.placeholder.com/400",
-            link: "#",
+            image: "https://img.icons8.com/color/144/000000/programming.png",
+            link: "/project-details",
         },
+        // Add more projects as needed
     ];
+
     return (
         <>
+            <ProjectHeroSection/>
             <section className="bg-black-50 py-10 px-5">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className=" text-center text-3xl font-bold text-yellow-500">PROJECTS</h2>
-                    <p className="text-center text-white mb-8">
-                        Here are some of the our projects that we have worked on.
+                    <h2 className="text-center text-3xl font-bold text-yellow-500">PROJECTS</h2>
+                    <p className="text-center text-purple-900 mb-8">
+                        Here are some of the projects that we have worked on.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="flex flex-wrap justify-center gap-14">
                         {ProjectsList.map((item, index) => (
                             <div
                                 key={index}
@@ -51,18 +59,25 @@ const Projects = () => {
                                     <p className="text-gray-600 mt-2 text-sm">{item.description}</p>
                                     <a
                                         href={item.link}
+                                        className="inline-block mt-4 px-6 py-2 text-yellow-500 bg-transparent rounded-3xl transition"
+                                    >
+                                        Ongoing
+                                    </a>
+                                    <button
+                                        onClick={() => navigate(item.link)} // Navigate to the project details page
                                         className="inline-block mt-4 px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition"
                                     >
                                         View Details →
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
-    )
-}
+    );
+};
 
-export default Projects
+export default Projects;
