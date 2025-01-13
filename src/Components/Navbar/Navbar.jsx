@@ -4,9 +4,18 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ThemeChange from "./ThemeChange";
+import { BsLayoutSidebar } from "react-icons/bs";
+import { FaHome, FaUsers, FaBook, FaStore, FaInfoCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarLinks = [
+    { path: "/", name: "Home", icon: FaHome },
+    { path: "/members", name: "Members", icon: FaUsers },
+    { path: "/resources", name: "Resources", icon: FaBook },
+    { path: "/store", name: "Store", icon: FaStore },
+    { path: "/about", name: "About Us", icon: FaInfoCircle },
+  ];
 
   return (
     <>
@@ -17,8 +26,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -27,8 +35,7 @@ const Navbar = () => {
             <NavLink
               to="/members"
               className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -37,8 +44,7 @@ const Navbar = () => {
             <NavLink
               to="/resources"
               className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -60,8 +66,7 @@ const Navbar = () => {
             <NavLink
               to="/projects"
               className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -70,8 +75,7 @@ const Navbar = () => {
             <NavLink
               to="/store"
               className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -80,8 +84,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${
-                  isActive ? "text-yellow-500 dark:text-yellow-500" : ""
+                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
                 }`
               }
             >
@@ -123,13 +126,12 @@ const Navbar = () => {
           />
         )}
         <div
-          className={`fixed inset-y-0 left-0 transform ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } w-64 bg-white dark:bg-gray-900 overflow-y-auto transition duration-300 ease-in-out md:hidden z-50`}
+          className={`fixed inset-y-0 left-0 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            } w-64 bg-white dark:bg-gray-900 overflow-y-auto transition duration-300 ease-in-out md:hidden z-50`}
         >
-          <div className="py-5 px-4">
+          <div className="mt-2.5 px-4 divide-y divide-gray-300 dark:divide-gray-800">
             {/* Mobile menu header */}
-            <div className="flex items-center justify-between mb-8 bg-gray-50 dark:bg-gray-800/50 p-2 rounded-md">
+            <div className="flex items-center justify-between p-2">
               <NavLink to="/" className="flex items-center gap-2">
                 <img
                   src="./logo/cwtLogo-animatedColor.svg"
@@ -140,85 +142,28 @@ const Navbar = () => {
                   CWT
                 </span>
               </NavLink>
-              {/* Close button */}
-              <button
-                onClick={() => setIsSidebarOpen(false)}
-                className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
-                aria-label="Close menu"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+              {/* Close icon */}
+              <BsLayoutSidebar onClick={() => setIsSidebarOpen(false)} className="text-gray-800 dark:text-gray-300 hover:text-yellow-500" />
             </div>
 
             {/* Mobile menu links */}
-            <div className="flex flex-col space-y-4">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${
-                    isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                  }`
-                }
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/members"
-                className={({ isActive }) =>
-                  `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${
-                    isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                  }`
-                }
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                Members
-              </NavLink>
-              <NavLink
-                to="/resources"
-                className={({ isActive }) =>
-                  `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${
-                    isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                  }`
-                }
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                Resources
-              </NavLink>
-              <NavLink
-                to="/store"
-                className={({ isActive }) =>
-                  `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${
-                    isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                  }`
-                }
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                Store
-              </NavLink>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `text-gray-800 dark:text-gray-300 hover:text-yellow-500 py-2 ${
-                    isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                  }`
-                }
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                About Us
-              </NavLink>
+            <div className="flex flex-col py-2 space-y-1">
+              {sidebarLinks.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `py-1.5 px-2 ${isActive ? "text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800 rounded-md border border-gray-300 dark:border-gray-600" : "text-gray-500 dark:text-gray-500 hover:text-gray-800 dark:hover:text-gray-100"
+                    }`
+                  }
+                  onClick={() => setIsSidebarOpen(false)}
+                >
+                  <div className="flex items-center gap-2">
+                    <item.icon className="w-5 h-5" />
+                    {item.name}
+                  </div>
+                </NavLink>
+              ))}
             </div>
           </div>
         </div>

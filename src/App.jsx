@@ -11,7 +11,7 @@ import Loader from "./Loader";
 import StoreBooks from "./Components/Pages/store/StoreBooks";
 import StoreProducts from "./Components/Pages/store/StoreProducts";
 import StoreTranings from "./Components/Pages/store/StoreTranings";
-import ProjectDetails from "./Components/Pages/ProjectDetails";
+
 
 const App = () => {
   return (
@@ -31,7 +31,9 @@ const App = () => {
           <Route path="tranings" element={<StoreTranings />} />
         </Route>
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
+      <Footer />
     </>
   );
 };
