@@ -11,7 +11,9 @@ import Loader from "./Loader";
 import StoreBooks from "./Components/Pages/store/StoreBooks";
 import StoreProducts from "./Components/Pages/store/StoreProducts";
 import StoreTranings from "./Components/Pages/store/StoreTranings";
-
+import ProjectDetails from "./Components/Pages/ProjectDetails"
+import Error404 from "./Components/Error/Error404"
+import Footer from "./Components/Footer/Footer"
 
 const App = () => {
   return (
