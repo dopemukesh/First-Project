@@ -1,8 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import ProjectHeroSection from '../Hero/ProjectHeroSection';
-import ProjectDetails from '../Pages/ProjectDetails';
-import Footer from '../Footer/Footer';
+import ProjectHeroSection from './Hero/ProjectHeroSection';
 
 const Projects = () => {
     const navigate = useNavigate();
@@ -34,7 +32,8 @@ const Projects = () => {
 
     return (
         <>
-            <ProjectHeroSection/>
+
+            <ProjectHeroSection />
             <section className="bg-black-50 py-10 px-5">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-center text-3xl font-bold text-yellow-500">PROJECTS</h2>
@@ -75,7 +74,6 @@ const Projects = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
         </>
     );
 };

@@ -14,7 +14,7 @@ function StoreProducts() {
       tags: ["hardware", "keyboard", "programming"],
     },
     {
-      id: 3,
+      id: 2,
       name: "Monitor Arm",
       description:
         "An adjustable arm for monitors, helping to optimize desk space and ergonomics.",
@@ -24,7 +24,7 @@ function StoreProducts() {
       tags: ["hardware", "monitor", "ergonomics"],
     },
     {
-      id: 5,
+      id: 3,
       name: "Headphones",
       description:
         "High-quality headphones to block out distractions and focus on coding.",
@@ -34,7 +34,7 @@ function StoreProducts() {
       tags: ["hardware", "audio", "focus"],
     },
     {
-      id: 6,
+      id: 4,
       name: "Programming Books Bundle",
       description:
         "A set of popular programming books, including Clean Code, The Pragmatic Programmer, and more.",
@@ -44,7 +44,7 @@ function StoreProducts() {
       tags: ["books", "education", "programming"],
     },
     {
-      id: 7,
+      id: 5,
       name: "External SSD",
       description:
         "A portable solid-state drive with fast read/write speeds, ideal for storing code projects.",
@@ -54,7 +54,7 @@ function StoreProducts() {
       tags: ["hardware", "storage", "programming"],
     },
     {
-      id: 8,
+      id: 6,
       name: "Code Editor Subscription",
       description:
         "A one-year subscription to a premium code editor like JetBrains IntelliJ or Sublime Text.",

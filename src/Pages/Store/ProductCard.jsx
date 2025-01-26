@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Button from "../../Common Components/Button";
+import Button from "../../Components/Common/Button/Button";
+
 
 function ProductCard({ product }) {
   return (
     <div className="w-96 md:w-80 mt-2 group bg-inherit">
-      <NavLink
-        to="" >
+      <div>
         <div
           className="relative flex flex-col rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 dark:bg-gray-800 shadow-xl shadow-gray-200 dark:shadow-gray-950"
         >
@@ -40,7 +40,7 @@ function ProductCard({ product }) {
             </NavLink>
           </div>
         </div>
-      </NavLink>
+      </div>
     </div>
   );
 }

@@ -39,7 +39,7 @@ function StoreTranings() {
       },
     },
     {
-      id: 5,
+      id: 3,
       name: "Advanced JavaScript Concepts",
       description:
         "Dive deeper into closures, prototypal inheritance, and other advanced JavaScript topics.",
@@ -56,7 +56,7 @@ function StoreTranings() {
       },
     },
     {
-      id: 7,
+      id: 4,
       name: "Git and GitHub Mastery",
       description:
         "A comprehensive course on version control with Git and using GitHub effectively.",
@@ -73,7 +73,7 @@ function StoreTranings() {
       },
     },
     {
-      id: 8,
+      id: 5,
       name: "Top 10 VS Code Tips and Tricks",
       description:
         "A quick video showcasing the best tips and tricks for improving productivity with VS Code.",

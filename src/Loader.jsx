@@ -1,54 +1,55 @@
 // Designed and developed by:
 // - Mukesh Yadav
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
 const Loader = () => {
-    const [isVisible, setIsVisible] = useState(true)
-    const [opacity, setOpacity] = useState(1)
+    const [isVisible, setIsVisible] = useState(true);
+    const [opacity, setOpacity] = useState(1);
 
     useEffect(() => {
         if (isVisible) {
-            document.body.style.overflow = 'hidden'
+            document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = 'auto'
+            document.body.style.overflow = 'auto';
         }
 
         const fadeTimer = setTimeout(() => {
-            setOpacity(0)
-        }, 1500)
+            setOpacity(0);
+        }, 1500);
 
         const hideTimer = setTimeout(() => {
-            setIsVisible(false)
-        }, 1000)
+            setIsVisible(false);
+        }, 700);
 
         return () => {
-            clearTimeout(fadeTimer)
-            clearTimeout(hideTimer)
-            document.body.style.overflow = 'auto'
-        }
-    }, [isVisible])
+            clearTimeout(fadeTimer);
+            clearTimeout(hideTimer);
+            document.body.style.overflow = 'auto';
+        };
+    }, [isVisible]);
 
-    if (!isVisible) return null
+    if (!isVisible) return null;
 
     return (
-        <div className="fixed inset-0 z-[9999] grid place-items-center h-screen w-screen bg-white dark:bg-gray-950">
-            <div 
-                className='flex items-center gap-2'
-                style={{
-                    opacity: opacity,
-                    transition: 'opacity 1s ease-out'
-                }}
-            >
+        <div
+            className="fixed inset-0 z-[9999] grid place-items-center h-screen w-screen bg-white dark:bg-gray-950 transition-opacity duration-1000 ease-out"
+            style={{ opacity }}
+            aria-live="polite"
+            aria-busy="true"
+        >
+            <div className="flex items-center gap-2">
                 <img
                     src="./logo/cwtLogo-animatedColor.svg"
                     alt="Loading..."
                     className="w-16 h-16"
                 />
-                <p className='text-gray-800 dark:text-gray-300 text-xl font-semibold animate-pulse'>CWT</p>
+                <p className="text-gray-800 dark:text-gray-300 text-xl font-semibold animate-pulse">
+                    CWT
+                </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Loader
+export default Loader;
