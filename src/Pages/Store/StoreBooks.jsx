@@ -35,14 +35,14 @@ function StoreBooks() {
     },
 
     {
-      id: 9,
+      id: 5,
       name: "JavaScript: The Good Parts",
       description:
         "A concise guide to the best features of JavaScript, written by Douglas Crockford.",
       image: "https://m.media-amazon.com/images/I/81kqrwS1nNL.jpg",
     },
     {
-      id: 10,
+      id: 6,
       name: "Effective Java",
       description:
         "Best practices for Java programming, authored by Joshua Bloch.",

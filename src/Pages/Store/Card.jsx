@@ -3,14 +3,13 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Button from "../../Common Components/Button";
+import Button from "../../Components/Common/Button/Button";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 function Card({ book }) {
   return (
     <div className="w-full sm:w-80 md:w-[30rem]">
-      <a
-        href="#"
+      <div
         className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
       >
         {/* Image Section */}
@@ -34,7 +33,7 @@ function Card({ book }) {
             </Button>
           </NavLink>
         </div>
-      </a>
+      </div>
     </div>
   );
 }

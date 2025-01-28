@@ -1,3 +1,4 @@
+/*************  ✨ Codeium Command 🌟  *************/
 // Designed and developed by:
 // - Mukesh Yadav
 
@@ -5,7 +6,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ThemeChange from "./ThemeChange";
 import { BsLayoutSidebar } from "react-icons/bs";
-import { FaHome, FaUsers, FaBook, FaStore, FaInfoCircle } from "react-icons/fa";
+import { FaHome, FaUsers, FaBook, FaStore, FaInfoCircle, FaProjectDiagram } from "react-icons/fa";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,43 +14,29 @@ const Navbar = () => {
     { path: "/", name: "Home", icon: FaHome },
     { path: "/members", name: "Members", icon: FaUsers },
     { path: "/resources", name: "Resources", icon: FaBook },
+    { path: "/projects", name: "Projects", icon: FaProjectDiagram },
     { path: "/store", name: "Store", icon: FaStore },
     { path: "/about", name: "About Us", icon: FaInfoCircle },
   ];
 
   return (
     <>
-      <nav className="bg-white p-4 w-full dark:bg-gray-950 sticky top-0 z-[999]">
+      <nav className="bg-white dark:bg-gray-950 px-4 py-3 w-full sticky border-b border-gray-300 dark:border-gray-900 top-0 z-[999]">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           {/* Left side - hidden on mobile */}
           <div className="hidden md:flex items-center space-x-4">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/members"
-              className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              Members
-            </NavLink>
-            <NavLink
-              to="/resources"
-              className={({ isActive }) =>
-                `text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              Resources
-            </NavLink>
+            {sidebarLinks.slice(0, 3).map((link, index) => (
+              <NavLink
+                key={index} // Add a unique key for each link
+                to={link.path}  // Use the `to` property from the `link` object
+                className={({ isActive }) =>
+                  `text-sm font-medium text-gray-800 dark:text-gray-300 hover:text-purple-500 ${isActive ? "text-purple-500 dark:text-purple-500" : ""
+                  }`
+                }
+              >
+                {link.name} {/* Use the `text` property from the `link` object */}
+              </NavLink>
+            ))}
           </div>
 
           {/* Center - visible on all screens */}
@@ -63,33 +50,20 @@ const Navbar = () => {
 
           {/* Right side - hidden on mobile */}
           <div className="md:flex items-center space-x-4">
-            <NavLink
-              to="/projects"
-              className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              Projects
-            </NavLink>
-            <NavLink
-              to="/store"
-              className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              Store
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `hidden md:flex text-gray-800 dark:text-gray-300 hover:text-yellow-500 ${isActive ? "text-yellow-500 dark:text-yellow-500" : ""
-                }`
-              }
-            >
-              About Us
-            </NavLink>
+            <div className="hidden md:flex items-center space-x-4">
+              {sidebarLinks.slice(3, 6).map((link, index) => (
+                <NavLink
+                  key={index} // Add a unique key for each link
+                  to={link.path}  // Use the `to` property from the `link` object
+                  className={({ isActive }) =>
+                    `text-sm font-medium text-gray-800 dark:text-gray-300 hover:text-purple-500 ${isActive ? "text-purple-500 dark:text-purple-500" : ""
+                    }`
+                  }
+                >
+                  {link.name} {/* Use the `text` property from the `link` object */}
+                </NavLink>
+              ))}
+            </div>
 
             {/* Mobile menu button - only visible on mobile */}
             <div className="flex items-center space-x-4">
@@ -143,15 +117,15 @@ const Navbar = () => {
                 </span>
               </NavLink>
               {/* Close icon */}
-              <BsLayoutSidebar onClick={() => setIsSidebarOpen(false)} className="text-gray-800 dark:text-gray-300 hover:text-yellow-500" />
+              <BsLayoutSidebar onClick={() => setIsSidebarOpen(false)} className="text-gray-800 dark:text-gray-300 hover:text-purple-500" />
             </div>
 
             {/* Mobile menu links */}
             <div className="flex flex-col py-2 space-y-1">
-              {sidebarLinks.map((item) => (
+              {sidebarLinks.slice(0, 6).map((link, index) => (
                 <NavLink
-                  key={item.path}
-                  to={item.path}
+                  key={index}
+                  to={link.path}
                   className={({ isActive }) =>
                     `py-1.5 px-2 ${isActive ? "text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800 rounded-md border border-gray-300 dark:border-gray-600" : "text-gray-500 dark:text-gray-500 hover:text-gray-800 dark:hover:text-gray-100"
                     }`
@@ -159,8 +133,8 @@ const Navbar = () => {
                   onClick={() => setIsSidebarOpen(false)}
                 >
                   <div className="flex items-center gap-2">
-                    <item.icon className="w-5 h-5" />
-                    {item.name}
+                    <link.icon className="w-5 h-5" />
+                    {link.name}
                   </div>
                 </NavLink>
               ))}
@@ -173,3 +147,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+/******  e44ee2b3-5f5b-4bbf-a30d-1bf7a9389a6b  *******/
