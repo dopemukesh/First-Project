@@ -10,7 +10,7 @@ const ProjectHeroSection = () => {
         <div className='w-full py-24 flex items-center px-4 relative'>
           {/* Text Section */}
           <div className='w-full flex flex-col items-center sm:items-start'>
-            <p className="my-6 text-5xl font-bold sm:text-5.5xl md:text-6xl text-center sm:text-start">
+            <p className="my-6 text-5xl font-semibold sm:text-5.5xl md:text-6xl text-center sm:text-start">
               Welcome To <br /> Our Projects Page
             </p>
             <p className="max-w-lg text-gray-500 text-center sm:text-start">
@@ -31,7 +31,7 @@ const ProjectHeroSection = () => {
           <div className='absolute right-0 top-14'>
             <img
               className="h-[456px] object-cover rounded-md animate-pulse"
-              src="../../../src/assets/react.png"
+              src="./react.png"
               alt="Project"
             />
             {/* <img
