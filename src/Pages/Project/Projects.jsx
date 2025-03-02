@@ -1,6 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ProjectHeroSection from './Hero/ProjectHeroSection';
+import Container from '../../Components/Common/Container/Container';
+import Button from '../../Components/Common/Button/Button';
+import { IoMdArrowRoundForward } from 'react-icons/io';
 
 const Projects = () => {
     const navigate = useNavigate();
@@ -34,17 +37,21 @@ const Projects = () => {
         <>
 
             <ProjectHeroSection />
-            <section className="bg-black-50 py-10 px-5">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-center text-3xl font-bold text-yellow-500">PROJECTS</h2>
-                    <p className="text-center text-purple-900 mb-8">
-                        Here are some of the projects that we have worked on.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-14">
+            <Container>
+                <div className="px-4 pb-6">
+                    <div className='mb-10 space-y-2'>
+                        <p className='text-sm text-purple-500 font-semibold'>Featured</p>
+                        <h2 className="text-2xl font-semibold">Our Projects</h2>
+                        <p className="text-gray-500">
+                            Here are some of the projects that we have worked on.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-4">
                         {ProjectsList.map((item, index) => (
                             <div
                                 key={index}
-                                className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden"
+                                className="max-w-sm bg-white dark:bg-gray-800 shadow-xl border dark:border-gray-700 rounded-lg overflow-hidden"
                             >
                                 <img
                                     src={item.image}
@@ -52,28 +59,28 @@ const Projects = () => {
                                     className="w-full h-56 object-cover"
                                 />
                                 <div className="p-5">
-                                    <h3 className="text-lg font-semibold text-gray-800">
+                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                                         {item.title}
                                     </h3>
-                                    <p className="text-gray-600 mt-2 text-sm">{item.description}</p>
-                                    <a
-                                        href={item.link}
-                                        className="inline-block mt-4 px-6 py-2 text-yellow-500 bg-transparent rounded-3xl transition"
-                                    >
-                                        Ongoing
-                                    </a>
-                                    <button
-                                        onClick={() => navigate(item.link)} // Navigate to the project details page
-                                        className="inline-block mt-4 px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition"
-                                    >
-                                        View Details →
-                                    </button>
+                                    <p className="text-gray-500 dark:text-gray-400 m-2 text-sm">{item.description}</p>
+                                    
+                                    <div className='flex gap-4'>
+                                        <Button onClick={() => navigate(item.link)} variant='secondary'>
+                                            <p>Read More</p>
+                                        </Button>
+
+                                        <Button onClick={() => navigate(item.link)} variant='primary'>
+                                            <p>Watch Demo</p>
+                                            {/* <IoMdArrowRoundForward /> */}
+                                        </Button>
+
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
-            </section>
+            </Container>
         </>
     );
 };
