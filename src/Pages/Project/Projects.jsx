@@ -42,7 +42,7 @@ const Projects = () => {
                     <div className='mb-10 space-y-2'>
                         <p className='text-sm text-purple-500 font-semibold'>Featured</p>
                         <h2 className="text-2xl font-semibold">Our Projects</h2>
-                        <p className="text-gray-500">
+                        <p className="text-gray-500 dark:text-gray-400">
                             Here are some of the projects that we have worked on.
                         </p>
                     </div>
@@ -51,7 +51,7 @@ const Projects = () => {
                         {ProjectsList.map((item, index) => (
                             <div
                                 key={index}
-                                className="max-w-sm bg-white dark:bg-gray-800 shadow-xl border dark:border-gray-700 rounded-lg overflow-hidden"
+                                className="max-w-sm bg-white dark:bg-gray-800 shadow-xl border dark:border-gray-700 rounded-3xl overflow-hidden"
                             >
                                 <img
                                     src={item.image}
@@ -63,7 +63,7 @@ const Projects = () => {
                                         {item.title}
                                     </h3>
                                     <p className="text-gray-500 dark:text-gray-400 m-2 text-sm">{item.description}</p>
-                                    
+
                                     <div className='flex gap-4'>
                                         <Button onClick={() => navigate(item.link)} variant='secondary'>
                                             <p>Read More</p>

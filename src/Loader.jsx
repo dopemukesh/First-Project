@@ -44,9 +44,6 @@ const Loader = () => {
                     alt="Loading..."
                     className="w-16 h-16"
                 />
-                <p className="text-gray-800 dark:text-gray-300 text-xl font-semibold animate-pulse">
-                    CWT
-                </p>
             </div>
         </div>
     );

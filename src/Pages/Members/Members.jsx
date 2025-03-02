@@ -7,6 +7,7 @@ import Container from "../../Components/Common/Container/Container";
 import GradientsBg from "../../Components/Common/Gradients/GradientsBg";
 import TopAsset from "./asset-component/TopAsset";
 import MemberCard from "./MemberCard";
+import { NavLink } from "react-router-dom";
 
 const Members = () => {
   return (
@@ -24,13 +25,17 @@ const Members = () => {
 
           {/* cta buttons */}
           <div className="flex gap-4">
-            <Button variant="secondary" className="w-fit">
-              See Projects
-            </Button>
+            <NavLink to="/projects">
+              <Button variant="secondary" className="w-fit">
+                See Projects
+              </Button>
+            </NavLink>
 
-            <Button className="w-fit">
-              Book a Meet
-            </Button>
+            <NavLink to="">
+              <Button className="w-fit">
+                Book a Meet
+              </Button>
+            </NavLink>
           </div>
         </div>
       </Container>
