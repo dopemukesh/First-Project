@@ -1,0 +1,93 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "E-Commerce Website",
+            "shortDescription": "A full-featured online shopping platform",
+            "description": "A modern e-commerce platform built with React and Node.js. This project includes features like user authentication, product catalog, shopping cart, and secure payment integration.",
+            "image": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "technologies": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express",
+                "Redux"
+            ],
+            "features": [
+                "User authentication and authorization",
+                "Product search and filtering",
+                "Shopping cart functionality",
+                "Secure payment processing",
+                "Order tracking system"
+            ],
+            "demoLink": "https://demo-ecommerce.com",
+            "githubLink": "https://github.com/your-username/ecommerce"
+        },
+        {
+            "id": 2,
+            "title": "Task Management App",
+            "shortDescription": "A collaborative task management solution",
+            "description": "A comprehensive task management application that helps teams organize and track their projects efficiently. Features real-time updates and team collaboration tools.",
+            "image": "https://plus.unsplash.com/premium_photo-1700830452741-3640bed87eef?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "technologies": [
+                "React",
+                "Firebase",
+                "Material-UI",
+                "Redux"
+            ],
+            "features": [
+                "Real-time task updates",
+                "Team collaboration tools",
+                "Project timeline visualization",
+                "File sharing capabilities",
+                "Progress tracking dashboard"
+            ],
+            "demoLink": "https://demo-taskmanager.com",
+            "githubLink": "https://github.com/your-username/task-manager"
+        },
+        {
+            "id": 3,
+            "title": "Social Media Dashboard",
+            "shortDescription": "Analytics platform for social media",
+            "description": "A powerful dashboard that aggregates and analyzes social media metrics across multiple platforms. Provides detailed insights and reporting capabilities.",
+            "image": "https://plus.unsplash.com/premium_photo-1701981233795-2d1ecfe10419?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMzfHx8ZW58MHx8fHx8",
+            "technologies": [
+                "React",
+                "Chart.js",
+                "Node.js",
+                "PostgreSQL"
+            ],
+            "features": [
+                "Multi-platform integration",
+                "Real-time analytics",
+                "Custom report generation",
+                "Engagement metrics tracking",
+                "Automated scheduling"
+            ],
+            "demoLink": "https://demo-dashboard.com",
+            "githubLink": "https://github.com/your-username/social-dashboard"
+        },
+        {
+            "id": 4,
+            "title": "Social Media Dashboard",
+            "shortDescription": "Analytics platform for social media",
+            "description": "A powerful dashboard that aggregates and analyzes social media metrics across multiple platforms. Provides detailed insights and reporting capabilities.",
+            "image": "https://plus.unsplash.com/premium_photo-1701981233795-2d1ecfe10419?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMzfHx8ZW58MHx8fHx8",
+            "technologies": [
+                "React",
+                "Chart.js",
+                "Node.js",
+                "PostgreSQL"
+            ],
+            "features": [
+                "Multi-platform integration",
+                "Real-time analytics",
+                "Custom report generation",
+                "Engagement metrics tracking",
+                "Automated scheduling"
+            ],
+            "demoLink": "https://demo-dashboard.com",
+            "githubLink": "https://github.com/your-username/social-dashboard"
+        }
+    ]
+}

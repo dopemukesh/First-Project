@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const ProjectHeroSection = () => {
   return (
-    <div className="relative">
+    <div className="">
       <Container>
         <div className='w-full py-24 flex items-center px-4 relative'>
           {/* Text Section */}
@@ -34,7 +34,7 @@ const ProjectHeroSection = () => {
               src="./react.png"
               alt="Project"
             />
-            <div className='bg-sky-500 h-[956px] w-10 blur-[96px] -rotate-45 absolute z-[999] bottom-0'></div>
+            <div className='bg-sky-500 h-[956px] w-10 blur-[96px] -rotate-[30deg] absolute z-[999] bottom-0'></div>
           </div>
         </div>
       </Container>

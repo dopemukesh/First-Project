@@ -1,0 +1,40 @@
+{
+    "navLinks": [
+        {
+            "id": 1,
+            "path": "/",
+            "name": "Home",
+            "icon": "FaHome"
+        },
+        {
+            "id": 2,
+            "path": "/members",
+            "name": "Members",
+            "icon": "FaUsers"
+        },
+        {
+            "id": 3,
+            "path": "/resources",
+            "name": "Resources",
+            "icon": "FaBook"
+        },
+        {
+            "id": 4,
+            "path": "/projects",
+            "name": "Projects",
+            "icon": "FaProjectDiagram"
+        },
+        {
+            "id": 5,
+            "path": "/store",
+            "name": "Store",
+            "icon": "FaStore"
+        },
+        {
+            "id": 6,
+            "path": "/about",
+            "name": "About Us",
+            "icon": "FaInfoCircle"
+        }
+    ]
+}

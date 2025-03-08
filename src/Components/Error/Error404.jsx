@@ -13,11 +13,11 @@ const Error404 = () => {
         <div className='flex flex-col items-center justify-center'>
 
           <h1 className='font-bold text-4xl'>404</h1>
-          <p>Page not found</p>
-          <NavLink to="/" className="mt-4">
+          <p>Oops! The page you're looking for doesn't exist.</p>
+          <NavLink to={-1} className="mt-4">
             <Button variant='danger'>
               <IoMdArrowRoundBack />
-              <p>Go to Home</p>
+              <p>Return</p>
             </Button>
           </NavLink>
         </div>

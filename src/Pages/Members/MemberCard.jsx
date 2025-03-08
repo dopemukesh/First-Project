@@ -1,12 +1,6 @@
 import React from 'react'
-// import GradientsBg from '../../Components/Common/Gradients/GradientsBg'
 import { NavLink } from 'react-router-dom'
-
-const members = [
-    { name: 'Shaurya', image: 'https://avatars.githubusercontent.com/shauryacwt', path: 'https://github.com/shauryacwt', position: 'Owner', work: 'Owner of this website.' },
-    { name: 'Yashin', image: 'https://avatars.githubusercontent.com/YasinMemon', path: 'https://github.com/YasinMemon', position: 'Partner', work: 'Share in this website.' },
-    { name: 'Mukesh', image: 'https://avatars.githubusercontent.com/dopemukesh', path: 'https://github.com/dopemukesh', position: 'Core Developer', work: 'Developed this website.' },
-]
+import members from '../../api/MembersData.json'
 
 const MemberCard = () => {
     return (
