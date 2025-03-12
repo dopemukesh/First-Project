@@ -5,38 +5,41 @@
 
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import Container from "../../Components/Common/Container/Container";
 
 const Store = () => {
   const tabs = [
-    { to: "books", text: "Books", color: "yellow-500", darkColor: "dark:text-yellow-500" },
-    { to: "products", text: "Products", color: "yellow-500", darkColor: "dark:text-yellow-500" },
-    { to: "tranings", text: "Trainings", color: "yellow-500", darkColor: "dark:text-yellow-500" }
+    { to: "books", text: "Books" },
+    { to: "products", text: "Products" },
+    { to: "tranings", text: "Trainings" }
   ];
 
   return (
     <>
-      <div className="max-w-7xl mx-auto h-auto mt-2">
-        <div className="h-8 flex justify-around w-full p-4">
-          {tabs.map((tab) => (
-            <NavLink
-              to={tab.to}
-              key={tab.to}
-              className={({ isActive }) =>
-                `font-semibold text-xl active ${
-                  isActive
-                    ? `text-${tab.color} ${tab.darkColor}`
+      <Container>
+        <div className="flex flex-col items-center my-8">
+          <div className="flex justify-center gap-2 w-fit p-1 rounded-xl bg-gray-200 dark:bg-gray-800">
+            {tabs.map((tab) => (
+              <NavLink
+                to={tab.to}
+                key={tab.to}
+                className={({ isActive }) =>
+                  `border border-transparent rounded-lg px-4 py-1.5 active 
+                ${isActive
+                    ? `text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 `
                     : "text-gray-800 dark:text-white"
-                }`
-              }
-            >
-              {tab.text}
-            </NavLink>
-          ))}
+                  }`
+                }
+              >
+                {tab.text}
+              </NavLink>
+            ))}
+          </div>
+          <div className="py-4">
+            <Outlet />
+          </div>
         </div>
-        <div className="py-4">
-          <Outlet />
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

@@ -20,6 +20,9 @@
                 "Secure payment processing",
                 "Order tracking system"
             ],
+            "userName": "John Doe",
+            "userRole": "Full Stack Developer",
+            "userImage": "https://randomuser.me/api/portraits/men/1.jpg",
             "demoLink": "https://demo-ecommerce.com",
             "githubLink": "https://github.com/your-username/ecommerce"
         },

@@ -21,10 +21,10 @@ const Sidebar = ({ isOpen, onClose }) => {
 
                 {/* Sidebar with slide and fade animation */}
                 <div
-                    className={`fixed inset-y-0 left-0 min-w-[280px] bg-white dark:bg-gray-900 
+                    className={`fixed inset-y-0 left-0 min-w-[296px] bg-white dark:bg-gray-950 
                         transform transition-all duration-300 ease-in-out
                         ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}
-                        overflow-y-auto z-50 h-full rounded-e-3xl shadow-2xl`}
+                        overflow-y-auto z-50 h-full shadow-2xl`}
                 >
                     <div className="h-full flex flex-col divide-y divide-gray-300 dark:divide-gray-800">
                         {/* Header with fade-in animation */}
@@ -36,9 +36,17 @@ const Sidebar = ({ isOpen, onClose }) => {
                                     alt="site-logo"
                                     className="w-8 h-8"
                                 />
-                                <span className="text-md font-semibold text-gray-800 dark:text-gray-200">
-                                    CWT
-                                </span>
+                                <div className='relative flex flex-col'>
+                                    <p className="text-md font-semibold text-gray-800 dark:text-gray-200">
+                                        CWT
+                                    </p>
+
+                                    {/* devlopment status  */}
+                                    <span className='absolute right-0 bg-yellow-500/10 px-2 py-[2px] rounded text-yellow-600 text-[10px]'>Beta</span>
+                                    <p className="text-[12px] text-gray-500">
+                                        Community for coders
+                                    </p>
+                                </div>
                             </NavLink>
                             <button
                                 onClick={onClose}
@@ -62,8 +70,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                                                 transition-all duration-300 ease-in-out
                                                 transform ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}
                                                 ${isActive
-                                                    ? "bg-gray-200 dark:bg-gray-800 text-purple-600 dark:text-purple-400"
-                                                    : "text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-purple-600 dark:hover:text-purple-400"
+                                                    ? "bg-gray-800 text-white"
+                                                    : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-purple-600 dark:hover:text-purple-400"
                                                 }`
                                             }
                                             style={{

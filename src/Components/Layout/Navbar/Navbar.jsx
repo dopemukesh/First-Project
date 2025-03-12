@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-transparent backdrop-blur-xl px-4 py-3 w-full sticky top-0 z-[999] rounded-b-3xl sm:rounded-b-none">
+      <nav className="bg-white dark:bg-gray-950 px-4 py-3 w-full sticky top-0 z-[999]">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <NavLink to="/" title="Code With Techries" className="flex items-center space-x-4">
@@ -31,13 +31,12 @@ const Navbar = () => {
           <div className="md:flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               {navLinks.map((link) => {
-                const Icon = getIcon(link.icon);
                 return (
                   <NavLink
                     key={link.id}
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-sm font-medium text-gray-800 dark:text-gray-500 hover:text-purple-500 ${isActive ? "text-purple-500 dark:text-purple-500" : ""
+                      `text-sm font-medium text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-400 ${isActive ? "text-gray-900 dark:text-gray-100" : ""
                       }`
                     }
                   >
