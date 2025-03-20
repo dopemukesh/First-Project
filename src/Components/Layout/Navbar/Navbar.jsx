@@ -36,7 +36,7 @@ const Navbar = () => {
                     key={link.id}
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-sm font-medium text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-400 ${isActive ? "text-gray-900 dark:text-gray-100" : ""
+                      `text-sm font-medium text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-400 ${isActive ? "text-gray-900 dark:text-white" : ""
                       }`
                     }
                   >

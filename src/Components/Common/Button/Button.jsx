@@ -10,6 +10,7 @@ const Button = ({
     type = 'button',
     variant = 'primary',
     disabled = false,
+    rounded = 'lg', // Added rounded prop with default value 'lg'
 }) => {
     // Define styles for different variants
     const variantClasses = {
@@ -24,7 +25,7 @@ const Button = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`flex gap-2 items-center justify-center px-4 py-2 rounded-lg whitespace-nowrap active:scale-95 transition-all duration-500 text-sm font-medium ${variantClasses[variant] || variantClasses.primary
+            className={`flex gap-2 items-center justify-center h-12 lg:h-10 px-6 rounded-xl whitespace-nowrap active:scale-95 transition-all duration-500 lg:text-sm font-medium ${variantClasses[variant] || variantClasses.primary
                 } ${disabled ? 'opacity-50 cursor-not-allowed' : ''
                 } ${className}`}
         >
