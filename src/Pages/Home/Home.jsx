@@ -58,7 +58,7 @@ const Home = () => {
             </Container>
 
             <Container className='py-24 px-4 z-10 relative overflow-hidden'>
-                <div className='bg-gradient-to-r from-white to-transparent absolute -rotate-45 h-14 w-[2000px] top-0 -z-10 blur-[156px]'></div>
+                <div className='bg-gradient-to-r from-white to-transparent absolute rotate-12 md:-rotate-45 h-14 w-[2000px] top-0 -z-10 blur-[156px]'></div>
                 <div className='flex flex-col items-center text-center py-8'>
                     <p className='text-sm text-gray-500 dark:text-gray-400 font-semibold'>FEATURED PROJECTS</p>
                     <p className='my-4 text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl'>Explore Our Latest <span className='text-emerald-500'>Projects</span></p>
