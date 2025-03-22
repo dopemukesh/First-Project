@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ProjectHeroSection from './Hero/ProjectHeroSection';
 import Container from '../../Components/Common/Container/Container';
-import Button from '../../Components/Common/Button/Button';
+import {Button} from '../../Components/Common/Button/Button';
 import projectData from '../../api/ProjectDetails.json';
 
 const Projects = () => {

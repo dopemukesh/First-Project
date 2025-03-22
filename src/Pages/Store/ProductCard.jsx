@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Button from "../../Components/Common/Button/Button";
+import {Button} from "../../Components/Common/Button/Button";
 
 
 function ProductCard({ product }) {

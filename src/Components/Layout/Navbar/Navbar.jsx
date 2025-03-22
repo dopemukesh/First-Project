@@ -8,6 +8,7 @@ import ThemeChange from "./ThemeChange";
 import Sidebar from "./Sidebar/Sidebar";
 import navData from '../../../api/NavLinks.json';
 import { getIcon } from '../../../utils/NavIcons';
+import Logo from "../../Common/Logo/Logo";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,16 +16,19 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white dark:bg-gray-950 px-4 py-3 w-full sticky top-0 z-[999]">
+      <nav className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <NavLink to="/" title="Code With Techries" className="flex items-center space-x-4">
-            <img
+            {/* <img
               src="./logo/cwtLogo-animatedColor.svg"
               alt="site-logo"
               className="w-8 h-8"
-            />
-            <p className="font-semibold">CWT</p>
+            /> */}
+            <Logo className='h-8 md:h-10' >
+              <p className="text-2xl font-semibold">CWT</p>
+            </Logo>
+            {/* <p className="font-semibold">CWT</p> */}
           </NavLink>
 
           {/* Desktop Navigation */}

@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../../../Components/Common/Container/Container';
-import Button from '../../../Components/Common/Button/Button';
+import { Button, Button01 } from '../../../Components/Common/Button/Button';
 import { NavLink } from 'react-router-dom';
 
 const ProjectHeroSection = () => {
@@ -17,9 +17,9 @@ const ProjectHeroSection = () => {
             <p className="max-w-lg text-gray-500 dark:text-gray-400 text-center sm:text-start">
               This is a brief description of my project. It's amazing and you should definitely check it out!
             </p>
-            <div className="my-6 flex justify-center sm:justify-start gap-4">
+            <div className="my-6 flex justify-center items-center sm:justify-start gap-4">
               <NavLink to="">
-                <Button>Get Started</Button>
+                <Button01>Get Started</Button01>
               </NavLink>
 
               <NavLink to="">
@@ -29,14 +29,13 @@ const ProjectHeroSection = () => {
           </div>
 
           {/* Image Section */}
-          <div className='absolute right-0 top-14'>
+          <div className='absolute right-0 -z-10 top-14'>
             <img
-              className="h-[456px] object-cover rounded-md animate-pulse"
+              className="h-[456px] object-cover rounded-md opacity-70"
               src="./react.png"
-              alt="Project"
-            />
-            <div className='bg-sky-500 h-[956px] w-10 blur-[96px] -rotate-[30deg] absolute z-[999] bottom-0'></div>
+              alt="Project" />
           </div>
+          <span className='bg-teal-400 h-[556px] lg:h-[956px] w-10 blur-[126px] md:-rotate-[30deg] -rotate-[20deg] absolute left-[50%] z-[999] -top-12'></span>
         </div>
       </Container>
     </div>

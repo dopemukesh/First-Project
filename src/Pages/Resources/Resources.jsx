@@ -4,7 +4,7 @@
 import React from 'react'
 import Container from '../../Components/Common/Container/Container'
 import projectData from '../../api/ProjectDetails.json';
-import Button from '../../Components/Common/Button/Button'
+import {Button} from '../../Components/Common/Button/Button'
 import { Navigate } from 'react-router-dom'
 
 const Resources = () => {

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BsLayoutSidebar } from "react-icons/bs";
 import navData from '../../../../api/NavLinks.json';
 import { getIcon } from '../../../../utils/NavIcons';
+import Logo from '../../../Common/Logo/Logo';
 
 const Sidebar = ({ isOpen, onClose }) => {
     const { navLinks } = navData;
@@ -31,11 +32,12 @@ const Sidebar = ({ isOpen, onClose }) => {
                         <div className={`flex items-center justify-between px-4 py-4 transition-all duration-500 delay-100 ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
                             }`}>
                             <NavLink to="/" className="flex items-center gap-4" onClick={onClose}>
-                                <img
+                                {/* <img
                                     src="./logo/cwtLogo-animatedColor.svg"
                                     alt="site-logo"
                                     className="w-8 h-8"
-                                />
+                                /> */}
+                                <Logo className="h-10"/>
                                 <div className='relative flex flex-col'>
                                     <p className="text-md font-semibold text-gray-800 dark:text-gray-200">
                                         CWT
@@ -50,9 +52,9 @@ const Sidebar = ({ isOpen, onClose }) => {
                             </NavLink>
                             <button
                                 onClick={onClose}
-                                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
                             >
-                                <BsLayoutSidebar className="text-gray-800 dark:text-gray-300 hover:text-purple-500 transform transition-transform hover:rotate-180 duration-300" />
+                                <BsLayoutSidebar className="text-gray-800 dark:text-gray-300 hover:text-teal-500 transform transition-transform hover:rotate-180 duration-300" />
                             </button>
                         </div>
 
@@ -71,7 +73,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                                                 transform ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0"}
                                                 ${isActive
                                                     ? "bg-gray-800 text-white"
-                                                    : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-purple-600 dark:hover:text-purple-400"
+                                                    : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-teal-600 dark:hover:text-teal-400"
                                                 }`
                                             }
                                             style={{
