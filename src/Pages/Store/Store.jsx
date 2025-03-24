@@ -18,16 +18,16 @@ const Store = () => {
     <>
       <Container>
         <div className="flex flex-col items-center my-8">
-          <div className="flex justify-center gap-2 w-fit p-1 rounded-xl bg-gray-200 dark:bg-gray-800">
+          <div className="flex justify-center gap-2 w-fit p-1 rounded-xl bg-gray-100 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-300 dark:border-gray-700/60">
             {tabs.map((tab) => (
               <NavLink
                 to={tab.to}
                 key={tab.to}
                 className={({ isActive }) =>
-                  `border border-transparent rounded-lg px-4 py-1.5 active 
+                  `text-sm rounded-lg px-4 py-1.5 active 
                 ${isActive
                     ? `text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 `
-                    : "text-gray-800 dark:text-white"
+                    : "text-gray-800 dark:text-white border border-transparent"
                   }`
                 }
               >

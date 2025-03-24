@@ -10,7 +10,7 @@ const ProjectHeroSection = () => {
         <div className='w-full py-24 flex items-center px-4 relative'>
           {/* Text Section */}
           <div className='w-full flex flex-col items-center sm:items-start'>
-            <div className="flex flex-col gap-2 my-6 text-5xl font-medium sm:text-5.5xl md:text-7xl text-center sm:text-start">
+            <div className="flex flex-col gap-2 my-6 text-5xl font-semibold sm:text-5.5xl md:text-7xl text-center sm:text-start">
               <p>Build projects </p>
               <p>like a team</p>
             </div>
