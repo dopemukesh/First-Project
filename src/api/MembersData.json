@@ -1,24 +1,37 @@
 [
-    {
-        "name": "Shaurya",
-        "image": "https://avatars.githubusercontent.com/shauryacwt",
-        "path": "https://github.com/shauryacwt",
-        "position": "Owner",
-        "work": "Owner of this website."
-    },
-    {
-        "name": "Yasin",
-        "image": "https://avatars.githubusercontent.com/YasinMemon",
-        "path": "https://github.com/YasinMemon",
-        "position": "Manager",
-        "work": "Manage this website.",
-        "status": "Featured"
-    },
-    {
-        "name": "Mukesh",
-        "image": "https://avatars.githubusercontent.com/dopemukesh",
-        "path": "https://github.com/dopemukesh",
-        "position": "Core Developer",
-        "work": "Developed this website."
-    }
+  {
+    "name": "Shaurya",
+    "image": "https://avatars.githubusercontent.com/shauryacwt",
+    "githubUrl": "https://github.com/shauryacwt",
+    "position": "Owner",
+    "role": "Manager",
+    "description": "Owner of this website."
+  },
+  {
+    "name": "Yasin",
+    "image": "https://avatars.githubusercontent.com/YasinMemon",
+    "githubUrl": "https://github.com/YasinMemon",
+    "position": "Manager",
+    "role": "Manager",
+    "description": "Managing the website operations.",
+    "contributionType": "Contributor"
+  },
+  {
+    "name": "Mukesh Yadav",
+    "image": "https://avatars.githubusercontent.com/dopemukesh",
+    "githubUrl": "https://github.com/dopemukesh",
+    "position": "Frontend Developer",
+    "role": "Manager",
+    "description": "Developed the website frontend.",
+    "status": "Featured",
+    "contributionType": "Contributor"
+  },
+  {
+    "name": "Uday",
+    "image": "https://avatars.githubusercontent.com/thankiuday",
+    "githubUrl": "https://github.com/thankiuday",
+    "position": "Frontend Developer",
+    "description": "Contributed to the frontend development.",
+    "contributionType": "Contributor"
+  }
 ]
