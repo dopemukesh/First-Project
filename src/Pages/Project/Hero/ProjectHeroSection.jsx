@@ -18,12 +18,12 @@ const ProjectHeroSection = () => {
               This is a brief description of my project. It's amazing and you should definitely check it out!
             </p>
             <div className="my-6 flex justify-center items-center sm:justify-start gap-4">
-              <NavLink to="">
+              <NavLink to="/signup">
                 <Button01>Get Started</Button01>
               </NavLink>
 
               <NavLink to="">
-                <Button variant='secondary'>Watch Demo</Button>
+                <Button disabled variant='secondary'>Watch Demo</Button>
               </NavLink>
             </div>
           </div>

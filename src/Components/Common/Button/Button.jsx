@@ -19,7 +19,7 @@ export const Button = ({
       "border-2 border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
     outline:
       "bg-transparent text-teal-500 border border-teal-500 hover:bg-teal-500 hover:text-white",
-    danger: "bg-rose-500 text-white hover:bg-rose-600",
+    danger: "bg-red-500 text-white hover:bg-red-600",
   };
 
   const sizeClasses = {
@@ -36,7 +36,9 @@ export const Button = ({
       disabled={disabled}
       className={`flex ${
         sizeClasses[size] || sizeClasses.md
-      } items-center justify-center rounded-${rounded} whitespace-nowrap active:scale-95 transition-all duration-500 font-medium 
+      } items-center justify-center rounded-${rounded} whitespace-nowrap ${
+        !disabled && "active:scale-95"
+      } transition-all duration-500 font-medium 
         ${variantClasses[variant] || variantClasses.primary} 
         ${disabled ? "opacity-50 cursor-not-allowed" : ""} 
         ${className}`}
@@ -55,6 +57,7 @@ export const Button01 = ({
   size = "md",
   disabled = false,
   rounded = "",
+  rounded3 = "3xl",
 }) => {
   const variantClass =
     "bg-teal-500 border-2 border-teal-500 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50 text-gray-900";
@@ -68,8 +71,7 @@ export const Button01 = ({
 
   return (
     <div
-      className={`p-2 rounded-${
-        rounded || "3xl"
+      className={`p-2 rounded-${rounded || rounded3}
       } w-fit border border-teal-500/30 dark:border-teal-500/10 transition-all duration-200 ease-in-out`}
     >
       <div

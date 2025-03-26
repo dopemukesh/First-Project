@@ -15,7 +15,7 @@ const Projects = () => {
             <Container>
                 <div className="px-4 pb-6">
                     <div className='mb-10 space-y-2'>
-                        <p className='text-sm text-purple-500 font-semibold'>Featured</p>
+                        <p className='text-sm text-teal-500 font-semibold'>Featured</p>
                         <h2 className="text-2xl font-semibold">Our Projects</h2>
                         <p className="text-gray-500 dark:text-gray-400">
                             Here are some of the projects that we have worked on.

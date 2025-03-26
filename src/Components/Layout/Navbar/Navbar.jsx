@@ -6,9 +6,9 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ThemeChange from "./ThemeChange";
 import Sidebar from "./Sidebar/Sidebar";
-import navData from '../../../api/NavLinks.json';
-import { getIcon } from '../../../utils/NavIcons';
+import navData from "../../../api/NavLinks.json";
 import Logo from "../../Common/Logo/Logo";
+// import LogoExpand from '../../Common/LogoExpand/LogoExpand'
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,16 +19,20 @@ const Navbar = () => {
       <nav className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <NavLink to="/" title="Code With Techries" className="flex items-center space-x-4">
+          <NavLink
+            to="/"
+            title="Code With Techries"
+            className="flex items-center space-x-4"
+          >
             {/* <img
               src="./logo/cwtLogo-animatedColor.svg"
               alt="site-logo"
               className="w-8 h-8"
             /> */}
-            <Logo className='h-8 md:h-10' >
+            <Logo className="h-8 md:h-10">
               <p className="text-2xl font-semibold">CWT</p>
+              {/* <LogoExpand /> */}
             </Logo>
-            {/* <p className="font-semibold">CWT</p> */}
           </NavLink>
 
           {/* Desktop Navigation */}
@@ -40,7 +44,8 @@ const Navbar = () => {
                     key={link.id}
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-sm font-medium text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-400 ${isActive ? "text-gray-900 dark:text-white" : ""
+                      `text-sm font-medium text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-400 ${
+                        isActive ? "text-gray-900 dark:text-white" : ""
                       }`
                     }
                   >
@@ -79,10 +84,7 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Sidebar */}
-      <Sidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-      />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>
   );
 };
