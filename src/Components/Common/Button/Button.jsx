@@ -71,8 +71,7 @@ export const Button01 = ({
 
   return (
     <div
-      className={`p-2 rounded-${rounded || rounded3}
-      } w-fit border border-teal-500/30 dark:border-teal-500/10 transition-all duration-200 ease-in-out`}
+      className={`p-2 rounded-3xl w-fit border border-teal-500/30 dark:border-teal-500/10 transition-all duration-200 ease-in-out`}
     >
       <div
         className={`p-2 rounded-${
