@@ -50,7 +50,7 @@ const Home = () => {
             <img
               src="./images/vsCode-project.png"
               alt=""
-              className="blur-[2px]"
+              className=""
             />
           </div>
         </div>
