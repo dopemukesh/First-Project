@@ -16,11 +16,11 @@ const Loader = () => {
 
     const fadeTimer = setTimeout(() => {
       setOpacity(0);
-    }, 2000);
+    }, 1500);
 
     const hideTimer = setTimeout(() => {
       setIsVisible(false);
-    }, 1500);
+    }, 1000);
 
     return () => {
       clearTimeout(fadeTimer);

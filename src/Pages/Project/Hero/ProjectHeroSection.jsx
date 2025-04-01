@@ -11,20 +11,15 @@ const ProjectHeroSection = () => {
           {/* Text Section */}
           <div className='w-full flex flex-col items-center sm:items-start'>
             <div className="flex flex-col gap-2 my-6 text-5xl font-semibold sm:text-5.5xl md:text-7xl text-center sm:text-start">
-              <p>Build projects </p>
+              <p>Build projects</p>
               <p>like a team</p>
             </div>
             <p className="max-w-lg text-gray-500 dark:text-gray-400 text-center sm:text-start">
               This is a brief description of my project. It's amazing and you should definitely check it out!
             </p>
             <div className="my-6 flex justify-center items-center sm:justify-start gap-4">
-              <NavLink to="/signup">
-                <Button01>Get Started</Button01>
-              </NavLink>
-
-              <NavLink to="">
+                <Button01 to="/signup">Get Started</Button01>
                 <Button disabled variant='secondary'>Watch Demo</Button>
-              </NavLink>
             </div>
           </div>
 

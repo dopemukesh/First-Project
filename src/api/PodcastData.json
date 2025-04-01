@@ -1,0 +1,20 @@
+[
+    {
+        "podId": 1,
+        "podTitle": "Tech Talks with Experts",
+        "podDescription": "Listen to insightful conversations with industry experts about the latest tech trends and innovations.",
+        "podLink": ""
+    },
+    {
+        "podId": 2,
+        "podTitle": "Breaking into Tech",
+        "podDescription": "Get inspired by the stories of people who have successfully transitioned into tech careers and learn about the opportunities and challenges they faced.",
+        "podLink": ""
+    },
+    {
+        "podId": 3,
+        "podTitle": "Future of Work",
+        "podDescription": "Explore the latest developments and trends in the world of work, from AI and automation to remote work and the gig economy.",
+        "podLink": ""
+    }
+]

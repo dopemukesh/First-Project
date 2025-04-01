@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-import Members from "./Pages/Members/Members";
 import Resources from "./Pages/Resources/Resources";
 import Projects from "./Pages/Project/Projects";
 import About from "./Pages/About/About";
@@ -10,11 +9,14 @@ import StoreProducts from "./Pages/Store/StoreProducts";
 import StoreTranings from "./Pages/Store/StoreTranings";
 import Error404 from "./Components/Error/Error404";
 import ProjectDetails from "./Pages/Project/ProjectDetails";
+import Community from "./Pages/Community/Community";
+import Career from "./Pages/Career/Career";
 
 export const AppRoutes = () => (
     <Routes>
         <Route path="/" index element={<Home />} />
-        <Route path="/members" element={<Members />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/career" element={<Career />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/about" element={<About />} />
 

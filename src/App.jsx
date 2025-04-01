@@ -9,14 +9,16 @@ import { AppRoutes } from "./AppRoutes";
 
 const App = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Loader />
       <Navbar />
-      <Suspense fallback={<Loader />}>
-        <AppRoutes />
-      </Suspense>
+      <div className="flex-grow">
+        <Suspense fallback={<div />}>
+          <AppRoutes />
+        </Suspense>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

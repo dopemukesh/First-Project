@@ -2,14 +2,14 @@
     "navLinks": [
         {
             "id": 1,
-            "path": "/",
-            "name": "Home",
-            "icon": "FaHome"
+            "path": "/community",
+            "name": "Community",
+            "icon": "FaUsers"
         },
         {
             "id": 2,
-            "path": "/members",
-            "name": "Members",
+            "path": "/career",
+            "name": "Career",
             "icon": "FaUsers"
         },
         {

@@ -1,4 +1,4 @@
-/*************  ✨ Codeium Command 🌟  *************/
+/* eslint-disable no-unused-vars */
 // Designed and developed by:
 // - Mukesh Yadav
 
@@ -16,19 +16,14 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <NavLink
             to="/"
             title="Code With Techries"
             className="flex items-center space-x-4"
           >
-            {/* <img
-              src="./logo/cwtLogo-animatedColor.svg"
-              alt="site-logo"
-              className="w-8 h-8"
-            /> */}
             <Logo className="h-8 md:h-10">
               <p className="text-2xl font-semibold">CWT</p>
               {/* <LogoExpand /> */}
@@ -81,7 +76,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
@@ -90,5 +85,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/******  e44ee2b3-5f5b-4bbf-a30d-1bf7a9389a6b  *******/
