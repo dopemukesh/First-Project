@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import {Button} from '../../Components/Common/Button/Button'
 
 const Career = () => {
   return (
@@ -9,9 +10,11 @@ const Career = () => {
           <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
             This is the Career Page
           </h1>
-          <p className="text-yellow-600 dark:text-yellow-500">
+          <p className="text-yellow-600 dark:text-yellow-500 text-center">
             The page you are looking is under development phase.
           </p>
+
+          <Button to="post-job" variant="secondary">Post Job</Button>
         </div>
       </div>
     </>

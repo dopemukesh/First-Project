@@ -2,36 +2,42 @@
     "navLinks": [
         {
             "id": 1,
+            "path": "/",
+            "name": "Home",
+            "icon": "FaHome"
+        },
+        {
+            "id": 2,
             "path": "/community",
             "name": "Community",
             "icon": "FaUsers"
         },
         {
-            "id": 2,
+            "id": 3,
             "path": "/career",
             "name": "Career",
             "icon": "FaUsers"
         },
         {
-            "id": 3,
+            "id": 4,
             "path": "/resources",
             "name": "Resources",
             "icon": "FaBook"
         },
         {
-            "id": 4,
+            "id": 5,
             "path": "/projects",
             "name": "Projects",
             "icon": "FaProjectDiagram"
         },
         {
-            "id": 5,
+            "id": 6,
             "path": "/store/books",
             "name": "Store",
             "icon": "FaStore"
         },
         {
-            "id": 6,
+            "id": 7,
             "path": "/about",
             "name": "About Us",
             "icon": "FaInfoCircle"

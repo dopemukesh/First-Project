@@ -39,13 +39,13 @@ const Community = () => {
           {/* <p>&quot;Code, Collaborate, Create&quot;</p> */}
         </div>
       </Container>
-      <div className="w-full h-28 bg-gradient-to-r from-pink-500  via-teal-500 to-pink-500 blur-[96px] md:blur-[196px]"></div>
+      <div className="absolute w-full h-36 -z-10 bg-gradient-to-r from-pink-500  via-teal-500 to-pink-500 blur-[96px] md:blur-[196px] opacity-50 md:opacity-100"></div>
 
       {/* members display section */}
-      <Container className="pb-14">
+      <Container className="py-14">
         <div className="text-center space-y-4">
           <h1 className="text-3xl font-semibold">Meet Our Developers</h1>
-          <h3 className="text-gray-500 ">
+          <h3 className="text-gray-600 dark:text-gray-400">
             CodeWithTechries is home to talented developers worldwide.
           </h3>
         </div>

@@ -29,7 +29,7 @@ const RealWorldChallenge = () => {
               reality.
             </p>
             <div className="pt-8 md:pt-3">
-              <Button variant="secondary" className="w-fit">
+              <Button to="/community" variant="secondary" className="w-fit">
                 Join Open Source
               </Button>
             </div>

@@ -44,7 +44,7 @@ function Footer() {
                   </h3>
                 </NavLink>
                 <p className="text-gray-400 my-4 max-w-md">
-                  1234 Street NameSuite 567 #890City, State, ZIP CodeCountry
+                  Haryana, India 135001
                 </p>
                 <div className="flex gap-4 my-6">
                   {socialLinks.map((link) => (
@@ -52,7 +52,7 @@ function Footer() {
                       key={link.path}
                       to={link.path}
                       rel="noopener noreferrer"
-                      className="h-6 w-6 text-gray-400 hover:text-teal-600 transition-colors flex items-center gap-2"
+                      className="h-8 w-8 text-gray-400 hover:text-teal-600 transition-colors flex items-center gap-2"
                     >
                       {link.icon}
                     </NavLink>
@@ -85,19 +85,28 @@ function Footer() {
               <p>
                 <span aria-hidden="true">📞 </span>
                 <a
-                  href="tel:+918453165874"
-                  aria-label="Call us at +91 8453165874"
+                  href="tel:+916398250310"
+                  aria-label="Call us at +916398250310"
                 >
-                  +91 8453165874
+                  +91 6398250310
                 </a>
               </p>
               <p>
                 <span aria-hidden="true">✉️ </span>
                 <a
-                  href="mailto:shaurya76184@gmail.com"
-                  aria-label="Email us at shaurya76184@gmail.com"
+                  href="mailto:info@codewithtechries.com"
+                  aria-label="Email us at info@codewithtechries.com"
                 >
-                  shaurya76184@gmail.com
+                  info@codewithtechries.com
+                </a>
+              </p>
+              <p>
+                <span aria-hidden="true">✉️ </span>
+                <a
+                  href="mailto:reach.cwt@gmail.com"
+                  aria-label="Email us at reach.cwt@gmail.com"
+                >
+                  reach.cwt@gmail.com
                 </a>
               </p>
             </div>

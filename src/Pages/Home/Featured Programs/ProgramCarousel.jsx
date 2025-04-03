@@ -26,12 +26,12 @@ const ProgramCarousel = ({ projects }) => {
   };
 
   const bgGrads =
-    "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl";
+    "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 rounded-2xl";
 
   return (
     <Slider
       {...settings}
-      className="w-[360px] flex flex-1 sm:max-w-lg md:max-w-3xl"
+      className="w-[360px] flex flex-1 sm:max-w-lg md:max-w-3xl shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl"
     >
       {projects.map((item) => (
         <div key={item.id}>

@@ -1,4 +1,7 @@
 /* eslint-disable react/prop-types */
+// Designed and developed by:
+// - Mukesh Yadav
+
 import React from "react";
 import { Link } from "react-router-dom";
 

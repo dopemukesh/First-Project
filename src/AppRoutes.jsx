@@ -11,30 +11,36 @@ import Error404 from "./Components/Error/Error404";
 import ProjectDetails from "./Pages/Project/ProjectDetails";
 import Community from "./Pages/Community/Community";
 import Career from "./Pages/Career/Career";
+import PostJob from "./Pages/Career/PostJob/PostJob";
 
 export const AppRoutes = () => (
-    <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/about" element={<About />} />
+  <Routes>
+    <Route path="/" index element={<Home />} />
+    <Route path="/community" element={<Community />} />
+    <Route path="/resources" element={<Resources />} />
+    <Route path="/about" element={<About />} />
 
-        {/* Projects Routes */}
-        <Route path="/projects">
-            <Route index element={<Projects />} />
-            <Route path="details/:id" element={<ProjectDetails />} />
-        </Route>
+    {/* ✅ Fixed Career Routes */}
+    <Route path="/career">
+      <Route index element={<Career />} />
+      <Route path="post-job" element={<PostJob />} /> {/* Fixed path */}
+    </Route>
 
-        {/* Store Routes */}
-        <Route path="/store" element={<Store />}>
-            <Route index element={<StoreBooks />} />
-            <Route path="books" element={<StoreBooks />} />
-            <Route path="products" element={<StoreProducts />} />
-            <Route path="tranings" element={<StoreTranings />} />
-        </Route>
+    {/* Projects Routes */}
+    <Route path="/projects">
+      <Route index element={<Projects />} />
+      <Route path="details/:id" element={<ProjectDetails />} />
+    </Route>
 
-        {/* Catch-all Route for Errors */}
-        <Route path="*" element={<Error404 />} />
-    </Routes>
+    {/* Store Routes */}
+    <Route path="/store" element={<Store />}>
+      <Route index element={<StoreBooks />} />
+      <Route path="books" element={<StoreBooks />} />
+      <Route path="products" element={<StoreProducts />} />
+      <Route path="tranings" element={<StoreTranings />} />
+    </Route>
+
+    {/* Catch-all Route for Errors */}
+    <Route path="*" element={<Error404 />} />
+  </Routes>
 );
