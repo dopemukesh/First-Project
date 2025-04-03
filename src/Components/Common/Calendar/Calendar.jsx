@@ -16,6 +16,7 @@ import {
   setYear,
   isSameMonth,
 } from "date-fns";
+import { motion } from "motion/react";
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -104,7 +105,13 @@ const Calendar = () => {
       </button>
 
       {showCalendar && (
-        <div className="absolute mt-2 w-64 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4">
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ type: "spring", damping: 10, duration: 5 }}
+          className="absolute mt-2 w-64 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 z-20"
+        >
           {/* Month & Year Selector */}
           <div className="flex justify-between items-center mb-2">
             <button
@@ -163,7 +170,7 @@ const Calendar = () => {
           <div className="grid grid-cols-7 gap-1 mt-2 text-center">
             {renderDays()}
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
