@@ -23,14 +23,13 @@ const SkillsInput = ({ onSkillsChange }) => {
   };
 
   return (
-    <div>
-      <label className="block mb-1.5 font-semibold">Skills</label>
+    <>
       <div className="flex gap-2 mb-2">
         <input
           ref={inputRef} // Attach the ref to the input field
           type="text"
           placeholder="e.g. html, js, css"
-          className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none"
+          className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none"
           value={skillInput}
           onChange={(e) => setSkillInput(e.target.value)}
         />
@@ -58,7 +57,7 @@ const SkillsInput = ({ onSkillsChange }) => {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

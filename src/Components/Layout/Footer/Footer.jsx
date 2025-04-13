@@ -64,7 +64,7 @@ function Footer() {
 
           {/* Social Links */}
           <div className="space-y-4">
-            <h3 className="text-teal-600 font-medium">Quick links</h3>
+            <h3 className="text-teal-600 font-medium whitespace-nowrap">Quick links</h3>
             <div className="flex flex-col space-y-2">
               {footerLinks.map((link) => (
                 <NavLink
@@ -80,7 +80,7 @@ function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-teal-600 font-medium">Contact</h3>
+            <h3 className="text-teal-600 font-medium whitespace-nowrap">Contact</h3>
             <div className="text-gray-400 contact-info">
               <p>
                 <span aria-hidden="true">📞 </span>

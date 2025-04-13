@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { BiMoon } from "react-icons/bi";
 import { MdOutlineWbSunny } from "react-icons/md";
 
-const ThemeChange = () => {
+
+const ThemeChange = ({className}) => {
     const [isDark, setIsDark] = useState(() => {
         // Check localStorage first, fallback to classList
         const savedTheme = localStorage.getItem('theme')
@@ -48,7 +49,12 @@ const ThemeChange = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors"
+            className={`p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors grid place-content-center ${className}`}
+            aria-label="Toggle theme"
+            title="Toggle theme"
+            data-tooltip-target="tooltip-default"
+            data-tooltip-placement="top"
+            data-tooltip-style="dark"
         >
             {isDark ? <MdOutlineWbSunny className='w-5 h-5 dark:text-gray-200 text-gray-800' /> : <BiMoon className='w-5 h-5 text-gray-800 dark:text-gray-200' />}
         </button>

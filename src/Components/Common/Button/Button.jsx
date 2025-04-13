@@ -23,7 +23,7 @@ export const Button = ({
     secondary:
       "border-2 border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
     outline:
-      "bg-transparent text-gray-800 dark:text-white border border-gray-800 dark:border-white hover:bg-white/20 dark:hover:bg-gray-900",
+      "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-300 hover:bg-white/20 dark:hover:bg-gray-900",
     danger: "bg-red-500 text-white hover:bg-red-600",
   };
 
@@ -31,7 +31,7 @@ export const Button = ({
     xs: "px-2 py-1 rounded-md text-[10px] md:text-[8px] flex items-center justify-center gap-2",
     sm: "h-10 px-4 py-2 rounded-lg text-sm gap-2",
     md: "h-11 px-5 py-2.5 rounded-[10px] text-base gap-2",
-    lg: "h-13 px-6 py-3 rounded-xl gap-2",
+    lg: "h-12 px-6 py-3 rounded-xl gap-2",
     xl: "h-14 px-7 py-3.5 rounded-xl text-xl gap-3",
   };
 

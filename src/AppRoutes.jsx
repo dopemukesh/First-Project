@@ -12,6 +12,9 @@ import ProjectDetails from "./Pages/Project/ProjectDetails";
 import Community from "./Pages/Community/Community";
 import Career from "./Pages/Career/Career";
 import PostJob from "./Pages/Career/PostJob/PostJob";
+import Signup from "./Pages/Registration/Signup";
+import Login from "./Pages/Registration/Login";
+import ForgetPassword from "./Pages/Registration/ForgetPassword";
 
 export const AppRoutes = () => (
   <Routes>
@@ -42,5 +45,8 @@ export const AppRoutes = () => (
 
     {/* Catch-all Route for Errors */}
     <Route path="*" element={<Error404 />} />
+    <Route path="/register" element={<Signup />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/forget-password" element={<ForgetPassword />} />
   </Routes>
 );

@@ -53,10 +53,10 @@ const LeaderBoardAndCommunity = () => {
       <div className="px-4">
         {/* Title */}
         <div className="flex flex-col items-center text-center mb-8 gap-4">
-          <h2 className="text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl">
+          <h2 className="text-3xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl">
             Real-World Projects
           </h2>
-          <p className="text-lg text-gray-500 dark:text-gray-400">
+          <p className="md:text-lg text-gray-500 dark:text-gray-400">
             A platform to explore and contribute to innovative real-world
             projects.
           </p>

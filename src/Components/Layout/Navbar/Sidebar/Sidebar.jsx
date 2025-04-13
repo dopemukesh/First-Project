@@ -4,6 +4,7 @@ import { BsLayoutSidebar } from "react-icons/bs";
 import navData from "../../../../api/NavLinks.json";
 import { getIcon } from "../../../../utils/NavIcons";
 import Logo from "../../../Common/Logo/Logo";
+import UserInfo from "./UserInfo";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const { navLinks } = navData;
@@ -75,7 +76,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             </div>
 
             {/* Navigation Links with staggered animation */}
-            <div className="flex-1 py-4 px-3">
+            <div className="flex flex-col flex-1 py-4 px-3 justify-between">
               <div className="space-y-1">
                 {navLinks.map((link, index) => {
                   const Icon = getIcon(link.icon);
@@ -84,18 +85,17 @@ const Sidebar = ({ isOpen, onClose }) => {
                       key={link.id}
                       to={link.path}
                       className={({ isActive }) =>
-                        `flex items-center gap-3 px-3 py-2.5 rounded-lg
-                                                transition-all duration-300 ease-in-out
-                                                transform ${
-                                                  isOpen
-                                                    ? "translate-x-0 opacity-100"
-                                                    : "-translate-x-4 opacity-0"
-                                                }
-                                                ${
-                                                  isActive
-                                                    ? "bg-gray-800 text-white"
-                                                    : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-teal-600 dark:hover:text-teal-400"
-                                                }`
+                        `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 ease-in-out transform 
+                        ${
+                          isOpen
+                            ? "translate-x-0 opacity-100"
+                            : "-translate-x-4 opacity-0"
+                        }
+                        ${
+                          isActive
+                            ? "bg-gray-800 text-white"
+                            : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-teal-600 dark:hover:text-green-400"
+                        }`
                       }
                       style={{
                         transitionDelay: `${150 + index * 50}ms`,
@@ -103,10 +103,15 @@ const Sidebar = ({ isOpen, onClose }) => {
                       onClick={onClose}
                     >
                       <Icon className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
-                      <span className="font-medium">{link.name}</span>
+                      <span className="text-sm font-medium">{link.name}</span>
                     </NavLink>
                   );
                 })}
+              </div>
+
+              <div>
+                {/* User info section */}
+                <UserInfo onCloseSidebar={onClose} />
               </div>
             </div>
           </div>

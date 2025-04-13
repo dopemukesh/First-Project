@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 const AnimatedCounter = ({ end }) => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Run every time it enters viewport
+    triggerOnce: false, // Run every time it enters viewport
     threshold: 0.5, // Trigger animation when 50% visible
   });
 

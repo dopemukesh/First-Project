@@ -3,6 +3,7 @@
 // - Mukesh Yadav
 
 "use client";
+import { ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 const Dropdown = ({
@@ -10,9 +11,13 @@ const Dropdown = ({
   placeholder,
   onSelect,
   defaultSelected = null,
+  selected: controlledSelected = null, // Add this prop
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(defaultSelected);
+  const [internalSelected, setInternalSelected] = useState(defaultSelected);
+  // Use controlled value if provided, otherwise use internal state
+  const selected =
+    controlledSelected !== null ? controlledSelected : internalSelected;
   const dropdownRef = useRef(null);
 
   // ✅ Close dropdown on outside click
@@ -29,9 +34,11 @@ const Dropdown = ({
   }, []);
 
   const handleSelect = (option) => {
-    setSelected(option);
+    setInternalSelected(option);
     setIsOpen(false);
-    onSelect(option);
+    if (onSelect) {
+      onSelect(option);
+    }
   };
 
   return (
@@ -39,7 +46,7 @@ const Dropdown = ({
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg text-left flex justify-between items-center"
+        className="min-w-36 w-full h-full px-3 py-2 gap-2 rounded-lg text-left flex justify-between items-center whitespace-nowrap"
       >
         {selected ? (
           typeof selected === "object" ? ( // ✅ Object case (Flags & Currency)
@@ -61,13 +68,13 @@ const Dropdown = ({
           placeholder
         )}
         <span className={`transition-transform ${isOpen ? "rotate-180" : ""}`}>
-          ▼
+          <ChevronDown />
         </span>
       </button>
 
       {/* Dropdown Options */}
       {isOpen && (
-        <ul className="absolute w-full mt-1 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg overflow-hidden z-10 p-2 space-y-1">
+        <ul className="absolute w-full mt-1 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg overflow-hidden z-50 p-2 space-y-1">
           {options.map((option, idx) => (
             <li
               key={idx}

@@ -27,11 +27,11 @@ const HeroUI = () => {
             </h1>
             <p className="px-4 text-gray-500 dark:text-gray-400 text-center max-w-xl">
               Master in-demand skills, contribute to real projects, and connect
-              with top techies, all in one community-driven platform
+              with top techies, all in one community-driven platform.
             </p>
           </div>
           <div id="getStarted">
-            <Button01 to="/signup">Get Started</Button01>
+            <Button01 to="/register">Get Started</Button01>
           </div>
         </div>
       </Container>

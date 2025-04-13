@@ -99,7 +99,7 @@ const Calendar = () => {
     <div className="relative w-full" ref={calendarRef}>
       <button
         onClick={() => setShowCalendar(!showCalendar)}
-        className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500"
+        className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500"
       >
         {format(selectedDate, "dd-MM-yyyy")}
       </button>
@@ -139,14 +139,14 @@ const Calendar = () => {
 
           {/* Year Dropdown */}
           {showYearDropdown && (
-            <div className="absolute bg-white dark:bg-gray-700 shadow-lg rounded-lg p-2 max-h-40 overflow-y-auto">
+            <div className="absolute bg-white dark:bg-gray-700 shadow-lg rounded-lg p-2 max-h-40 overflow-y-auto z-50">
               {futureYears.map((year) => (
                 <button
                   key={year}
                   onClick={() => handleYearChange(year)}
-                  className={`block w-full text-center px-3 py-1 hover:bg-teal-500 hover:text-white ${
+                  className={`block w-full text-center px-3 py-1 hover:bg-gray-200 dark:hover:bg-gray-500 hover:text-gray-800 dark:hover:text-white rounded-md ${
                     year === currentMonth.getFullYear()
-                      ? "bg-teal-500 text-white"
+                      ? "bg-teal-500 text-gray-800"
                       : ""
                   }`}
                 >

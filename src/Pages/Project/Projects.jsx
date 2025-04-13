@@ -9,6 +9,7 @@ import projectData from "../../api/ProjectDetails.json";
  * Projects Component
  * This component displays a list of projects with their details.
  */
+
 const Projects = () => {
   const navigate = useNavigate();
   // Extract projects data with a default empty array.

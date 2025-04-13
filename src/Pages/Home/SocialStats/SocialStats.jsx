@@ -5,8 +5,8 @@ import AnimatedCounter from "./AnimatedCounter";
 
 const SocialStats = () => {
   return (
-    <Container className="py-14 bg-gradient-to-t from-white to-transparent backdrop-blur-md dark:bg-gradient-to-t dark:from-gray-950 dark:to-transparent">
-      <div className="flex flex-col items-center text-center">
+    <Container className="py-14 bg-gradient-to-b from-transparent to-white backdrop-blur-md dark:bg-gradient-to-t dark:from-gray-950 dark:to-transparent">
+      <div className="flex flex-col items-center text-center px-4">
         <p className="text-sm text-gray-500 dark:text-gray-400 font-semibold">
           COMMUNITY
         </p>
@@ -20,12 +20,12 @@ const SocialStats = () => {
         <p className="my-8 text-gray-500 dark:text-gray-400">
           Trusted and loved by over{" "}
           <span className="dark:text-white text-gray-800 font-medium">
-            22,000+ peoples on Instagram
+            22,000+ coders on Instagram
           </span>
         </p>
       </div>
 
-      <div className="flex flex-col flex-wrap md:flex-row gap-4 justify-center items-center">
+      <div className="flex flex-col flex-wrap md:flex-row gap-6 md:gap-4 justify-center items-center">
         {socialData.map((data, index) => (
           <div
             key={index}
