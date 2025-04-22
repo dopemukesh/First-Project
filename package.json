@@ -7,10 +7,12 @@
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "flowbite-react patch"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
+    "flowbite-react": "^0.11.7",
     "lucide-react": "^0.487.0",
     "motion": "^12.6.2",
     "react": "^18.3.1",

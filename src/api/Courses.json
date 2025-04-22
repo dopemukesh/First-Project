@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "title": "Full Stack Dev",
+        "instructor": "Mukesh Yadav",
+        "level": "Advanced Level",
+        "type": "Live + Recorded",
+        "rating": 3,
+        "color": "bg-red-200",
+        "price": "2499/-",
+        "category": "Web Development"
+    },
+    {
+        "id": 2,
+        "title": "Front-End Dev",
+        "instructor": "Mukesh Yadav",
+        "level": "Advanced Level",
+        "type": "Live + Recorded",
+        "rating": 5,
+        "color": "bg-purple-200",
+        "price": "2999/-",
+        "category": "Web Development"
+    },
+    {
+        "id": 3,
+        "title": "Back-End Dev",
+        "instructor": "Aryan",
+        "level": "Advanced Level",
+        "type": "Live + Recorded",
+        "rating": 4,
+        "color": "bg-blue-200",
+        "price": "2699/-",
+        "category": "Web Development"
+    }
+]

@@ -2,13 +2,14 @@ import React from "react";
 import { Button01 } from "../../../Components/Common/Button/Button";
 import Container from "../../../Components/Common/Container/Container";
 import { motion } from "motion/react";
+import SearchBox from "../../../Components/Common/Search/SearchBox";
 
 const HeroUI = () => {
   return (
     <>
       <Container className="h-[456px] md:h-[556px] items-center">
         <div className="flex flex-col items-center">
-          <div className="group cursor-default font-medium flex items-center gap-4 text--900 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-full">
+          {/* <div className="group cursor-default font-medium flex items-center gap-4 text--900 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-full">
             <div className="grid place-content-center">
               <img
                 src="shape01.svg"
@@ -17,7 +18,16 @@ const HeroUI = () => {
               />
             </div>
             <p>Learners to Leaders</p>
+          </div> */}
+
+          <div className="mb-2">
+            <SearchBox
+              // icon="search"
+              defaultText="Learners to Leaders"
+              placeholderText="Search anything..."
+            />
           </div>
+
           <div className="flex flex-col my-8 space-y-6 items-center">
             <h1 className="text-3xl sm:text-4xl md:text-7xl max-w-3xl font-semibold text-center">
               Transform Your Tech Career with{" "}

@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-import Resources from "./Pages/Resources/Resources";
 import Projects from "./Pages/Project/Projects";
 import About from "./Pages/About/About";
 import Store from "./Pages/Store/Store";
@@ -15,12 +14,13 @@ import PostJob from "./Pages/Career/PostJob/PostJob";
 import Signup from "./Pages/Registration/Signup";
 import Login from "./Pages/Registration/Login";
 import ForgetPassword from "./Pages/Registration/ForgetPassword";
+import Courses from "./Pages/Courses/Cources";
 
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" index element={<Home />} />
     <Route path="/community" element={<Community />} />
-    <Route path="/resources" element={<Resources />} />
+    <Route path="/courses" element={<Courses />} />
     <Route path="/about" element={<About />} />
 
     {/* ✅ Fixed Career Routes */}

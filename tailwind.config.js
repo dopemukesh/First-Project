@@ -1,9 +1,12 @@
+import flowbiteReact from "flowbite-react/plugin/tailwindcss";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'selector',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    ".flowbite-react\\class-list.json"
   ],
   theme: {
     extend: {
@@ -37,8 +40,21 @@ export default {
           900: '#0C5A5D',
           950: '#084B4B' // Darkest shade
         },
+        'purple': {
+          50: '#f4f1fc',
+          100: '#e4dbfa',
+          200: '#c9b7f5',
+          300: '#ad91ef',
+          400: '#926cec',
+          500: '#7043E3',
+          600: '#5b36c0',
+          700: '#482b9c',
+          800: '#352177',
+          900: '#241654',
+          950: '#160c38',
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [flowbiteReact],
 }

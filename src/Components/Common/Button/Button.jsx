@@ -22,6 +22,8 @@ export const Button = ({
       "bg-teal-500 border-2 border-teal-500 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50 text-gray-900",
     secondary:
       "border-2 border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
+    tertiary:
+      "bg-[#7043E3] hover:bg-[#7043d3] text-gray-900 text-white",
     outline:
       "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-300 hover:bg-white/20 dark:hover:bg-gray-900",
     danger: "bg-red-500 text-white hover:bg-red-600",

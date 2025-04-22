@@ -20,8 +20,8 @@
         },
         {
             "id": 4,
-            "path": "/resources",
-            "name": "Resources",
+            "path": "/courses",
+            "name": "Courses",
             "icon": "FaBook"
         },
         {
