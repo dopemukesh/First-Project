@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
-import { useInView } from "framer-motion";
-import { motion } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 import earth1 from "../../../assets/earth1.png";
 import Container from "../../../Components/Common/Container/Container";
-import { Button, Button01 } from "../../../Components/Common/Button/Button";
+import { Button } from "../../../Components/Common/Button/Button";
 
 const RealWorldChallenge = () => {
   const ref = useRef(null);
@@ -15,18 +14,20 @@ const RealWorldChallenge = () => {
   return (
     <>
       {/* Real World Challenges Section */}
-      <Container ref={ref} className="py-14 px-4">
-        <div
-          className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between ${bgGrads}`}
-        >
+      <Container className="py-14 px-4">
+        <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between ${bgGrads}`}>
           {/* Left Content */}
-          <motion.div className="md:w-1/2 flex flex-col justify-center items-center md:items-start space-y-4 text-center md:text-left md:p-8 py-8">
+          <motion.div
+            className="md:w-1/2 flex flex-col justify-center items-center md:items-start space-y-4 text-center md:text-left md:p-8 py-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-3xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl w-full">
               Unlock Your True Potential with Real World Challenges
             </h2>
             <p className="text-lg text-gray-500 dark:text-gray-400">
-              Push your limits, solve real problems, and turn ideas into
-              reality.
+              Push your limits, solve real problems, and turn ideas into reality.
             </p>
             <div className="pt-8 md:pt-3">
               <Button to="/community" variant="secondary" className="w-fit">
@@ -36,7 +37,12 @@ const RealWorldChallenge = () => {
           </motion.div>
 
           {/* Right Image */}
-          <motion.div className="relative flex overflow-hidden md:h-72">
+          <motion.div
+            className="relative flex overflow-hidden md:h-72"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
             <motion.img
               src={earth1}
               alt="Glowing Earth"

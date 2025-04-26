@@ -15,7 +15,7 @@ const Signup = () => {
     role: "Developer", // default role
   });
 
-  const roles = ["Developer", "Designer", "Recruiter", "Other"]; // roles of users
+  const roles = ["Student", "Developer", "Recruiter"]; // roles of users
 
   const inputClass =
     "w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none";
@@ -121,7 +121,7 @@ const Signup = () => {
 
             <div className="flex items-center justify-between pt-4">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Already have an account?{" "}
+                Already have an account ?{" "}
                 <NavLink
                   to="/login"
                   className="text-teal-600 dark:text-teal-500 hover:underline"

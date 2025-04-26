@@ -29,6 +29,14 @@ const Navbar = () => {
     }
   }, []);
 
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+    setUserData(null);
+    navigate("/login");
+  };
+
   const renderButton = () => {
     if (isLoggedIn && userData) {
       return (
@@ -43,22 +51,16 @@ const Navbar = () => {
           </div>
           <div
             className="p-2 rounded-xl border border-red-200 dark:border-red-800 bg-red-100 dark:bg-red-900 hover:bg-red-300 dark:hover:bg-red-800 transition-colors grid place-content-center"
-          onClick={handleLogout}
+            onClick={handleLogout}
           >
-            <BiLogOut className="text-xl text-red-500" />
+            <BiLogOut className="text-xl" />
           </div>
         </div>
       );
     }
-    return <Button variant="secondary" size="sm" to="/login">Login</Button>;
+    return <Button variant="tertiary" size="ssm" to="/login" className="hidden md:block">Login now</Button>;
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setIsLoggedIn(false);
-    setUserData(null);
-    navigate("/login");
-  };
 
   return (
     <>

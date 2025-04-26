@@ -2,6 +2,8 @@ import React from "react";
 import socialData from "../../../api/SocialData.json";
 import Container from "../../../Components/Common/Container/Container";
 import AnimatedCounter from "./AnimatedCounter";
+import CounterSection from "./CounterSection";
+import { motion } from "framer-motion";
 
 const SocialStats = () => {
   return (
@@ -27,9 +29,12 @@ const SocialStats = () => {
 
       <div className="flex flex-col flex-wrap md:flex-row gap-6 md:gap-4 justify-center items-center">
         {socialData.map((data, index) => (
-          <div
+          <motion.div
             key={index}
-            className="cursor-default bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 hover:scale-105 hover:z-10 transition-all duration-700 ease-in-out p-6 rounded-2xl w-80 flex flex-col gap-4"
+            className="cursor-default bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 hover:scale-105 hover:z-10 ease-in-out p-6 rounded-2xl w-80 flex flex-col gap-4"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
           >
             {/* Use AnimatedCounter Component */}
             <AnimatedCounter end={data.socialNumbers} />
@@ -38,7 +43,7 @@ const SocialStats = () => {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               {data.socialDescription}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Container>

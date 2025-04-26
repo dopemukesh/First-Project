@@ -30,20 +30,18 @@ export const Button = ({
   };
 
   const sizeClasses = {
-    xs: "px-2 py-1 rounded-md text-[10px] md:text-[8px] flex items-center justify-center gap-2",
+    xs: "px-2 py-1 rounded-md text-[10px] flex items-center justify-center gap-2",
+    ssm: "h-9 px-4 py-2 rounded-lg text-sm gap-2",
     sm: "h-10 px-4 py-2 rounded-lg text-sm gap-2",
     md: "h-11 px-5 py-2.5 rounded-[10px] text-base gap-2",
     lg: "h-12 px-6 py-3 rounded-xl gap-2",
     xl: "h-14 px-7 py-3.5 rounded-xl text-xl gap-3",
   };
 
-  const commonClasses = `flex ${
-    sizeClasses[size] || sizeClasses.md
-  } items-center justify-center rounded-${rounded} whitespace-nowrap ${
-    !disabled && "active:scale-95"
-  } transition-all duration-500 font-medium ${
-    variantClasses[variant] || variantClasses.primary
-  } ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+  const commonClasses = `flex ${sizeClasses[size] || sizeClasses.md
+    } items-center justify-center rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
+    } transition-all duration-500 font-medium ${variantClasses[variant] || variantClasses.primary
+    } ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   // ✅ If "to" is provided, use <Link> instead of <button>
   if (to) {
@@ -81,19 +79,17 @@ export const Button01 = ({
     "bg-teal-500 border-2 border-teal-500 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50 text-gray-900";
 
   const sizeClasses = {
+    ssm: "h-9 px-4 py-2 rounded-lg text-sm gap-2",
     sm: "h-10 px-4 py-2 text-sm gap-2",
     md: "h-11 px-5 py-2.5 text-base gap-2",
     lg: "h-13 px-6 py-3 gap-2",
     xl: "h-14 px-7 py-3.5 text-xl gap-3",
   };
 
-  const commonClasses = `shadow-xl shadow-teal-500/50 hover:shadow-xl hover:shadow-teal-500/80 flex items-center justify-center rounded-${
-    rounded || "lg"
-  } whitespace-nowrap active:scale-95 transition-all duration-500 font-medium ${
-    sizeClasses[size] || sizeClasses.md
-  } ${variantClass} ${
-    disabled ? "opacity-50 cursor-not-allowed" : ""
-  } ${className}`;
+  const commonClasses = `shadow-xl shadow-teal-500/50 hover:shadow-xl hover:shadow-teal-500/80 flex items-center justify-center rounded-${rounded || "lg"
+    } whitespace-nowrap active:scale-95 transition-all duration-500 font-medium ${sizeClasses[size] || sizeClasses.md
+    } ${variantClass} ${disabled ? "opacity-50 cursor-not-allowed" : ""
+    } ${className}`;
 
   // ✅ Agar "to" prop hai, toh <Link> use karega
   const ButtonElement = to ? (

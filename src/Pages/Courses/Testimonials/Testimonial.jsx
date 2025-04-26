@@ -4,7 +4,7 @@ import AnimatedCounter from "../../../Pages/Home/SocialStats/AnimatedCounter";
 
 const Testimonial = () => {
     return (
-        <div className="relative w-full min-h-[80vh] flex flex-col items-center justify-end py-8 md:py-16 px-2 md:px-4 overflow-hidden">
+        <div className="relative w-full max-h-screen md:min-h-[800px] flex flex-col items-center justify-end py-8 md:py-16 px-2 md:px-4 overflow-hidden">
             {/* Cards Grid - Curved layout */}
             <div className="relative z-10 w-full max-w-6xl">
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2 md:gap-4 justify-items-center">
