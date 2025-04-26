@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Search } from "lucide-react";
@@ -30,7 +31,7 @@ const SearchBox = (
 
     return (
         <div
-            className="group cursor-default font-medium"
+            className="group cursor-default"
             // onClick={handleSearchClick}
             onBlur={handleSearchBlur}
             tabIndex={0}
@@ -57,13 +58,13 @@ const SearchBox = (
             ) : (
                 <form onSubmit={handleSearchSubmit} className="w-full">
                     <div className="flex">
-                        <div className="flex items-center max-w-xl flex-1 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 focus-within:border-teal-600 dark:focus-within:border-teal-500 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-full">
+                        <div className="flex items-center max-w-xl flex-1 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 focus-within:border-gray-400 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-xl transition-all duration-500">
                             <input
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder={`${placeholderText}`}
-                                className="bg-transparent w-full outline-none"
+                                className="bg-transparent w-full h-full outline-none"
                                 autoFocus
                             />
                             <button
@@ -71,7 +72,7 @@ const SearchBox = (
                                 className="outline-none ps-2"
                                 aria-label="Search"
                             >
-                                <Search />
+                                <Search className='text-gray-600 dark:text-gray-400'/>
                             </button>
                         </div>
                     </div>

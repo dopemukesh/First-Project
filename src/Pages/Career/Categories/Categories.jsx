@@ -11,9 +11,9 @@ const color = [
   "red-500",
   "purple-500",
   "teal-500",
-  "red-500",
+  "yellow-400",
   "emerald-400",
-  "blue-400",
+  "blue-500",
 ];
 const categories = [
   {

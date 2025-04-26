@@ -18,7 +18,7 @@ const ProjectHeroSection = () => {
               This is a brief description of my project. It's amazing and you should definitely check it out!
             </p>
             <div className="my-6 flex justify-center items-center sm:justify-start gap-4">
-                <Button01 to="/signup">Get Started</Button01>
+                <Button01 to="/register">Get Started</Button01>
                 <Button disabled variant='secondary'>Watch Demo</Button>
             </div>
           </div>

@@ -12,7 +12,7 @@ const SocialStats = () => {
         </p>
         <p className="my-4 text-2xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl">
           Our Community Empowers Innovators to
-          <span className="text-emerald-400">
+          <span className="text-teal-600 dark:text-teal-500">
             {" "}
             Connect, Learn, and Grow Together
           </span>

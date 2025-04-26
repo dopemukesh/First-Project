@@ -16,7 +16,7 @@ const LiveClasses = () => {
                 <div className="mb-2">
                     <SearchBox
                         icon="search"
-                        defaultText="Find best cources for you"
+                        defaultText="Find best courses for you"
                         placeholderText="Search anything..."
                     />
                 </div>

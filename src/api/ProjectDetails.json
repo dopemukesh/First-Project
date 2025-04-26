@@ -69,28 +69,6 @@
             ],
             "demoLink": "https://demo-dashboard.com",
             "githubLink": "https://github.com/your-username/social-dashboard"
-        },
-        {
-            "id": 4,
-            "title": "Social Media Dashboard",
-            "shortDescription": "Analytics platform for social media",
-            "description": "A powerful dashboard that aggregates and analyzes social media metrics across multiple platforms. Provides detailed insights and reporting capabilities.",
-            "image": "https://plus.unsplash.com/premium_photo-1701981233795-2d1ecfe10419?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMzfHx8ZW58MHx8fHx8",
-            "technologies": [
-                "React",
-                "Chart.js",
-                "Node.js",
-                "PostgreSQL"
-            ],
-            "features": [
-                "Multi-platform integration",
-                "Real-time analytics",
-                "Custom report generation",
-                "Engagement metrics tracking",
-                "Automated scheduling"
-            ],
-            "demoLink": "https://demo-dashboard.com",
-            "githubLink": "https://github.com/your-username/social-dashboard"
         }
     ]
 }

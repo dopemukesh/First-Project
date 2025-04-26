@@ -6,6 +6,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import Container from '../../../Components/Common/Container/Container';
 import { IoIosArrowForward } from 'react-icons/io';
 import CourseFeedback from './CourseFeedback'
+import DiscountPrice, { productPrice } from './DiscountPrice';
 
 
 const CourseDetails = () => {
@@ -29,6 +30,9 @@ const CourseDetails = () => {
 
 
   const bgBorder = "bg-gray-100 dark:bg-gray-900 border dark:border-gray-800";
+  const bgColors =
+    "bg-gradient-to-tl from-teal-500/20 via-transparent via-30% to-white/20 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-3xl";
+
 
   return (
     <Container className="min-h-screen py-14">
@@ -141,14 +145,14 @@ const CourseDetails = () => {
               {/* Main Price */}
               <div className="mb-6">
                 <div className="text-xl text-gray-500 mb-2">Premium Course</div>
-                <div className="text-4xl font-bold">₹549</div>
+                <div className="text-4xl font-bold">₹ <DiscountPrice /> /-</div>
               </div>
 
               {/* Sale Info */}
               <div className="bg-white border dark:border-gray-700 dark:bg-gray-800 p-4 rounded-lg mb-6">
                 <p className="text-sm text-gray-400">
-                  <span className="line-through">₹3,499</span>
-                  <span className="text-purple-500 ml-2">84% off</span>
+                  <span className="line-through">₹ { productPrice.original }</span>
+                  <span className="text-purple-500 ml-2">{productPrice.discount}% off</span>
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
                   <span className="countdown">23 hours</span> left at this price!

@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 
-const AnimatedCounter = ({ end }) => {
+const AnimatedCounter = ({ end,className }) => {
   const { ref, inView } = useInView({
     triggerOnce: false, // Run every time it enters viewport
     threshold: 0.5, // Trigger animation when 50% visible
@@ -11,7 +12,7 @@ const AnimatedCounter = ({ end }) => {
   return (
     <h2
       ref={ref}
-      className="text-emerald-400 text-4xl font-semibold drop-shadow-[0px_0px_30px_#34D399]"
+      className={`${className || 'text-teal-600 dark:text-teal-500 text-4xl font-semibold drop-shadow-[0px_0px_30px_#34D399]' }`}
     >
       {inView ? (
         <CountUp

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import AnimatedCounter from "../../../Pages/Home/SocialStats/AnimatedCounter";
 
 const Testimonial = () => {
     return (
@@ -40,8 +41,11 @@ const Testimonial = () => {
                     Testimonials
                 </p>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
-                    Trusted by <span className="text-purple-500 font-bold">22K+</span> Students
-                    <br className="hidden sm:block" /> across globe
+                    Trusted by
+                    {/* <span className="text-purple-500 font-bold"> */}
+                        <AnimatedCounter end='22000' className='text-purple-500 font-bold' />
+                    {/* </span> */}
+                    Students across globe
                 </h2>
             </div>
         </div>
