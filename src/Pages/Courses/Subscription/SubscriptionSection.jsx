@@ -33,7 +33,7 @@ const SubscriptionSection = () => {
                 {/* Left Side - Price & Button */}
                 <div className="flex flex-col">
                     <h2 className="text-xl sm:text-3xl font-semibold mb-1">
-                        ₹1,999 /-
+                        ₹ 2000 /-
                     </h2>
                     <p className="text-gray-500 text-sm mb-4">Billed monthly</p>
                     <Button
@@ -47,7 +47,7 @@ const SubscriptionSection = () => {
                 </div>
 
                 {/* Right Side - Details */}
-                <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 text-2xl sm:text-base">
+                <div className="flex flex-col items-center md:items-start space-y-4 text-2xl sm:text-base">
                     <h4 className="text-2xl font-semibold">
                         Enroll In live classes today
                     </h4>

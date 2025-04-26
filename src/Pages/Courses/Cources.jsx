@@ -10,6 +10,7 @@ import LiveClasses from "./LiveClass/LiveClasses";
 import SkillsSection from "./SkillsSection/SkillsSection";
 import SubscriptionSection from "./Subscription/SubscriptionSection";
 import Testimonial from "./Testimonials/Testimonial";
+import CourseDetails from "./CourseDetail/CourseDetails";
 import React, { useRef } from "react";
 import { useInView } from "motion/react";
 import RealWorldChallenge from "../../Pages/Home/Promotion/RealWorldChallenge";
@@ -26,6 +27,7 @@ const Cources = () => {
       <SkillsSection />
       <SubscriptionSection />
       <Testimonial />
+      {/* <CourseDetails /> */}
       <RealWorldChallenge refProp={ref} isInView={isInView} />
       {/* </Container> */}
     </>

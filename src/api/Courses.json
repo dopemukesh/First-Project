@@ -1,35 +1,161 @@
 [
     {
         "id": 1,
-        "title": "Full Stack Dev",
-        "instructor": "Mukesh Yadav",
-        "level": "Advanced Level",
-        "type": "Live + Recorded",
-        "rating": 3,
-        "color": "bg-red-200",
-        "price": "2499/-",
-        "category": "Web Development"
-    },
-    {
-        "id": 2,
-        "title": "Front-End Dev",
-        "instructor": "Mukesh Yadav",
-        "level": "Advanced Level",
-        "type": "Live + Recorded",
-        "rating": 5,
-        "color": "bg-purple-200",
-        "price": "2999/-",
-        "category": "Web Development"
-    },
-    {
-        "id": 3,
-        "title": "Back-End Dev",
-        "instructor": "Aryan",
+        "category": "Web Development",
+        "title": "Full Stack Development",
+        "subtitle": "Become a Complete Web Developer",
+        "description": "Learn to build full-stack applications using MongoDB, Express.js, React, and Node.js.",
+        "topics": "MERN Stack,REST APIs,Cloud Deployment,Real Projects",
+        "instructor": {
+            "name": "Mukesh Yadav",
+            "title": "Senior Full Stack Developer",
+            "rating": 4.8,
+            "students": "15K Students",
+            "courses": "12+ Courses"
+        },
         "level": "Advanced Level",
         "type": "Live + Recorded",
         "rating": 4,
-        "color": "bg-blue-200",
-        "price": "2699/-",
-        "category": "Web Development"
+        "price": "2499/-",
+        "lastUpdated": "4/2025",
+        "language": "English",
+        "learningPoints": [
+            "Master Frontend and Backend Development",
+            "Build Real-world Projects",
+            "Learn Database Management",
+            "Deploy Applications to Cloud"
+        ],
+        "features": [
+            "Live session",
+            "Access on mobile and desktop",
+            "Community Support",
+            "Certificate of Completion"
+        ],
+        "ratings": {
+            "average": 4.0,
+            "totalReviews": 3,
+            "reviews": [
+                {
+                    "id": "AK",
+                    "name": "Arun K.",
+                    "rating": 4,
+                    "date": "1 week ago",
+                    "comment": "Comprehensive course material"
+                }
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "category": "Web Development",
+        "title": "MERN Stack",
+        "subtitle": "Modern Web Development with MERN",
+        "description": "Learn to build dynamic web applications using the MERN stack. This course covers everything from frontend to backend development.",
+        "topics": "MongoDB,Express.js,React,Node.js,Full Stack Projects",
+        "instructor": {
+            "name": "Rahul Kumar",
+            "title": "MERN Stack Specialist",
+            "rating": 4.9,
+            "students": "18K Students",
+            "courses": "10+ Courses"
+        },
+        "level": "Intermediate",
+        "type": "Live + Recorded",
+        "rating": 5,
+        "price": "2999/-",
+        "lastUpdated": "4/2025",
+        "language": "English",
+        "learningPoints": [
+            "Complete MERN Stack Development",
+            "Real-time Applications",
+            "Authentication & Authorization",
+            "Database Integration"
+        ],
+        "features": [
+            "Live Projects",
+            "24/7 Support",
+            "Industry Certification",
+            "Lifetime Access"
+        ],
+        "ratings": {
+            "average": 5.0,
+            "totalReviews": 4,
+            "reviews": [
+                {
+                    "id": "RJ",
+                    "name": "Raj J.",
+                    "rating": 5,
+                    "date": "3 days ago",
+                    "comment": "Excellent course for MERN stack"
+                }
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "category": "Digital Marketing",
+        "title": "Content Marketing Strategy",
+        "subtitle": "Master Content Marketing for Business Growth",
+        "description": "Learn how to create and implement a successful content marketing strategy that drives traffic and conversions.",
+        "topics": "Content Strategy,SEO,Social Media,Analytics,Brand Building",
+        "instructor": {
+            "name": "Ajay Rana",
+            "title": "Digital Marketing Expert",
+            "rating": 4.7,
+            "students": "12K Students",
+            "courses": "8+ Courses"
+        },
+        "level": "Advanced",
+        "type": "Live",
+        "rating": 5,
+        "price": "2199/-",
+        "lastUpdated": "4/2025",
+        "language": "English",
+        "learningPoints": [
+            "Content Strategy Development",
+            "SEO Optimization",
+            "Social Media Marketing",
+            "Analytics and Reporting"
+        ],
+        "features": [
+            "Live Workshop",
+            "Real Case Studies",
+            "Industry Tools Access",
+            "Strategy Templates"
+        ],
+        "ratings": {
+            "average": 5.0,
+
+            "reviews": [
+                {
+                    "id": "SK1",
+                    "name": "Suresh Kumar",
+                    "rating": 5,
+                    "date": "2 days ago",
+                    "comment": "Excellent content strategy insights"
+                },
+                {
+                    "id": "PJ2",
+                    "name": "Priya Jain",
+                    "rating": 4,
+                    "date": "1 week ago",
+                    "comment": "Very helpful for social media marketing"
+                },
+                {
+                    "id": "RN3",
+                    "name": "Rahul Nair",
+                    "rating": 5,
+                    "date": "2 weeks ago",
+                    "comment": "Great practical examples and case studies"
+                },
+                {
+                    "id": "AM4",
+                    "name": "Anjali Mehta",
+                    "rating": 5,
+                    "date": "3 weeks ago",
+                    "comment": "Comprehensive coverage of SEO techniques"
+                }
+            ]
+        }
     }
 ]

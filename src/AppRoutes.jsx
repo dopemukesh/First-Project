@@ -15,12 +15,17 @@ import Signup from "./Pages/Registration/Signup";
 import Login from "./Pages/Registration/Login";
 import ForgetPassword from "./Pages/Registration/ForgetPassword";
 import Courses from "./Pages/Courses/Cources";
+import CourseDetails from "./Pages/Courses/CourseDetail/CourseDetails";
 
 export const AppRoutes = () => (
   <Routes>
     <Route path="/" index element={<Home />} />
     <Route path="/community" element={<Community />} />
-    <Route path="/courses" element={<Courses />} />
+    {/* <Route path="/courses" element={<Courses />} /> */}
+    <Route path="/classes">
+      <Route index element={<Courses />} />
+      <Route path="details/:id" element={<CourseDetails />} />
+    </Route>
     <Route path="/about" element={<About />} />
 
     {/* ✅ Fixed Career Routes */}

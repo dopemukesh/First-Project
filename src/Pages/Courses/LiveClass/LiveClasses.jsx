@@ -6,6 +6,7 @@ import SearchBox from "../../../Components/Common/Search/SearchBox";
 import { Button } from "../../../Components/Common/Button/Button";
 import ClassCard from "./ClassCard";
 import Container from "../../../Components/Common/Container/Container";
+import TypeWriterText from '../../../Components/Common/TypeWriter/TypeWriterText';
 
 const LiveClasses = () => {
     return (
@@ -20,9 +21,12 @@ const LiveClasses = () => {
                     />
                 </div>
                 {/* Main Heading */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl">
-                    Elevate Your Skills with
-                    <span className="text-[#00FFCA]"> Live Classes</span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold max-w-xl">
+                    Elevate Your Skills with <br />
+                    {/* <span className="text-purple-500"> Live Classes</span> */}
+                    <TypeWriterText
+                        className='text-purple-500'
+                        text="Live Classes" />
                 </h1>
 
                 {/* Subtext */}
