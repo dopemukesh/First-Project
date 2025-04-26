@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "../../Components/Common/Container/Container";
 import { Button } from "../../Components/Common/Button/Button";
 import { NavLink } from "react-router-dom";
+import RegistrationData from '../../api/RegistrationData'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Login = () => {
     password: "",
     remember: false,
   });
+
+  const [error, setError] = useState("");
 
   const inputClass =
     "w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none";
@@ -21,7 +24,36 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    // Find user with matching email
+    const user = RegistrationData.find(user => user.email === formData.email);
+
+    if (!user) {
+      setError("Email not found. Please check your email or register.");
+      return;
+    }
+
+    // Validate password
+    if (user.password !== formData.password) {
+      setError("Invalid password. Please try again.");
+      return;
+    }
+
+    // Clear any previous errors
+    setError("");
+
+    // Save user data in localStorage if remember is checked
+    if (formData.remember) {
+      localStorage.setItem("currentUser", JSON.stringify({
+        email: user.email,
+        name: user.name,
+        isLoggedIn: true
+      }));
+    }
+
+    // TODO: Add your navigation logic here after successful login
+    console.log("Login successful!");
+    window.location.href = '/';
   };
 
   return (
@@ -51,6 +83,11 @@ const Login = () => {
                 required
               />
             </div>
+            <div>
+              {error && (
+                <p className="text-red-500 text-sm mt-2">{error}</p>
+              )}
+            </div>
 
             <div>
               <label className={labelTexts}>Password</label>
@@ -64,6 +101,11 @@ const Login = () => {
                 }
                 required
               />
+            </div>
+            <div>
+              {error && (
+                <p className="text-red-500 text-sm mt-2">{error}</p>
+              )}
             </div>
 
             <div className="flex items-center justify-between">

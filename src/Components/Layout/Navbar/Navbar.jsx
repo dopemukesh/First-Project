@@ -2,17 +2,63 @@
 // Designed and developed by:
 // - Mukesh Yadav
 
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import ThemeChange from "./ThemeChange";
 import Sidebar from "./Sidebar/Sidebar";
 import navData from "../../../api/NavLinks.json";
 import Logo from "../../Common/Logo/Logo";
+import { Button } from "../../Common/Button/Button";
+import { BiLogOut } from "react-icons/bi";
 // import LogoExpand from '../../Common/LogoExpand/LogoExpand'
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { navLinks } = navData;
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("currentUser");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setIsLoggedIn(user.isLoggedIn);
+      setUserData(user);
+    }
+  }, []);
+
+  const renderButton = () => {
+    if (isLoggedIn && userData) {
+      return (
+        <div className="hidden md:flex items-center gap-4 ">
+          <div className="flex flex-col flex-1 cursor-default">
+            <p className="text-[10px] text-gray-500 dark:text-gray-400">
+              Welcome back
+            </p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
+              {userData.name}
+            </p>
+          </div>
+          <div
+            className="p-2 rounded-xl border border-red-200 dark:border-red-800 bg-red-100 dark:bg-red-900 hover:bg-red-300 dark:hover:bg-red-800 transition-colors grid place-content-center"
+          onClick={handleLogout}
+          >
+            <BiLogOut className="text-xl text-red-500" />
+          </div>
+        </div>
+      );
+    }
+    return <Button variant="secondary" size="sm" to="/login">Login</Button>;
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+    setUserData(null);
+    navigate("/login");
+  };
 
   return (
     <>
@@ -39,10 +85,9 @@ const Navbar = () => {
                     key={link.id}
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-sm ${
-                        isActive
-                          ? "text-gray-900 dark:text-gray-200"
-                          : "text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+                      `text-sm ${isActive
+                        ? "text-gray-900 dark:text-gray-200"
+                        : "text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
                       }`
                     }
                   >
@@ -73,7 +118,7 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
-
+              {renderButton()}
               <ThemeChange />
             </div>
           </div>

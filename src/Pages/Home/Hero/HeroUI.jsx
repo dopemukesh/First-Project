@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button01 } from "../../../Components/Common/Button/Button";
 import Container from "../../../Components/Common/Container/Container";
 import { motion } from "motion/react";
 import SearchBox from "../../../Components/Common/Search/SearchBox";
 
 const HeroUI = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("currentUser");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setIsLoggedIn(user.isLoggedIn);
+      setUserData(user);
+    }
+  }, []);
+
+  const renderButton = () => {
+    if (isLoggedIn && userData) {
+      return (
+        <Button01 to="/classes">
+          Start Learning
+        </Button01>
+      );
+    }
+    return <Button01 to="/register">Get Started</Button01>;
+  };
+
   return (
     <>
       <Container className="h-[456px] md:h-[556px] items-center">
         <div className="flex flex-col items-center">
-          {/* <div className="group cursor-default font-medium flex items-center gap-4 text--900 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-full">
-            <div className="grid place-content-center">
-              <img
-                src="shape01.svg"
-                alt=""
-                className="h-5 group-hover:rotate-45 group-hover:scale-125 transition-all duration-500"
-              />
-            </div>
-            <p>Learners to Leaders</p>
-          </div> */}
-
           <div className="mb-2">
             <SearchBox
-              // icon="search"
               defaultText="Learners to Leaders"
               placeholderText="Search anything..."
             />
@@ -36,12 +47,14 @@ const HeroUI = () => {
               </span>
             </h1>
             <p className="px-4 text-gray-500 dark:text-gray-400 text-center max-w-xl">
-              Master in-demand skills, contribute to real projects, and connect
-              with top techies, all in one community-driven platform.
+              {isLoggedIn 
+                ? "Continue your learning journey with our amazing resources"
+                : "Master in-demand skills, contribute to real projects, and connect with top techies, all in one community-driven platform."
+              }
             </p>
           </div>
           <div id="getStarted">
-            <Button01 to="/register">Get Started</Button01>
+            {renderButton()}
           </div>
         </div>
       </Container>

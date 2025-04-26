@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Mukesh Yadav",
+        "username": "mukesh",
+        "email": "mukesh@cwt.com",
+        "password": "1234",
+        "position": "Frontend Developer",
+        "department": "Development"
+    },
+    {
+        "name": "Shaurya",
+        "username": "shaurya",
+        "email": "shaurya@cwt.com",
+        "password": "1234",
+        "position": "CEO"
+    },
+    {
+        "name": "Administrator",
+        "username": "admin",
+        "email": "admin@cwt.com",
+        "password": "admin",
+        "role": "admin",
+        "isAdmin": true
+    }
+]
