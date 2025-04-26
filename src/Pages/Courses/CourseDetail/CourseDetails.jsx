@@ -201,10 +201,10 @@ const CourseDetails = () => {
 
               {/* Share Buttons */}
               <div className="mt-6 flex items-center justify-center gap-4 pt-6 border-t border-gray-300 dark:border-gray-700">
-                <button className="text-gray-500 hover:text-white transition-colors">
+                <button className="text-gray-500 hover:text-purple-500 transition-colors">
                   <span>Share</span>
                 </button>
-                <button className="text-gray-500 hover:text-white transition-colors">
+                <button className="text-gray-500 hover:text-purple-500 transition-colors">
                   <span>Gift this course</span>
                 </button>
               </div>

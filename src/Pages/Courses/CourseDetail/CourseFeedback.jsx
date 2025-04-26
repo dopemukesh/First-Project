@@ -116,7 +116,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                     </div>
                                     <div>
                                         <h4 className="font-medium">{review.name}</h4>
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
                                             <div className="flex text-yellow-400 text-sm">
                                                 {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                                             </div>
@@ -174,7 +174,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                                 setEditedRating(0);
                                                 setEditedHoverRating(0);
                                             }}
-                                            className="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                                            className="px-3 py-1 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-md hover:bg-gray-600"
                                         >Cancel</button>
                                     </div>
                                 </div>
