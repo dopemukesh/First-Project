@@ -14,32 +14,39 @@ export const Button = ({
   variant = "primary",
   size = "md",
   disabled = false,
-  rounded = "lg",
+  rounded = "",
   to, // 👈 Added "to" prop for navigation support
 }) => {
   const variantClasses = {
     primary:
-      "bg-teal-500 border-2 border-teal-500 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50 text-gray-900",
+      "bg-teal-600 dark:bg-teal-500 text-white dark:text-gray-900 border border-teal-700 dark:border-teal-400 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50",
     secondary:
       "border-2 border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
     tertiary:
-      "bg-[#7043E3] hover:bg-[#7043d3] text-gray-900 text-white",
+      "bg-purple-500 text-white border border-purple-400 hover:bg-gradient-to-bl from-purple-400 to-purple-600/50",
     outline:
       "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-300 hover:bg-white/20 dark:hover:bg-gray-900",
-    danger: "bg-red-500 text-white hover:bg-red-600",
+    danger:
+      "bg-red-500 text-white hover:bg-red-600 border border-red-600",
+    warning:
+      "bg-amber-500 text-white hover:bg-amber-600 border border-amber-600 dark:border-amber-400",
+    success:
+      "bg-emerald-500 text-white hover:bg-emerald-600 border border-emerald-600 dark:border-emerald-400",
+    info:
+      "bg-blue-500 text-white hover:bg-blue-600 border border-blue-600 dark:border-blue-400",
   };
 
   const sizeClasses = {
-    xs: "px-2 py-1 rounded-md text-[10px] flex items-center justify-center gap-2",
-    ssm: "h-9 px-4 py-2 rounded-lg text-sm gap-2",
-    sm: "h-10 px-4 py-2 rounded-lg text-sm gap-2",
+    xs: "px-2 py-1 rounded-md text-[10px] ",
+    ssm: "h-9 px-4 py-1.5 rounded-lg text-sm gap-2",
+    sm: `h-10 px-4 py-2 rounded-${rounded || 'lg'} text-sm gap-2`,
     md: "h-11 px-5 py-2.5 rounded-[10px] text-base gap-2",
     lg: "h-12 px-6 py-3 rounded-xl gap-2",
     xl: "h-14 px-7 py-3.5 rounded-xl text-xl gap-3",
   };
 
   const commonClasses = `flex ${sizeClasses[size] || sizeClasses.md
-    } items-center justify-center rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
+    } items-center justify-center gap-2 rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
     } transition-all duration-500 font-medium ${variantClasses[variant] || variantClasses.primary
     } ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 

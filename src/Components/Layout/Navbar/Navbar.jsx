@@ -58,7 +58,11 @@ const Navbar = () => {
         </div>
       );
     }
-    return <Button variant="tertiary" size="ssm" to="/login" className="hidden md:block">Login now</Button>;
+    return (
+      <div className="hidden md:block">
+        <Button size="ssm" to="/login">Login now</Button>
+      </div>
+    )
   };
 
 
@@ -66,20 +70,19 @@ const Navbar = () => {
     <>
       <div className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <NavLink
-            to="/"
-            title="Code With Techries"
-            className="flex items-center space-x-4"
-          >
-            <Logo className="h-8 md:h-10">
-              <p className="text-2xl font-semibold">CWT</p>
-              {/* <LogoExpand /> */}
-            </Logo>
-          </NavLink>
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <NavLink
+              to="/"
+              title="Code With Techries"
+              className="flex items-center space-x-4"
+            >
+              <Logo className="h-8 md:h-10">
+                <p className="text-2xl font-semibold">CWT</p>
+                {/* <LogoExpand /> */}
+              </Logo>
+            </NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="md:flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               {navLinks.map((link) => {
                 return (
@@ -98,6 +101,10 @@ const Navbar = () => {
                 );
               })}
             </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="md:flex items-center space-x-4">
 
             {/* Mobile Menu Button and Theme Toggle */}
             <div className="flex items-center space-x-4">

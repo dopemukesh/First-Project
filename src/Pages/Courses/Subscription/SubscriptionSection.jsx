@@ -15,13 +15,13 @@ const SubscriptionSection = () => {
     ]
 
     return (
-        <section className="bg-[#7043E3] py-16 px-4">
+        <section className="bg-teal-600 py-16 px-4">
             {/* Title */}
             <div className="text-left max-w-6xl mx-auto mb-10">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-white">
                     Accelerate growth — just for you
                 </h2>
-                <p className="text-gray-300 text-sm sm:text-base">
+                <p className="text-gray-200 text-sm sm:text-base">
                     Reach your goals faster with a powerful all-in-one learning plan. <br className="hidden sm:block" />
                     Try it free or subscribe to get started.
                 </p>
@@ -37,10 +37,7 @@ const SubscriptionSection = () => {
                     </h2>
                     <p className="text-gray-500 text-sm mb-4">Billed monthly</p>
                     <Button
-                        // size="sm"
-                        variant="tertiary"
                         className="w-fit"
-                        // className="bg-[#9C6ADE] hover:bg-[#844fd1] transition text-white px-6 py-2 rounded-md font-semibold shadow-md"
                     >
                         Start Subscription
                     </Button>
@@ -56,25 +53,23 @@ const SubscriptionSection = () => {
                         <span className="font-medium text-gray-800 dark:text-white"> Expert Mentorship</span>, Real Projects, and Career-Driven Learning.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6">
-                    <div className="space-y-2 text-gray-500 dark:text-gray-400 text-left w-full max-w-2xl">
-                            {coursePoints.slice(0, coursePoints.length/2).map((point, idx) => (
-                            <li key={idx} className="flex md:items-center  gap-2 text-base">
-                                    {/* <span className="text-green-400 text-xl leading-5">✅</span> */}
-                                    <img src="./sparkle.png" alt="sparkle" className="h-5" />
-                                <span>{point}</span>
-                            </li>
-                        ))}
-                    </div>
-                    <div className="space-y-2 text-gray-500 dark:text-gray-400 text-left w-full max-w-2xl">
-                            {coursePoints.slice(coursePoints.length/2,coursePoints.length).map((point, idx) => (
-                                <li key={idx} className="flex md:items-center  gap-2 text-base">
-                                    {/* <span className="text-green-400 text-xl leading-5">✅</span> */}
-                                    <img src="./sparkle.png" alt="sparkle" className="h-5" />
+                        <div className="space-y-2 text-gray-500 dark:text-gray-400 text-left w-full max-w-2xl">
+                            {coursePoints.slice(0, coursePoints.length / 2).map((point, idx) => (
+                                <li key={idx} className="flex md:items-center  gap-2 text-sm">
+                                    <span className="text-teal-600 dark:text-teal-500 cursor-default hover:bg-gray-200 dark:hover:bg-gray-800 px-1.5 py-0.5 rounded">✓</span>
                                     <span>{point}</span>
                                 </li>
-                        ))}
+                            ))}
+                        </div>
+                        <div className="space-y-2 text-gray-500 dark:text-gray-400 text-left w-full max-w-2xl">
+                            {coursePoints.slice(coursePoints.length / 2, coursePoints.length).map((point, idx) => (
+                                <li key={idx} className="flex md:items-center  gap-2 text-sm">
+                                    <span className="text-teal-600 dark:text-teal-500 cursor-default hover:bg-gray-200 dark:hover:bg-gray-800 px-1.5 py-0.5 rounded">✓</span>
+                                    <span>{point}</span>
+                                </li>
+                            ))}
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </section>

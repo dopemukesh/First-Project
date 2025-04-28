@@ -59,10 +59,10 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
     return (
         <section className="mb-8">
             <h3 className="text-xl font-medium mb-4">Student Feedback</h3>
-            <div className={`${bgBorder} p-6 rounded-xl`}>
+            <div className={``}>
                 {/* Ratings Overview */}
                 <div className="flex items-center gap-4 mb-6">
-                    <div className="text-5xl font-bold text-purple-500">{averageRating}</div>
+                    <div className="text-5xl font-bold text-teal-600 dark:text-teal-500">{averageRating}</div>
                     <div>
                         <div className="flex gap-1 text-yellow-400 mb-1 text-xl">
                             {'★'.repeat(Math.floor(averageRating))}
@@ -76,7 +76,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                 <div className="mb-8 space-y-3">
                     <textarea
                         placeholder="Write your review..."
-                        className="w-full p-3 rounded-xl border dark:border-gray-800 dark:bg-gray-950 outline-none focus:border-purple-500"
+                        className="w-full p-3 rounded-xl border dark:border-gray-800 dark:bg-gray-950 outline-none focus:border-teal-600 dark:focus:border-teal-500"
                         rows={3}
                         value={newComment}
                         onChange={e => setNewComment(e.target.value)}
@@ -96,7 +96,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                             ))}
                         </div>
                         <Button
-                            variant='tertiary'
+                            // variant='tertiary'
                             size='sm'
                             onClick={handleAddReview}
                         >
@@ -105,28 +105,28 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                     </div>
                 </div>
 
-                {/* Existing Reviews */}
+                {/* Reviews */}
                 <div className="space-y-6">
                     {reviews.map(review => (
                         <div key={review.id} className="border-b border-gray-300 dark:border-gray-800 pb-4 last:border-0">
                             <div className="flex justify-between mb-2">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm">
+                                <div className="flex gap-3 items-center w-full">
+                                    <div className="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm">
                                         {review.name.split(' ').map(w => w[0].toUpperCase()).slice(0, 2).join('')}
                                     </div>
                                     <div>
-                                        <h4 className="font-medium">{review.name}</h4>
-                                        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+                                        <h4 className="font-medium text-sm">{review.name}</h4>
+                                        <div className="flex items-center gap-2">
                                             <div className="flex text-yellow-400 text-sm">
                                                 {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                                             </div>
-                                            <span className="text-gray-400 text-sm">{review.date}</span>
+                                            <span className="text-gray-400 text-xs">{review.date}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
-                                        className={`${bgBorder} h-fit px-2 py-0.5 rounded-md text-sm text-purple-500`}
+                                        className={`h-fit px-2 py-0.5 rounded-md text-sm text-teal-600 dark:text-teal-500`}
                                         onClick={() => {
                                             setEditingId(review.id);
                                             setEditedComment(review.comment);
@@ -135,7 +135,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                         }}
                                     >Edit</button>
                                     <button
-                                        className={`${bgBorder} h-fit px-2 py-0.5 rounded-md text-sm text-rose-500`}
+                                        className={`h-fit px-2 py-0.5 rounded-md text-sm text-red-500`}
                                         onClick={() => handleDelete(review.id)}
                                     >Delete</button>
                                 </div>
@@ -157,35 +157,38 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                         ))}
                                     </div>
                                     <textarea
-                                        className="w-full p-3 rounded-xl border dark:border-gray-800 dark:bg-gray-950 outline-none focus:border-purple-500"
+                                        className="w-full p-3 rounded-xl border dark:border-gray-800 dark:bg-gray-950 outline-none focus:border-teal-500"
                                         rows={3}
                                         value={editedComment}
                                         onChange={e => setEditedComment(e.target.value)}
                                     />
                                     <div className="flex gap-2">
-                                        <button
+                                        <Button
+                                            size='ssm'
                                             onClick={handleSaveEdit}
-                                            className="px-3 py-1 bg-purple-500 text-white rounded-md hover:bg-purple-600"
-                                        >Save</button>
-                                        <button
+                                            // className="px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-teal-600"
+                                        >Save</Button>
+                                        <Button
+                                            size='ssm'
+                                            variant='secondary'
                                             onClick={() => {
                                                 setEditingId(null);
                                                 setEditedComment('');
                                                 setEditedRating(0);
                                                 setEditedHoverRating(0);
                                             }}
-                                            className="px-3 py-1 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-md hover:bg-gray-600"
-                                        >Cancel</button>
+                                            // className="px-3 py-1 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-md hover:bg-gray-600"
+                                        >Cancel</Button>
                                     </div>
                                 </div>
                             ) : (
-                                <p className="text-gray-800 dark:text-gray-200">{review.comment}</p>
+                                <p className="text-gray-800 dark:text-gray-200 mt-4">{review.comment}</p>
                             )}
                         </div>
                     ))}
                 </div>
 
-                <button className="text-purple-500 mt-4 hover:text-purple-400">Show all reviews</button>
+                <button className="text-teal-600 dark:text-teal-500 hover:text-teal-700 mt-4">Show more</button>
             </div>
         </section>
     );

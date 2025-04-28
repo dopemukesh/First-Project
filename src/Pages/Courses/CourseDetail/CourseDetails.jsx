@@ -6,7 +6,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import Container from '../../../Components/Common/Container/Container';
 import { IoIosArrowForward } from 'react-icons/io';
 import CourseFeedback from './CourseFeedback'
-import DiscountPrice, { productPrice } from './DiscountPrice';
+import DiscountPrice from './ProductPrice/DiscountPrice';
 
 
 const CourseDetails = () => {
@@ -30,23 +30,20 @@ const CourseDetails = () => {
 
 
   const bgBorder = "bg-gray-100 dark:bg-gray-900 border dark:border-gray-800";
-  const bgColors =
-    "bg-gradient-to-tl from-teal-500/20 via-transparent via-30% to-white/20 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-3xl";
-
 
   return (
     <Container className="min-h-screen py-14">
       <div className="px-4">
         {/* Course Header */}
         <div className="mb-8">
-          <div className={`flex items-center gap-1 ${bgBorder} rounded-md shadow-xl backdrop-blur-md w-fit px-2 py-1 mb-4 sticky top-16`}>
+          <div className={`flex items-center gap-1 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md w-fit px-2 py-1 mb-4 sticky top-16`}>
             <NavLink
               to={-1}
               className='whitespace-nowrap flex items-center gap-1'
             >
               Back <IoIosArrowForward />
             </NavLink>
-            <p className='text-purple-500'>{courseData.category}</p>
+            <p className='text-teal-600 dark:text-teal-500'>{courseData.category}</p>
           </div>
           <h1 className="text-4xl font-semibold mb-4 max-w-2xl">{courseData.subtitle}</h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl">{courseData.description}</p>
@@ -65,7 +62,7 @@ const CourseDetails = () => {
                 Bestseller
               </Button>
               <Button
-                variant='tertiary'
+                // variant='tertiary'
                 size='sm'
               >
                 Enroll Now
@@ -82,12 +79,12 @@ const CourseDetails = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 {courseData.learningPoints.map((point, index) => (
                   <div key={index} className="flex gap-3">
-                    <span className="text-purple-500">✓</span>
+                    <span className="text-teal-500">✓</span>
                     <p className="text-gray-600 dark:text-gray-400">{point}</p>
                   </div>
                 ))}
               </div>
-              <button className="text-purple-400 mt-4 hover:text-purple-300">Show more</button>
+              {/* <button className="text-teal-600 dark:text-teal-500 mt-4 hover:text-teal-700">Show more</button> */}
             </section>
 
             {/* Related Topics */}
@@ -108,7 +105,7 @@ const CourseDetails = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 {courseData.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <span className="text-purple-500">✓</span>
+                    <span className="text-teal-500">✓</span>
                     <span className="text-gray-600 dark:text-gray-400">{feature}</span>
                   </div>
                 ))}
@@ -132,6 +129,11 @@ const CourseDetails = () => {
               </div>
             </section>
 
+            {/* Price Card on phone */}
+            <section className="mb-8 md:hidden">
+              <PriceCard />
+            </section>
+
             {/* Student Feedback */}
             <section className="mb-8">
               <CourseFeedback reviews={reviews} setReviews={setReviews} averageRating={averageRating} />
@@ -139,81 +141,10 @@ const CourseDetails = () => {
           </div>
 
 
-          {/* Price Card */}
-          <div className="md:col-span-1">
-            <div className={`${bgBorder} p-6 rounded-xl sticky top-16`}>
-              {/* Main Price */}
-              <div className="mb-6">
-                <div className="text-xl text-gray-500 mb-2">Premium Course</div>
-                <div className="text-4xl font-bold">₹ <DiscountPrice /> /-</div>
-              </div>
-
-              {/* Sale Info */}
-              <div className="bg-white border dark:border-gray-700 dark:bg-gray-800 p-4 rounded-lg mb-6">
-                <p className="text-sm text-gray-400">
-                  <span className="line-through">₹ { productPrice.original }</span>
-                  <span className="text-purple-500 ml-2">{productPrice.discount}% off</span>
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  <span className="countdown">23 hours</span> left at this price!
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-4">
-                <Button
-                  variant='tertiary'
-                  className='w-full'
-                >
-                  Buy now
-                </Button>
-                <Button
-                  variant='outline'
-                  className='w-full border-purple-500 dark:border-purple-500 text-purple-500 dark:text-purple-500'
-                >
-                  Add to cart
-                </Button>
-              </div>
-
-              {/* Money Back Guarantee */}
-              <div className="mt-6 text-center">
-                <p className="text-sm text-gray-500">
-                  30-Day Money-Back Guarantee
-                </p>
-              </div>
-
-              {/* Course Includes */}
-              <div className="mt-6 space-y-3">
-                <h4 className="font-medium mb-3">This course includes:</h4>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>📺</span>
-                  <span>14 hours on-demand video</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>📝</span>
-                  <span>12 coding exercises</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>📱</span>
-                  <span>Access on mobile and TV</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>🏆</span>
-                  <span>Certificate of completion</span>
-                </div>
-              </div>
-
-              {/* Share Buttons */}
-              <div className="mt-6 flex items-center justify-center gap-4 pt-6 border-t border-gray-300 dark:border-gray-700">
-                <button className="text-gray-500 hover:text-purple-500 transition-colors">
-                  <span>Share</span>
-                </button>
-                <button className="text-gray-500 hover:text-purple-500 transition-colors">
-                  <span>Gift this course</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          {/* Price Card on desktop*/}
+          {/* <div className="hidden md:block md:col-span-1 mb-8 sticky top-16"> */}
+            <PriceCard className="hidden md:block"/>
+          {/* </div> */}
         </div>
       </div>
     </Container>
@@ -221,3 +152,74 @@ const CourseDetails = () => {
 };
 
 export default CourseDetails;
+
+
+const PriceCard = ({className}) => {
+  const bgBorder = "bg-gray-100 dark:bg-gray-900 border dark:border-gray-800";
+
+  return (
+    <>
+      {/* Price Card */}
+      <div className={`md:col-span-1 ${className}`}>
+        <div className={`${bgBorder} p-6 rounded-xl md:sticky top-16`}>
+          {/* Main Price */}
+          <DiscountPrice />
+
+          {/* Action Buttons */}
+          <div className="space-y-4">
+            <Button
+              // variant='tertiary'
+              className='w-full'
+            >
+              Buy now
+            </Button>
+            <Button
+              variant='outline'
+              className='w-full border-teal-600 dark:border-teal-500 text-teal-600 dark:text-teal-500'
+            >
+              Add to cart
+            </Button>
+          </div>
+
+          {/* Money Back Guarantee */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-500">
+              30-Day Money-Back Guarantee
+            </p>
+          </div>
+
+          {/* Course Includes */}
+          <div className="mt-6 space-y-3">
+            <h4 className="font-medium mb-3">This course includes:</h4>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>📺</span>
+              <span>14 hours on-demand video</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>📝</span>
+              <span>12 coding exercises</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>📱</span>
+              <span>Access on mobile and TV</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>🏆</span>
+              <span>Certificate of completion</span>
+            </div>
+          </div>
+
+          {/* Share Buttons */}
+          <div className="mt-6 flex items-center justify-center gap-4 pt-6 border-t border-gray-300 dark:border-gray-700">
+            <button className="text-gray-500 hover:text-teal-500 transition-colors">
+              <span>Share</span>
+            </button>
+            <button className="text-gray-500 hover:text-teal-500 transition-colors">
+              <span>Gift this course</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

@@ -3,13 +3,14 @@ import Container from "../../Components/Common/Container/Container";
 import { Button } from "../../Components/Common/Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import RegistrationData from '../../api/RegistrationData'
+import GoogleSignIn from "./GoogleSignIn";
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    remember: false,
+    remember: true,
   });
 
   const [errors, setErrors] = useState({
@@ -144,6 +145,12 @@ const Login = () => {
                 Login
               </Button>
             </div>
+
+            {/* google sign in option */}
+            <div className="border-t border-gray-300 pt-8 dark:border-gray-800">
+              <GoogleSignIn />
+            </div>
+
           </form>
         </div>
       </div>

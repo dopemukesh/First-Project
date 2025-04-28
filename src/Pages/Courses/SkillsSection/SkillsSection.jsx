@@ -9,7 +9,7 @@ const SkillsSection = () => {
     const [selectedCategory, setSelectedCategory] = useState("Web Development");
 
     // colors array for cards background colors
-    const bgColors = ['bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-pink-200', 'bg-purple-200', 'bg-red-200'];
+    const bgColors = ['bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-pink-200', 'bg-teal-200', 'bg-red-200'];
     const getCardColor = (index) => {
         if (index < bgColors.length || index % bgColors.length === 0) {
             // return bgColors[index];
@@ -38,9 +38,9 @@ const SkillsSection = () => {
                 <div className="flex border dark:border-gray-800 rounded-full p-1 flex-nowrap overflow-x-auto max-w-5xl justify-start gap-4 mb-12 px-1 scrollbar-hide">
                     <li
                         onClick={() => setSelectedCategory("All")}
-                        className={`border list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === "All"
-                            ? "bg-purple-500 text-gray-50 border-purple-600 shadow-md"
-                            : "bg-white text-gray-800 hover:bg-gray-200"
+                        className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === "All"
+                            ? "bg-teal-500 text-gray-900 border-teal-600 shadow-md"
+                            : "bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
                             }`}
                     >
                         All
@@ -49,9 +49,9 @@ const SkillsSection = () => {
                         <li
                             key={index}
                             onClick={() => setSelectedCategory(cat)}
-                            className={`border list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === cat
-                                ? "bg-purple-500 text-gray-50 border-purple-600 shadow-md"
-                                : "bg-white text-gray-800 hover:bg-gray-200"
+                            className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === cat
+                                ? "bg-teal-500 text-gray-900 border-teal-600 shadow-md"
+                                : "bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
                                 }`}
                         >
                             {cat}
@@ -68,17 +68,24 @@ const SkillsSection = () => {
                             key={index}
                             className={`rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300`}
                         >
-                            {/* Title */}
-                            <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+                            <div className="flex items-center justify-between gap-1">
+                                <div>
+                                    {/* Title */}
+                                    <h3 className="text-lg font-bold mb-2">{course.title}</h3>
 
-                            {/* Instructor */}
-                            <p className="text-sm font-medium">{course.instructor.name}</p>
+                                    {/* Instructor */}
+                                    <p className="text-sm font-medium">{course.instructor.name}</p>
 
-                            {/* Rating */}
-                            <div className="flex gap-1 mt-1 mb-4">
-                                {[...Array(course.rating)].map((_, i) => (
-                                    <Star key={i} size={16} fill="#FFD700" stroke="#FFD700" />
-                                ))}
+                                    {/* Rating */}
+                                    <div className="flex gap-1 mt-1 mb-4">
+                                        {[...Array(course.rating)].map((_, i) => (
+                                            <Star key={i} size={16} className="fill-amber-500 stroke-amber-400" />
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* <div className="flex items-center justify-center bg-red-500 min-w-20 h-20">
+                                    <p>Here image</p>
+                                </div> */}
                             </div>
 
                             {/* Labels */}
@@ -94,7 +101,7 @@ const SkillsSection = () => {
                             {/* Enroll Button */}
                             <Button
                                 to={`details/${course.id}`}
-                                variant="tertiary"
+                                variant="info"
                                 size="sm"
                                 className="w-fit">
                                 View Details

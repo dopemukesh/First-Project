@@ -23,9 +23,9 @@ const LiveClasses = () => {
                 {/* Main Heading */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold max-w-xl">
                     Elevate Your Skills with <br />
-                    {/* <span className="text-purple-500"> Live Classes</span> */}
+                    {/* <span className="text-teal-500"> Live Classes</span> */}
                     <TypeWriterText
-                        className='text-purple-500'
+                        className='text-teal-600 dark:text-teal-500'
                         text="Live Classes" />
                 </h1>
 

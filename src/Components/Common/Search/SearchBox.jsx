@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Search } from "lucide-react";
+import { Button } from '../Button/Button'
 
 const SearchBox = (
     {
@@ -57,23 +58,32 @@ const SearchBox = (
                 </div>
             ) : (
                 <form onSubmit={handleSearchSubmit} className="w-full">
-                    <div className="flex">
-                        <div className="flex items-center max-w-xl flex-1 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 focus-within:border-gray-400 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-xl transition-all duration-500">
-                            <input
-                                type="text"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder={`${placeholderText}`}
-                                className="bg-transparent w-full h-full outline-none"
-                                autoFocus
-                            />
-                            <button
-                                type="submit"
-                                className="outline-none ps-2"
-                                aria-label="Search"
-                            >
-                                <Search className='text-gray-600 dark:text-gray-400'/>
-                            </button>
+                    <div className="flex max-w-lg flex-col gap-2 justify-between bg-gray-100 dark:bg-gray-900 rounded-xl p-4 shadow-2xl shadow-gray-300 dark:shadow-gray-950 border border-gray-200 dark:border-gray-700/30 group transition-all duration-500">
+                        <h3>What you are looking for ?</h3>
+                        <div className="flex items-center gap-2">
+                            <div className='flex items-center max-w-xl flex-1 bg-white dark:bg-gray-950/50 border border-gray-200 dark:border-gray-700/50 focus-within:border-teal-600 group rounded-full overflow-hidden'>
+                                <div className='p-2'>
+                                    <Search className='text-gray-600 p-0.5 dark:text-gray-400' />
+                                </div>
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder={`${placeholderText}`}
+                                    className="bg-transparent w-full h-full outline-none py-2 pe-2"
+                                    autoFocus
+                                />
+                            </div>
+                            <div>
+                                <Button
+                                    size='sm'
+                                    type="submit"
+                                    aria-label="Search"
+                                    rounded='full'
+                                >
+                                    Search
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </form>

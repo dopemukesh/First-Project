@@ -15,12 +15,12 @@ const RealWorldChallenge = () => {
     <>
       {/* Real World Challenges Section */}
       <Container className="py-14 px-4">
-        <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between ${bgGrads}`}>
+        <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between overflow-hidden ${bgGrads}`}>
           {/* Left Content */}
           <motion.div
             className="md:w-1/2 flex flex-col justify-center items-center md:items-start space-y-4 text-center md:text-left md:p-8 py-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl w-full">
