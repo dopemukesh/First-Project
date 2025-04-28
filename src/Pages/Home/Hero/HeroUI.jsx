@@ -32,7 +32,7 @@ const HeroUI = () => {
     <>
       <Container className="h-[456px] md:h-[556px] items-center">
         <div className="flex flex-col items-center">
-          <div className="mb-2">
+          <div className="mb-2 px-4">
             <SearchBox
               defaultText="Learners to Leaders"
               placeholderText="Search anything..."

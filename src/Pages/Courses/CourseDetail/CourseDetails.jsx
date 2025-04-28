@@ -59,7 +59,7 @@ const CourseDetails = () => {
                 variant='secondary'
                 size='sm'
               >
-                Bestseller
+                Download Syllabus
               </Button>
               <Button
                 // variant='tertiary'
@@ -171,7 +171,7 @@ const PriceCard = ({className}) => {
               // variant='tertiary'
               className='w-full'
             >
-              Buy now
+              Enroll now
             </Button>
             <Button
               variant='outline'

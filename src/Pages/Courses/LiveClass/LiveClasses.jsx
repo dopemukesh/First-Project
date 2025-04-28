@@ -26,7 +26,7 @@ const LiveClasses = () => {
                     {/* <span className="text-teal-500"> Live Classes</span> */}
                     <TypeWriterText
                         className='text-teal-600 dark:text-teal-500'
-                        text="Live Classes" />
+                        text="CWT Live Classes" />
                 </h1>
 
                 {/* Subtext */}
