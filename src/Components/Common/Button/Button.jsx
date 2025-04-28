@@ -21,7 +21,7 @@ export const Button = ({
     primary:
       "bg-teal-600 dark:bg-teal-500 text-white dark:text-gray-900 border border-teal-700 dark:border-teal-400 hover:bg-gradient-to-bl from-teal-500 to-teal-600/50",
     secondary:
-      "border-2 border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
+      "border border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
     tertiary:
       "bg-purple-500 text-white border border-purple-400 hover:bg-gradient-to-bl from-purple-400 to-purple-600/50",
     outline:
@@ -37,7 +37,7 @@ export const Button = ({
   };
 
   const sizeClasses = {
-    xs: "px-2 py-1 rounded-md text-[10px] ",
+    xs: "h-fit px-2 py-1 rounded-md text-[10px]",
     ssm: "h-9 px-4 py-1.5 rounded-lg text-sm gap-2",
     sm: `h-10 px-4 py-2 rounded-${rounded || 'lg'} text-sm gap-2`,
     md: "h-11 px-5 py-2.5 rounded-[10px] text-base gap-2",

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Button } from '../../../Components/Common/Button/Button';
+import { useCurrentUser } from '../../../hooks/useCurrentUser';
 
 const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
     // State for editing existing reviews
@@ -45,7 +46,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
         const today = new Date();
         const newReview = {
             id: Date.now().toString(),
-            name: "Anonymous",
+            name: userData.name || "Anonymous",
             comment: newComment.trim(),
             rating: newRating,
             date: today.toLocaleDateString('en-IN'),
@@ -55,6 +56,8 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
         setNewRating(0);
         setNewHoverRating(0);
     };
+
+    const {isLoggedIn, userData, isAdmin} = useCurrentUser(); // Mocked user data for demonstration
 
     return (
         <section className="mb-8">
@@ -124,25 +127,29 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex gap-2">
-                                    <button
-                                        className={`h-fit px-2 py-0.5 rounded-md text-sm text-teal-600 dark:text-teal-500`}
-                                        onClick={() => {
-                                            setEditingId(review.id);
-                                            setEditedComment(review.comment);
-                                            setEditedRating(review.rating);
-                                            setEditedHoverRating(0);
-                                        }}
-                                    >Edit</button>
-                                    <button
-                                        className={`h-fit px-2 py-0.5 rounded-md text-sm text-red-500`}
-                                        onClick={() => handleDelete(review.id)}
-                                    >Delete</button>
-                                </div>
+                                {(isLoggedIn && (review.name === userData.name || isAdmin)) && (
+                                    <div className="flex gap-2">
+                                        <Button
+                                            size='xs'
+                                            variant='secondary'
+                                            onClick={() => {
+                                                setEditingId(review.id);
+                                                setEditedComment(review.comment);
+                                                setEditedRating(review.rating);
+                                                setEditedHoverRating(review.rating);
+                                            }}
+                                        >Edit</Button>
+                                        <Button
+                                            size='xs'
+                                            variant='danger'
+                                            onClick={() => handleDelete(review.id)}
+                                        >Delete</Button>
+                                    </div>
+                                )}
                             </div>
                             {editingId === review.id ? (
                                 <div className="space-y-2">
-                                    <div className="flex gap-1 text-xl cursor-pointer">
+                                    <div className="flex gap-1 w-fit text-xl cursor-pointer select-none">
                                         {[1, 2, 3, 4, 5].map(star => (
                                             <span
                                                 key={star}
@@ -155,6 +162,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                                 }
                                             >★</span>
                                         ))}
+                                        <span className='text-[12px] ps-4 cursor-default text-gray-400 dark:text-gray-600'>Select to update</span>
                                     </div>
                                     <textarea
                                         className="w-full p-3 rounded-xl border dark:border-gray-800 dark:bg-gray-950 outline-none focus:border-teal-500"
@@ -164,12 +172,12 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                     />
                                     <div className="flex gap-2">
                                         <Button
-                                            size='ssm'
+                                            size='xs'
                                             onClick={handleSaveEdit}
                                             // className="px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-teal-600"
-                                        >Save</Button>
+                                        >Save now</Button>
                                         <Button
-                                            size='ssm'
+                                            size='xs'
                                             variant='secondary'
                                             onClick={() => {
                                                 setEditingId(null);

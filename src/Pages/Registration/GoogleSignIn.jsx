@@ -5,12 +5,15 @@ import { Button } from '../../Components/Common/Button/Button';
 
 const GoogleSignIn = () => {
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const login = useGoogleLogin({
         onSuccess: async (response) => {
+            setLoading(true);
+            setError(null);
             try {
-                // Get user info from Google
-                const userInfo = await axios.get(
+                // Step 1: Get user info from Google
+                const { data: userInfo } = await axios.get(
                     'https://www.googleapis.com/oauth2/v3/userinfo',
                     {
                         headers: {
@@ -19,23 +22,35 @@ const GoogleSignIn = () => {
                     }
                 );
 
-                // Send the user info to your backend
-                const backendResponse = await axios.post('/api/auth/google', {
-                    email: userInfo.data.email,
-                    name: userInfo.data.name,
-                    picture: userInfo.data.picture,
-                });
+                const isAdmin = userInfo.email === 'dope.mukeshyadav@gmail.com';
+                // Step 2: Store user info in localStorage
+                localStorage.setItem(
+                    'currentUser',
+                    JSON.stringify({
+                        email: userInfo.email,
+                        name: userInfo.name,
+                        picture: userInfo.picture,
+                        token: response.access_token,
+                        isLoggedIn: true,
+                        isAdmin: isAdmin, // Set this based on your logic
+                    })
+                );
 
-                // Handle successful login (e.g., store token, redirect)
-                console.log('Login successful:', backendResponse.data);
+                // Step 3: Redirect or show success message (optional)
+                // console.log('Login successful:', userInfo);
+                window.location.href = '/'; // <-- Redirect user after login
 
             } catch (err) {
-                setError('Failed to login with Google');
-                console.error('Error:', err);
+                console.error('Login failed:', err);
+                setError('Failed to login with Google.');
+            } finally {
+                setLoading(false);
             }
         },
-        onError: () => {
-            setError('Google login failed');
+        onError: (err) => {
+            console.error('Google login error:', err);
+            setError('Google login failed.');
+            setLoading(false);
         },
     });
 
@@ -43,24 +58,31 @@ const GoogleSignIn = () => {
         <div className="google-signin-container">
             <Button
                 onClick={() => login()}
-                variant='outline'
-                size='ssm'
-                className='w-full'
+                variant="outline"
+                size="ssm"
+                className="w-full flex items-center justify-center gap-2"
+                disabled={loading}
             >
                 <GoogleIcon />
-                Sign in with Google
+                {loading ? 'Signing in...' : 'Sign in with Google'}
             </Button>
-            {error && <div className="error-message">{error}</div>}
+            {error && <div className="error-message text-red-500 mt-2">{error}</div>}
         </div>
     );
 };
 
 export default GoogleSignIn;
 
+// Google Icon Component
 const GoogleIcon = () => {
     return (
-        <>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="h-4 w-4"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.97 9.97 0 0 0 12.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748z"></path></svg>
-        </>
-    )
-}
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            className="h-4 w-4"
+        >
+            <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.97 9.97 0 0 0 12.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748z"></path>
+        </svg>
+    );
+};

@@ -18,7 +18,7 @@ const UserInfo = ({ onCloseSidebar }) => {
         name: user.name,
         email: user.email,
         position: user.position, // You can add role in localStorage if needed
-        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`
+        avatar: user.picture,
       });
     }
   }, []);
