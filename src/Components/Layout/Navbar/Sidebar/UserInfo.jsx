@@ -17,11 +17,18 @@ const UserInfo = ({ onCloseSidebar }) => {
       setUserData({
         name: user.name,
         email: user.email,
-        position: user.position, // You can add role in localStorage if needed
-        avatar: user.picture,
+        role: user.role,
+        avatar: user.picture || "https://placehold.co/150x150",
       });
     }
   }, []);
+
+  const handleProfileClick = () => {
+    if (onCloseSidebar) {
+      onCloseSidebar();
+    }
+    navigate("/profile");
+  };
 
   const handleLoginClick = () => {
     if (onCloseSidebar) {
@@ -31,7 +38,11 @@ const UserInfo = ({ onCloseSidebar }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
+    if (onCloseSidebar) {
+      onCloseSidebar();
+    }
+    // localStorage.removeItem("currentUser");
+    localStorage.clear();
     setIsLoggedIn(false);
     setUserData(null);
     navigate("/login");
@@ -49,7 +60,9 @@ const UserInfo = ({ onCloseSidebar }) => {
   }
 
   return (
-    <div className="px-2 border border-gray-200 dark:border-gray-800 rounded-2xl">
+    <div
+      onClick={handleProfileClick}
+      className="px-2 border border-gray-200 dark:border-gray-800 rounded-2xl">
       <div className="flex items-center gap-4 py-2">
         <div className="relative">
           <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
@@ -66,9 +79,15 @@ const UserInfo = ({ onCloseSidebar }) => {
           <p className="text-md font-semibold text-gray-800 dark:text-gray-200 truncate">
             {userData.name}
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            {userData.email}
+          <p
+            className="text-sm text-gray-500 dark:text-gray-400"
+            title={userData.email} // full email as tooltip
+          >
+            {userData.email.length > 18
+              ? `${userData.email.slice(0, 18)}...`
+              : userData.email}
           </p>
+
         </div>
 
         <button

@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from "lucide-react";
 import { Button } from '../Button/Button'
+import { motion, AnimatePresence } from "framer-motion";
 
 const SearchBox = (
     {
@@ -13,6 +14,16 @@ const SearchBox = (
 ) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentIcon, setCurrentIcon] = useState(icon);
+
+    // Add animation effect
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIcon(prev => prev === 'search' ? 'shape' : 'search');
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const handleSearchClick = () => {
         setIsExpanded(true);
@@ -33,7 +44,6 @@ const SearchBox = (
     return (
         <div
             className="group cursor-default"
-            // onClick={handleSearchClick}
             onBlur={handleSearchBlur}
             tabIndex={0}
         >
@@ -42,26 +52,53 @@ const SearchBox = (
                     onClick={handleSearchClick}
                     className="flex items-center gap-4 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 group py-2 px-4 rounded-full w-fit cursor-pointer"
                 >
-                    {
-                        icon == 'search' ?
-                            <Search />
-                            :
-                            <div className="grid place-content-center">
-                                <img
+                    <AnimatePresence mode="wait">
+                        {currentIcon === 'search' ? (
+                            <motion.div
+                                key="search"
+                                initial={{ y: 10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -10, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
+                                className="grid place-content-center h-5 w-5"
+                            >
+                                <Search />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="shape"
+                                initial={{ y: 10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -10, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
+                                // whileHover={{ rotate: 45 }}
+                                className="grid place-content-center h-5 w-5"
+                            >
+                                <motion.img
                                     src="shape01.svg"
                                     alt=""
-                                    className="h-5 group-hover:rotate-45 group-hover:scale-125 transition-all duration-500"
+                                    className="h-5 animate-spin"
+                                    transition={{
+                                        duration: 1,
+                                        repeat: Infinity,
+                                        repeatType: "reverse",
+                                        ease: "easeInOut",
+                                    }}
                                 />
-                            </div>
-                    }
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+
+
                     <p>{defaultText}</p>
                 </div>
             ) : (
                 <form onSubmit={handleSearchSubmit} className="w-full">
-                    <div className="flex max-w-lg flex-col gap-2 justify-between bg-gray-100 dark:bg-gray-900 rounded-xl p-4 shadow-2xl shadow-gray-300 dark:shadow-gray-950 border border-gray-200 dark:border-gray-700/30 group transition-all duration-500">
+                    <div className="flex max-w-lg flex-col gap-2 justify-between bg-white dark:bg-gray-900 rounded-xl p-4 shadow-2xl shadow-gray-300 dark:shadow-gray-950 border border-gray-200 dark:border-gray-700/30 group transition-all duration-500">
                         <h3>What you are looking for ?</h3>
                         <div className="flex items-center gap-2">
-                            <div className='flex items-center max-w-xl flex-1 bg-white dark:bg-gray-950/50 border border-gray-200 dark:border-gray-700/50 focus-within:border-teal-600 group rounded-full overflow-hidden'>
+                            <div className='flex items-center max-w-xl flex-1 bg-gray-50 dark:bg-gray-950/50 border border-gray-300 dark:border-gray-700 focus-within:border-teal-600 group rounded-full overflow-hidden'>
                                 <div className='p-2'>
                                     <Search className='text-gray-600 p-0.5 dark:text-gray-400' />
                                 </div>

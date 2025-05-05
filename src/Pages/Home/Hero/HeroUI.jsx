@@ -35,7 +35,7 @@ const HeroUI = () => {
           <div className="mb-2 px-4">
             <SearchBox
               defaultText="Learners to Leaders"
-              placeholderText="Search anything..."
+              placeholderText="Search courses..."
             />
           </div>
 

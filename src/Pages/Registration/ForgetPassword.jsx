@@ -45,8 +45,9 @@ const ForgetPassword = () => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="p-4 space-y-6">
             <div>
-              <label className={labelTexts}>Email Address</label>
+              <label htmlFor="forgetPassEmail" className={labelTexts}>Email Address</label>
               <input
+                id="forgetPassEmail"
                 type="email"
                 className={inputClass}
                 placeholder="Enter your email"
@@ -54,7 +55,7 @@ const ForgetPassword = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-xs text-gray-500">
                 We'll send you a link to reset your password
               </p>
             </div>
@@ -66,14 +67,16 @@ const ForgetPassword = () => {
               >
                 Back to login
               </NavLink>
-              <Button
-                variant="secondary"
-                type="submit"
-                size="sm"
-                disabled={isLoading}
-              >
-                {isLoading ? "Sending..." : "Send Reset Link"}
-              </Button>
+              <div>
+                <Button
+                  variant="secondary"
+                  type="submit"
+                  size="sm"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Sending..." : "Send Reset Link"}
+                </Button>
+              </div>
             </div>
           </form>
         </div>

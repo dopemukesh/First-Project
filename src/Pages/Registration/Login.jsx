@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Container from "../../Components/Common/Container/Container";
 import { Button } from "../../Components/Common/Button/Button";
-import { NavLink, useNavigate } from "react-router-dom";
-import RegistrationData from '../../api/RegistrationData'
+import { NavLink } from "react-router-dom";
+// import RegistrationData from '../../api/RegistrationData'
 import GoogleSignIn from "./GoogleSignIn";
+import validateLoginForm from "../../api/utils/validateLoginForm";
+import { loginUser } from "../../api/services/authService";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -27,48 +28,78 @@ const Login = () => {
   const labelTexts =
     "block mb-1.5 text-sm font-medium text-gray-700 dark:text-gray-300";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    // Reset errors
+  // backend connection start 👇🏻
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setErrors({ email: "", password: "" });
 
-    // Find user with matching email
-    const user = RegistrationData.find(user => user.email === formData.email);
-
-    if (!user) {
-      setErrors(prev => ({ ...prev, email: "Email not found. Please check your email or register." }));
+    const validationErrors = validateLoginForm(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
-    // Validate password
-    if (user.password !== formData.password) {
-      setErrors(prev => ({ ...prev, password: "Invalid password. Please try again." }));
-      return;
-    }
+    try {
+      // const payload = {
+      //   email: formData.email.trim().toLowerCase(),
+      //   password: formData.password,
+      // };
 
-    // Save user data in localStorage if remember is checked
-    if (formData.remember) {
-      localStorage.setItem("currentUser", JSON.stringify({
-        email: user.email,
-        name: user.name,
-        isLoggedIn: true
-      }));
-    }
+      const response = await loginUser(formData);
 
-    console.log("Login successful!");
-    navigate('/');
+      console.log("Login response:", response);
+
+      if (response.token) {
+        const currentUser = response.user;
+
+        localStorage.setItem("token", response.token);
+        // localStorage.setItem("currentUser", JSON.stringify({
+        //   currentUser: currentUser,
+        // }));
+
+        if (formData.remember) {
+          localStorage.setItem("currentUser", JSON.stringify({
+            email: currentUser.email,
+            name: currentUser.name,
+            isLoggedIn: true,
+            role: currentUser.role || 'undefined',
+            picture: currentUser.profilePicture,
+          }));
+        }
+
+        window.location.href = "/"; // Redirect to the desired page after successful login
+
+      } else {
+        throw new Error("Invalid login credentials");
+      }
+
+    } catch (error) {
+      const errMsg = error.message || "Login failed. Please try again.";
+      if (errMsg.toLowerCase().includes("email")) {
+        setErrors(prev => ({ ...prev, email: errMsg }));
+      } else if (errMsg.toLowerCase().includes("password")) {
+        setErrors(prev => ({ ...prev, password: errMsg }));
+      }
+    }
   };
+  // backend connection end 👆🏻
 
   return (
     <Container className="py-14">
       <div className="flex justify-center items-center p-4">
         <div className={`max-w-md overflow-hidden w-full ${bgGrads}`}>
           {/* Header */}
-          <div className="border-b border-gray-300 px-4 py-6 dark:border-gray-800 bg-gradient-to-tl from-teal-500/5 via-transparent to-teal-500/5 backdrop-blur rounded-t-2xl">
-            <h2 className="font-semibold">Welcome Back</h2>
+          <div className="text-center border-b border-gray-300 px-4 py-6 dark:border-gray-800 bg-gradient-to-tl from-teal-500/5 via-transparent to-teal-500/5 backdrop-blur rounded-t-2xl">
+            <h2 className="font-smedium text-lg mb-1">Yooo, Welcome Back</h2>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Sign in to access your account
+              First time here ?{" "}
+              <NavLink
+                to="/register"
+                className="text-teal-600 dark:text-teal-500 hover:underline"
+              >
+                Register for free
+              </NavLink>
             </p>
           </div>
 
@@ -87,7 +118,10 @@ const Login = () => {
                 required
               />
               {errors.email && (
-                <p className="text-red-500 text-[12px] mt-2">{errors.email}</p>
+                <>
+                  <p className="text-red-500 text-[12px] mt-2">{errors.email}</p>
+                  {console.log("Email error : ", errors)} {/* Log the response for debugging */}
+                </>
               )}
             </div>
 
@@ -131,7 +165,12 @@ const Login = () => {
               </NavLink>
             </div>
 
-            <div className="flex items-center justify-between pt-4">
+            <div className="flex flex-col justify-center text-center">
+              <div className="w-full py-4">
+                <Button variant="secondary" type="submit" size="sm" className="w-full">
+                  Sign in
+                </Button>
+              </div>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Don't have an account ?{" "}
                 <NavLink
@@ -141,9 +180,7 @@ const Login = () => {
                   Register
                 </NavLink>
               </p>
-              <Button variant="secondary" type="submit" size="sm">
-                Login
-              </Button>
+
             </div>
 
             {/* google sign in option */}

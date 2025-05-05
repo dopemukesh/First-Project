@@ -16,6 +16,11 @@ import Login from "./Pages/Registration/Login";
 import ForgetPassword from "./Pages/Registration/ForgetPassword";
 import Courses from "./Pages/Courses/Cources";
 import CourseDetails from "./Pages/Courses/CourseDetail/CourseDetails";
+import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import AdminDashboard from "./Pages/ProtectedPages/Admins/AdminDashboard";
+import TeacherDashboard from "./Pages/ProtectedPages/Teachers/TeacherDashboard";
+import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
+import UserProfile from "./Pages/UserProfile/UserProfile";
 
 export const AppRoutes = () => (
   <Routes>
@@ -50,8 +55,44 @@ export const AppRoutes = () => (
 
     {/* Catch-all Route for Errors */}
     <Route path="*" element={<Error404 />} />
+    <Route path="/unauthorized" element={<Error404 />} />
     <Route path="/register" element={<Signup />} />
     <Route path="/login" element={<Login />} />
     <Route path="/forget-password" element={<ForgetPassword />} />
+
+    {/* User routes */}
+    <Route path="/profile" element={<UserProfile />} />
+
+    {/* Protected routes here starts */}
+    {/* 🧑‍🏫 Teacher route (teacher, admin, superadmin dekh sakte hain) */}
+    <Route
+      path="/teacher-dashboard"
+      element={
+        <ProtectedRoutes minimumRole="teacher">
+          <TeacherDashboard />
+        </ProtectedRoutes>
+      }
+    />
+
+    {/* 🛡️ Admin route (admin aur superadmin dekh sakte hain) */}
+    <Route
+      path="/admin-dashboard"
+      element={
+        <ProtectedRoutes minimumRole="admin">
+          <AdminDashboard />
+        </ProtectedRoutes>
+      }
+    />
+
+    {/* 👑 Superadmin route (sirf superadmin dekh sakta hai) */}
+    <Route
+      path="/superadmin-panel"
+      element={
+        <ProtectedRoutes minimumRole="superadmin">
+          <SuperAdminPanel />
+        </ProtectedRoutes>
+      }
+    />
+    {/* Protected routes here ends */}
   </Routes>
 );

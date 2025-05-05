@@ -36,31 +36,20 @@ const About = () => {
                 />
                 <div className="flex items-center justify-between gap-4 absolute z-10 bottom-0 left-0 p-2 shadow-md opacity-0 group-hover:opacity-100 transition-all duration-700 w-full">
                   <p className="text-xl font-bold text-white">Mukesh</p>
-                  <Button size="xs" variant="secondary">
+                  {/* <Button size="xs" variant="secondary">
                     Github
-                  </Button>
+                  </Button> */}
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-all duration-700 absolute w-full h-24 bg-gradient-to-t from-black to-transparent bottom-0 left-0"></div>
-              </div>
-              <div
-                id="dev02"
-                className="group relative w-fit h-full bg-green-600 rounded-xl overflow-hidden"
-              >
-                <img
-                  src="https://avatars.githubusercontent.com/dopemukesh"
-                  alt=""
-                  className="w-16 h-full object-cover group-hover:w-44 transition-all duration-500"
-                />
-                <p>Mukesh</p>
               </div>
             </div>
 
             {/* contents section for dev info  */}
-            <div className=" ">
+            <div className="space-y-4">
               <div className="">
-                {/* <h3 className="font-medium">
+                <h3 className="font-medium mb-2 text-gray-500">
                 Meet the team behind &quot;Code With Techries&quot;
-              </h3> */}
+              </h3>
                 <h2 className="text-3xl font-semibold">
                   We are the Product Developers
                 </h2>

@@ -57,12 +57,12 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
         setNewHoverRating(0);
     };
 
-    const {isLoggedIn, userData, isAdmin} = useCurrentUser(); // Mocked user data for demonstration
+    const { isLoggedIn, userData, isAdmin } = useCurrentUser(); // Mocked user data for demonstration
 
     return (
         <section className="mb-8">
             <h3 className="text-xl font-medium mb-4">Student Feedback</h3>
-            <div className={``}>
+            <div className={`${bgBorder} p-4 rounded-xl`}>
                 {/* Ratings Overview */}
                 <div className="flex items-center gap-4 mb-6">
                     <div className="text-5xl font-bold text-teal-600 dark:text-teal-500">{averageRating}</div>
@@ -102,6 +102,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                             // variant='tertiary'
                             size='sm'
                             onClick={handleAddReview}
+                            disabled={!isLoggedIn && !userData.name}
                         >
                             Submit Review
                         </Button>
@@ -174,7 +175,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                         <Button
                                             size='xs'
                                             onClick={handleSaveEdit}
-                                            // className="px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-teal-600"
+                                        // className="px-3 py-1 bg-teal-500 text-white rounded-md hover:bg-teal-600"
                                         >Save now</Button>
                                         <Button
                                             size='xs'
@@ -185,7 +186,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                                                 setEditedRating(0);
                                                 setEditedHoverRating(0);
                                             }}
-                                            // className="px-3 py-1 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-md hover:bg-gray-600"
+                                        // className="px-3 py-1 bg-gray-800 dark:bg-white text-white dark:text-gray-800 rounded-md hover:bg-gray-600"
                                         >Cancel</Button>
                                     </div>
                                 </div>

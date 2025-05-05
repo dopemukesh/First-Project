@@ -25,7 +25,7 @@ export const Button = ({
     tertiary:
       "bg-purple-500 text-white border border-purple-400 hover:bg-gradient-to-bl from-purple-400 to-purple-600/50",
     outline:
-      "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-300 hover:bg-white/20 dark:hover:bg-gray-900",
+      "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-500 hover:bg-white/50 dark:hover:bg-gray-900",
     danger:
       "bg-red-500 text-white hover:bg-red-600 border border-red-600",
     warning:
@@ -48,7 +48,7 @@ export const Button = ({
   const commonClasses = `flex ${sizeClasses[size] || sizeClasses.md
     } items-center justify-center gap-2 rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
     } transition-all duration-500 font-medium ${variantClasses[variant] || variantClasses.primary
-    } ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+    } ${disabled ? "opacity-40 grayscale cursor-not-allowed" : ""} ${className}`;
 
   // ✅ If "to" is provided, use <Link> instead of <button>
   if (to) {

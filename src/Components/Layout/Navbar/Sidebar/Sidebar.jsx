@@ -47,11 +47,6 @@ const Sidebar = ({ isOpen, onClose }) => {
                 className="flex items-center gap-4"
                 onClick={onClose}
               >
-                {/* <img
-                                    src="./logo/cwtLogo-animatedColor.svg"
-                                    alt="site-logo"
-                                    className="w-8 h-8"
-                                /> */}
                 <Logo className="h-10" />
                 <div className="relative flex flex-col">
                   <p className="text-md font-semibold text-gray-800 dark:text-gray-200">

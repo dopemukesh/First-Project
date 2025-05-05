@@ -7,7 +7,7 @@ import Logo from "../../Common/Logo/Logo";
 function Footer() {
   const footerLinks = [
     { path: "/", name: "Home" },
-    { path: "/resources", name: "Resources" },
+    { path: "/classes", name: "Classes" },
     { path: "/store/books", name: "Store" },
     { path: "/about", name: "About" },
   ];
@@ -25,6 +25,8 @@ function Footer() {
       icon: <InstaIcon />,
     },
   ];
+
+  const emails = ['info@codewithtechries.com','bbjnijsjni']
 
   return (
     <footer
@@ -97,7 +99,10 @@ function Footer() {
                   href="mailto:info@codewithtechries.com"
                   aria-label="Email us at info@codewithtechries.com"
                 >
-                  info@codewithtechries.com
+                  
+                  {emails[0].length > 18
+                    ? `${emails[0].slice(0, 18)}...`
+                    : emails[0]}
                 </a>
               </p>
               <p>

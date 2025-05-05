@@ -32,7 +32,6 @@ const GoogleSignIn = () => {
                         picture: userInfo.picture,
                         token: response.access_token,
                         isLoggedIn: true,
-                        isAdmin: isAdmin, // Set this based on your logic
                     })
                 );
 
@@ -59,7 +58,7 @@ const GoogleSignIn = () => {
             <Button
                 onClick={() => login()}
                 variant="outline"
-                size="ssm"
+                size="sm"
                 className="w-full flex items-center justify-center gap-2"
                 disabled={loading}
             >
