@@ -76,7 +76,7 @@ const PlanetSection = () => {
 
     return (
         <Container>
-            <div className="relative mb-28">
+            <div id='explore-community' className="relative mb-28 transition-all duration-300 scroll-smooth">
 
                 {/* Conditional SVG rendering */}
                 {isPhone ?

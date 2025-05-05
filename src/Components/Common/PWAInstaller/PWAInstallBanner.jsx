@@ -18,7 +18,6 @@ const PWAInstallBanner = () => {
     const handleInstallClick = async () => {
         await promptInstall();
         setShowBanner(false);
-
     };
 
     if (!showBanner) return null;
@@ -27,7 +26,7 @@ const PWAInstallBanner = () => {
         <motion.div
             initial={{ height: 0, opacity: '0' }}
             animate={{ height: '100%', opacity: '1', type: spring }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             className="fixed flex justify-center h-full top-0 w-full bg-gray-950/50 backdrop-blur-md p-4 z-[99999999999999999999]">
             <motion.div
                 initial={{ y: -150, opacity: '0' }}

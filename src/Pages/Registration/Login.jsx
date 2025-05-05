@@ -73,6 +73,7 @@ const Login = () => {
           }));
         }
 
+        localStorage.setItem('showInstall', 'true');
         window.location.href = "/"; // Redirect to the desired page after successful login
 
       } else {
