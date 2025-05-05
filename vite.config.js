@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
@@ -10,24 +10,26 @@ export default defineConfig({
       manifest: {
         name: 'CWT | CodeWithTechries',
         short_name: 'CWT',
-        description: 'CWT is a plateform for contribution and get hired.',
+        description: 'CWT is a platform for contribution and getting hired.',
+        start_url: '.',
+        scope: '/',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
           {
-            src: 'icon-192x192.png',
+            src: '/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'icon-512x512.png',
+            src: '/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           }
         ]
       }
     })
-  ],
-})
+  ]
+});

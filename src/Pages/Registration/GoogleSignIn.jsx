@@ -1,11 +1,15 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../../Components/Common/Button/Button';
+import usePWAInstall from '../../hooks/usePWAInstall';
 
 const GoogleSignIn = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    // PWA Install hook usage
+    const { canInstall, promptInstall } = usePWAInstall();
 
     const login = useGoogleLogin({
         onSuccess: async (response) => {
@@ -22,7 +26,6 @@ const GoogleSignIn = () => {
                     }
                 );
 
-                const isAdmin = userInfo.email === 'dope.mukeshyadav@gmail.com';
                 // Step 2: Store user info in localStorage
                 localStorage.setItem(
                     'currentUser',
@@ -35,9 +38,8 @@ const GoogleSignIn = () => {
                     })
                 );
 
-                // Step 3: Redirect or show success message (optional)
-                // console.log('Login successful:', userInfo);
-                window.location.href = '/'; // <-- Redirect user after login
+                // Step 3: Redirect user
+                window.location.href = '/'; // Redirect after login
 
             } catch (err) {
                 console.error('Login failed:', err);
@@ -52,6 +54,13 @@ const GoogleSignIn = () => {
             setLoading(false);
         },
     });
+
+    // Trigger the PWA install prompt after successful login
+    useEffect(() => {
+        if (canInstall) {
+            promptInstall.prompt(); // Trigger install prompt after login
+        }
+    }, [canInstall, promptInstall]);
 
     return (
         <div className="google-signin-container">

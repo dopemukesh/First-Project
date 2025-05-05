@@ -44,8 +44,8 @@ const UserProfile = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-10 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden">
+        <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-2xl overflow-hidden">
                 {/* Cover Image */}
                 <div className="h-32 bg-gradient-to-r from-blue-500 to-purple-600"></div>
 
@@ -59,7 +59,7 @@ const UserProfile = () => {
                                 alt={userData.name}
                                 className="w-24 h-24 rounded-full border-4 border-white dark:border-gray-800 object-cover shadow-md"
                             />
-                            <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                            <span className="absolute bottom-0 right-0 w-4 h-4 bg-teal-600 dark:bg-teal-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
                         </div>
 
                         {/* User Details */}
@@ -70,15 +70,15 @@ const UserProfile = () => {
                             <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
                                 {userData.email}
                             </p>
-                            <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                            {/* <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
                                 Role: <span className="capitalize">{userData.role}</span>
-                            </p>
+                            </p> */}
 
                             <div className="mt-4 flex gap-3 justify-center md:justify-start">
-                                <Button variant="primary" onClick={handleEditProfile}>
+                                <Button variant="primary" size="ssm" onClick={handleEditProfile}>
                                     Edit Profile
                                 </Button>
-                                <Button variant="secondary" onClick={handleLogout}>
+                                <Button variant="secondary" size="ssm" onClick={handleLogout}>
                                     Logout
                                 </Button>
                             </div>

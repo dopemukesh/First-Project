@@ -29,6 +29,9 @@ const Navbar = () => {
     }
   }, []);
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
@@ -41,7 +44,7 @@ const Navbar = () => {
     if (isLoggedIn && userData) {
       return (
         <div className="hidden md:flex items-center gap-4 ">
-          <div className="flex flex-col flex-1 cursor-default">
+          <div onClick={handleProfileClick} className="flex flex-col flex-1 cursor-default">
             <p className="text-[10px] text-gray-500 dark:text-gray-400">
               Welcome back
             </p>

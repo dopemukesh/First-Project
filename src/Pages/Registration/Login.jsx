@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../Components/Common/Container/Container";
 import { Button } from "../../Components/Common/Button/Button";
 import { NavLink } from "react-router-dom";
@@ -7,7 +7,12 @@ import GoogleSignIn from "./GoogleSignIn";
 import validateLoginForm from "../../api/utils/validateLoginForm";
 import { loginUser } from "../../api/services/authService";
 
+// for app install
+import usePWAInstall from '../../hooks/usePWAInstall';
+
 const Login = () => {
+  const { canInstall, promptInstall } = usePWAInstall();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -85,6 +90,16 @@ const Login = () => {
   };
   // backend connection end 👆🏻
 
+
+  // app install trigers here
+  useEffect(() => {
+    if (canInstall) {
+      promptInstall(); // Show install prompt automatically
+    }
+  }, [canInstall, promptInstall]);
+
+
+  
   return (
     <Container className="py-14">
       <div className="flex justify-center items-center p-4">

@@ -3,8 +3,11 @@ import { useInView, motion } from "framer-motion";
 import earth1 from "../../../assets/earth1.png";
 import Container from "../../../Components/Common/Container/Container";
 import { Button } from "../../../Components/Common/Button/Button";
+import usePWAInstall from "../../../hooks/usePWAInstall";
 
 const RealWorldChallenge = () => {
+  const { canInstall, promptInstall } = usePWAInstall();
+
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
 
@@ -30,9 +33,16 @@ const RealWorldChallenge = () => {
               Push your limits, solve real problems, and turn ideas into reality.
             </p>
             <div className="pt-8 md:pt-3">
-              <Button to="/community" variant="secondary" className="w-fit">
-                Join Open Source
-              </Button>
+              {canInstall ? (
+                <Button onClick={promptInstall} variant="secondary" className="w-fit">
+                  Install App
+                </Button>
+              )
+                :
+                (<Button to='/community' variant="secondary" className="w-fit">
+                  Join Community
+                </Button>)
+              }
             </div>
           </motion.div>
 
