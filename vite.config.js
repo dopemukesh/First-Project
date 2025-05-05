@@ -8,9 +8,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Mukesh Yadav - Portfolio',
-        short_name: 'Portfolio',
-        description: 'My Personal Portfolio built with Vite and React',
+        name: 'CWT | CodeWithTechries',
+        short_name: 'CWT',
+        description: 'CWT is a plateform for contribution and get hired.',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
