@@ -58,7 +58,7 @@ const GoogleSignIn = () => {
     // Trigger the PWA install prompt after successful login
     useEffect(() => {
         if (canInstall) {
-            promptInstall.prompt(); // Trigger install prompt after login
+            promptInstall(); // Trigger install prompt after login
         }
     }, [canInstall, promptInstall]);
 
