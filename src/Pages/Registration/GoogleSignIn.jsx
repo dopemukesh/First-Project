@@ -39,6 +39,7 @@ const GoogleSignIn = () => {
                 );
 
                 // Step 3: Redirect user
+                localStorage.setItem('showInstall', 'true');
                 window.location.href = '/'; // Redirect after login
 
             } catch (err) {
@@ -55,13 +56,7 @@ const GoogleSignIn = () => {
         },
     });
 
-    // Trigger the PWA install prompt after successful login
-    useEffect(() => {
-        if (canInstall) {
-            promptInstall(); // Trigger install prompt after login
-        }
-    }, [canInstall, promptInstall]);
-
+    
     return (
         <div className="google-signin-container">
             <Button

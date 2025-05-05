@@ -9,6 +9,7 @@ import LeaderBoardAndCommunity from "./LeaderBoardAndCommunity/LeaderBoardAndCom
 import { useInView } from "motion/react";
 import RealWorldChallenge from "./Promotion/RealWorldChallenge";
 import FeaturedPrograms from "./Featured Programs/FeaturedPrograms";
+import PWAInstallBanner from "../../Components/Common/PWAInstaller/PWAInstallBanner";
 
 const Home = () => {
   const ref = useRef(null);
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <>
       <HeroUI />
+      <PWAInstallBanner />
       <SocialStats />
       <FeaturedPrograms />
       <LeaderBoardAndCommunity refProp={ref} isInView={isInView} />
