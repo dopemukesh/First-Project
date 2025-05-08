@@ -49,14 +49,14 @@ const ThemeChange = ({className}) => {
     return (
         <button
             onClick={toggleTheme}
-            className={`p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors grid place-content-center ${className}`}
+            className={`flex items-center justify-center h-10 w-10 p-2 rounded-full border border-gray-300 dark:border-gray-900 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors ${className}`}
             aria-label="Toggle theme"
             title="Toggle theme"
             data-tooltip-target="tooltip-default"
             data-tooltip-placement="top"
             data-tooltip-style="dark"
         >
-            {isDark ? <MdOutlineWbSunny className='w-5 h-5 dark:text-gray-200 text-gray-800' /> : <BiMoon className='w-5 h-5 text-gray-800 dark:text-gray-200' />}
+            {isDark ? <MdOutlineWbSunny className='w-5 h-5 text-gray-800 dark:text-gray-200' /> : <BiMoon className='w-5 h-5 text-gray-800 dark:text-gray-200' />}
         </button>
     )
 }

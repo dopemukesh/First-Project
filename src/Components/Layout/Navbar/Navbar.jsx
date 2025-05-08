@@ -45,19 +45,26 @@ const Navbar = () => {
       return (
         <div className="hidden md:flex items-center gap-4 ">
           <div onClick={handleProfileClick} className="flex flex-col flex-1 cursor-default">
-            <p className="text-[10px] text-gray-500 dark:text-gray-400">
+            {/* <p className="text-[10px] text-gray-500 dark:text-gray-400">
               Welcome back
-            </p>
-            <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
+            </p> */}
+            {/* <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
               {userData.name}
-            </p>
+            </p> */}
+            <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <img
+                src={userData.picture}
+                alt={userData.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
-          <div
-            className="p-2 rounded-xl border border-red-200 dark:border-red-800 bg-red-100 dark:bg-red-900 hover:bg-red-300 dark:hover:bg-red-800 transition-colors grid place-content-center"
+          {/* <div
+            className="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 dark:hover:bg-gray-800 transition-colors grid place-content-center"
             onClick={handleLogout}
           >
             <BiLogOut className="text-xl" />
-          </div>
+          </div> */}
         </div>
       );
     }

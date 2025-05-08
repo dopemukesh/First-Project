@@ -2,14 +2,11 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../../Components/Common/Button/Button';
-import usePWAInstall from '../../hooks/usePWAInstall';
 
 const GoogleSignIn = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // PWA Install hook usage
-    const { canInstall, promptInstall } = usePWAInstall();
 
     const login = useGoogleLogin({
         onSuccess: async (response) => {

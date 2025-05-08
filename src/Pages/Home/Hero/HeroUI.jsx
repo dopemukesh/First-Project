@@ -30,7 +30,7 @@ const HeroUI = () => {
 
   return (
     <>
-      <Container className="h-[456px] md:h-[556px] items-center">
+      <Container className="py-14 h-fit items-center">
         <div className="flex flex-col items-center">
           <div className="mb-2 px-4">
             <SearchBox

@@ -22,77 +22,83 @@ import TeacherDashboard from "./Pages/ProtectedPages/Teachers/TeacherDashboard";
 import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
 import UserProfile from "./Pages/UserProfile/UserProfile";
 
+// Layouts
+import MainLayout from "./Components/Layout/allLayouts/MainLayout";
+import AuthLayout from "./Components/Layout/allLayouts/AuthLayout";
+import DashboardLayout from "./Components/Layout/allLayouts/DashboardLayout";
+
 export const AppRoutes = () => (
   <Routes>
-    <Route path="/" index element={<Home />} />
-    <Route path="/community" element={<Community />} />
-    {/* <Route path="/courses" element={<Courses />} /> */}
-    <Route path="/classes">
-      <Route index element={<Courses />} />
-      <Route path="details/:id" element={<CourseDetails />} />
+    {/* Main layout (with header & footer) */}
+    <Route element={<MainLayout />}>
+      <Route path="/" index element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/community" element={<Community />} />
+      <Route path="/profile" element={<UserProfile />} />
+
+      {/* Courses */}
+      <Route path="/classes">
+        <Route index element={<Courses />} />
+        <Route path="details/:id" element={<CourseDetails />} />
+      </Route>
+
+      {/* Career */}
+      <Route path="/career">
+        <Route index element={<Career />} />
+        <Route path="post-job" element={<PostJob />} />
+      </Route>
+
+      {/* Projects */}
+      <Route path="/projects">
+        <Route index element={<Projects />} />
+        <Route path="details/:id" element={<ProjectDetails />} />
+      </Route>
+
+      {/* Store */}
+      <Route path="/store" element={<Store />}>
+        <Route index element={<StoreBooks />} />
+        <Route path="books" element={<StoreBooks />} />
+        <Route path="products" element={<StoreProducts />} />
+        <Route path="tranings" element={<StoreTranings />} />
+      </Route>
+
+      {/* Catch-all */}
+      <Route path="*" element={<Error404 />} />
     </Route>
-    <Route path="/about" element={<About />} />
 
-    {/* ✅ Fixed Career Routes */}
-    <Route path="/career">
-      <Route index element={<Career />} />
-      <Route path="post-job" element={<PostJob />} /> {/* Fixed path */}
+    {/* Auth layout (without header & footer) */}
+    <Route element={<AuthLayout />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Signup />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
     </Route>
 
-    {/* Projects Routes */}
-    <Route path="/projects">
-      <Route index element={<Projects />} />
-      <Route path="details/:id" element={<ProjectDetails />} />
+    {/* Protected Routes (optional: you can wrap in another layout if needed) */}
+    <Route element={<DashboardLayout />}>
+      <Route
+        path="/teacher-dashboard"
+        element={
+          <ProtectedRoutes minimumRole="teacher">
+            <TeacherDashboard />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/admin-dashboard"
+        element={
+          <ProtectedRoutes minimumRole="admin">
+            <AdminDashboard />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/superadmin-panel"
+        element={
+          <ProtectedRoutes minimumRole="superadmin">
+            <SuperAdminPanel />
+          </ProtectedRoutes>
+        }
+      />
     </Route>
-
-    {/* Store Routes */}
-    <Route path="/store" element={<Store />}>
-      <Route index element={<StoreBooks />} />
-      <Route path="books" element={<StoreBooks />} />
-      <Route path="products" element={<StoreProducts />} />
-      <Route path="tranings" element={<StoreTranings />} />
-    </Route>
-
-    {/* Catch-all Route for Errors */}
-    <Route path="*" element={<Error404 />} />
-    <Route path="/unauthorized" element={<Error404 />} />
-    <Route path="/register" element={<Signup />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/forget-password" element={<ForgetPassword />} />
-
-    {/* User routes */}
-    <Route path="/profile" element={<UserProfile />} />
-
-    {/* Protected routes here starts */}
-    {/* 🧑‍🏫 Teacher route (teacher, admin, superadmin dekh sakte hain) */}
-    <Route
-      path="/teacher-dashboard"
-      element={
-        <ProtectedRoutes minimumRole="teacher">
-          <TeacherDashboard />
-        </ProtectedRoutes>
-      }
-    />
-
-    {/* 🛡️ Admin route (admin aur superadmin dekh sakte hain) */}
-    <Route
-      path="/admin-dashboard"
-      element={
-        <ProtectedRoutes minimumRole="admin">
-          <AdminDashboard />
-        </ProtectedRoutes>
-      }
-    />
-
-    {/* 👑 Superadmin route (sirf superadmin dekh sakta hai) */}
-    <Route
-      path="/superadmin-panel"
-      element={
-        <ProtectedRoutes minimumRole="superadmin">
-          <SuperAdminPanel />
-        </ProtectedRoutes>
-      }
-    />
-    {/* Protected routes here ends */}
   </Routes>
 );

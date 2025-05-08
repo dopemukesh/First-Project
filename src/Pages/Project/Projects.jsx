@@ -87,7 +87,7 @@ const Projects = () => {
 
                       {/* Button to navigate to project details */}
                       <Button
-                        to={`/projects/details/${project.id}`}
+                        to={`details/${project.id}`}
                         variant="secondary"
                       >
                         Read More
