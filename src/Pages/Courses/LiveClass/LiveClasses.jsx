@@ -45,7 +45,7 @@ const LiveClasses = () => {
 
                 <div className="flex items-end justify-center">
                     <img 
-                    src="src/assets/images/shauryaImage.png" 
+                    src="./src/assets/images/shauryaImage.png" 
                     alt="image" 
                     className="w-full md:h-80" />
                     {/* <p>Image</p> */}
