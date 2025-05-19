@@ -1,12 +1,18 @@
 // Designed and developed by:
 // - Mukesh Yadav
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Button01 } from "../../Components/Common/Button/Button";
 import Container from "../../Components/Common/Container/Container";
 import SpaceCommunity from "./SpaceTheme/SpaceCommunity";
+import { useInView } from "framer-motion";
+// import Podcasts from "../Home/Podcasts/Podcasts";
+import LeaderboardCard from "../Home/LeaderBoardAndCommunity/LeaderboardCard";
 
 const Community = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -66,6 +72,20 @@ const Community = () => {
 
       {/* space theme community components */}
       <SpaceCommunity />
+      {/* <LeaderBoardAndCommunity /> */}
+      <Container className="mb-14">
+        <div className="px-4">
+          {/* Title */}
+        <div className="flex flex-col items-center text-center mb-8 gap-4">
+          <h2 className="text-2xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl">
+            Developers Leaderboard
+          </h2>
+        </div>
+        <LeaderboardCard refProp={ref} isInView={isInView} />
+        </div>
+
+      </Container>
+
 
     </>
   );

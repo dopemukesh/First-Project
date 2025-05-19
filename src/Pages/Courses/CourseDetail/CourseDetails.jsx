@@ -36,14 +36,14 @@ const CourseDetails = () => {
       <div className="px-4">
         {/* Course Header */}
         <div className="mb-8">
-          <div className={`flex items-center gap-1 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-md w-fit px-2 py-1 mb-4 sticky top-16`}>
+          <div className={`flex items-center gap-1 text-sm bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border dark:border-gray-800 rounded-lg w-fit px-3 py-2 mb-4 sticky top-16`}>
             <NavLink
               to={-1}
-              className='whitespace-nowrap flex items-center gap-1'
+              className='whitespace-nowrap flex items-center gap-1 text-gray-400'
             >
               Back <IoIosArrowForward />
             </NavLink>
-            <p className='text-teal-600 dark:text-teal-500'>{courseData.category}</p>
+            <p className=''>{courseData.category}</p>
           </div>
           <h1 className="text-4xl font-semibold mb-4 max-w-2xl">{courseData.subtitle}</h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl">{courseData.description}</p>
@@ -92,7 +92,7 @@ const CourseDetails = () => {
               <h3 className="text-xl font-medium mb-4">Explore related topics</h3>
               <div className="flex flex-wrap gap-2">
                 {courseData.topics.split(",").map((tag, index) => (
-                  <span key={index} className="bg-gray-200 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-4 py-2 rounded-full text-sm">
+                  <span key={index} className="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-4 py-2 rounded-full text-xs">
                     {tag}
                   </span>
                 ))}
@@ -120,10 +120,10 @@ const CourseDetails = () => {
                 <div>
                   <h4 className="text-lg font-semibold">{courseData.instructor?.name}</h4>
                   <p className="text-gray-600 dark:text-gray-400">{courseData.instructor?.title}</p>
-                  <div className="flex flex-wrap gap-4 mt-2">
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-2'>⭐ {averageRating}</span>
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-2'>👥 {courseData.instructor?.students}</span>
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-2'>📚 {courseData.instructor?.courses}</span>
+                  <div className="flex flex-wrap gap-4 mt-2 text-sm">
+                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>⭐ {averageRating}</span>
+                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>👥 {courseData.instructor?.students}</span>
+                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>📚 {courseData.instructor?.courses}</span>
                   </div>
                 </div>
               </div>

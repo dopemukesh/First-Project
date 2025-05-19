@@ -21,7 +21,8 @@ const Home = () => {
       <PWAInstallBanner />
       <SocialStats />
       <FeaturedPrograms />
-      <LeaderBoardAndCommunity refProp={ref} isInView={isInView} />
+      <LeaderBoardAndCommunity />
+      {/* <Podcasts refProp={ref} isInView={isInView} /> */}
       <RealWorldChallenge refProp={ref} isInView={isInView} />
     </>
   );

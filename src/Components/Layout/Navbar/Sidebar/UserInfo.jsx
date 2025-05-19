@@ -52,7 +52,7 @@ const UserInfo = ({ onCloseSidebar }) => {
     return (
       <div className="flex items-center justify-between p-2 border border-gray-200 dark:border-gray-800 rounded-2xl">
         <Button variant="secondary" size="sm" onClick={handleLoginClick}>
-          Login to Access
+          Login to Access More
         </Button>
         <ThemeChange className="h-10 w-10" />
       </div>

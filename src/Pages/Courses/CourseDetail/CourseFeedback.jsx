@@ -17,6 +17,8 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
 
     const bgBorder = "bg-gray-100 dark:bg-gray-900 border dark:border-gray-800";
 
+    const user = localStorage.getItem("currentUser.isLoggedIn")
+
     const handleSaveEdit = () => {
         setReviews(prev =>
             prev.map(review =>
@@ -104,7 +106,7 @@ const CourseFeedback = ({ reviews, setReviews, averageRating }) => {
                             onClick={handleAddReview}
                             disabled={!isLoggedIn && !userData.name}
                         >
-                            Submit Review
+                            {!isLoggedIn ? 'Please Login' : 'Submit Review'}
                         </Button>
                     </div>
                 </div>
