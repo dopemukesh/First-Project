@@ -8,6 +8,8 @@ import ClassCard from "./ClassCard";
 import Container from "../../../Components/Common/Container/Container";
 import TypeWriterText from '../../../Components/Common/TypeWriter/TypeWriterText';
 
+import shauryaImage from '../../../assets/images/shauryaImage.png';
+
 const LiveClasses = () => {
     return (
         <Container className="py-14 px-4">
@@ -45,7 +47,7 @@ const LiveClasses = () => {
 
                 <div className="flex items-end justify-center">
                     <img 
-                    src="./src/assets/images/shauryaImage.png" 
+                    src={shauryaImage} 
                     alt="image" 
                     className="w-full md:h-80" />
                     {/* <p>Image</p> */}
