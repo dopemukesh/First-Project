@@ -29,7 +29,7 @@ const ProjectDetails = () => {
       <ScrollToTop />
       <Container>
         <div className="px-4 py-8">
-          <div className="max-w-3xl mx-auto">
+          <div className="mx-auto">
             <div className="mb-6">
               <Button
                 onClick={() => navigate(-1)}

@@ -3,6 +3,7 @@
         {
             "id": 1,
             "title": "E-Commerce Website",
+            "category": "Web Development",
             "shortDescription": "A full-featured online shopping platform",
             "description": "A modern e-commerce platform built with React and Node.js. This project includes features like user authentication, product catalog, shopping cart, and secure payment integration.",
             "image": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -29,6 +30,7 @@
         {
             "id": 2,
             "title": "Task Management App",
+            "category": "DSA",
             "shortDescription": "A collaborative task management solution",
             "description": "A comprehensive task management application that helps teams organize and track their projects efficiently. Features real-time updates and team collaboration tools.",
             "image": "https://plus.unsplash.com/premium_photo-1700830452741-3640bed87eef?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -51,6 +53,7 @@
         {
             "id": 3,
             "title": "Social Media Dashboard",
+            "category": "React",
             "shortDescription": "Analytics platform for social media",
             "description": "A powerful dashboard that aggregates and analyzes social media metrics across multiple platforms. Provides detailed insights and reporting capabilities.",
             "image": "https://plus.unsplash.com/premium_photo-1701981233795-2d1ecfe10419?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDMzfHx8ZW58MHx8fHx8",

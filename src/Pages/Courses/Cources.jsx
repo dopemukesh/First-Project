@@ -22,14 +22,10 @@ const Cources = () => {
 
   return (
     <>
-      {/* <Container className="py-14 px-4 w-full"> */}
       <LiveClasses />
-      <SkillsSection />
+      <SkillsSection topHeader="All the skills you need in one place" />
       <SubscriptionSection />
       <Testimonial />
-      {/* <CourseDetails /> */}
-      <RealWorldChallenge refProp={ref} isInView={isInView} />
-      {/* </Container> */}
     </>
   );
 };

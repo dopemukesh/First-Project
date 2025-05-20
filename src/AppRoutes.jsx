@@ -64,6 +64,9 @@ export const AppRoutes = () => (
 
       {/* Catch-all */}
       <Route path="*" element={<Error404 />} />
+
+      {/* Promotion */}
+      
     </Route>
 
     {/* Auth layout (without header & footer) */}

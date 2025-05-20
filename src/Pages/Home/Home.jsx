@@ -2,18 +2,14 @@
 // Designed and developed by:
 // - Mukesh Yadav
 
-import React, { useRef } from "react";
+import React from "react";
 import SocialStats from "./SocialStats/SocialStats";
 import HeroUI from "./Hero/HeroUI";
 import LeaderBoardAndCommunity from "./LeaderBoardAndCommunity/LeaderBoardAndCommunity";
-import { useInView } from "motion/react";
-import RealWorldChallenge from "./Promotion/RealWorldChallenge";
 import FeaturedPrograms from "./Featured Programs/FeaturedPrograms";
 import PWAInstallBanner from "../../Components/Common/PWAInstaller/PWAInstallBanner";
 
 const Home = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <>
@@ -22,8 +18,6 @@ const Home = () => {
       <SocialStats />
       <FeaturedPrograms />
       <LeaderBoardAndCommunity />
-      {/* <Podcasts refProp={ref} isInView={isInView} /> */}
-      <RealWorldChallenge refProp={ref} isInView={isInView} />
     </>
   );
 };

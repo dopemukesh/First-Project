@@ -1,117 +1,122 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Star } from "lucide-react";
+
 import courses from "../../../api/Courses.json";
 import categories from "../../../api/Categories.json";
-import { Button } from "../../../Components/Common/Button/Button";
+import projectData from "../../../api/ProjectDetails.json";
 
-const SkillsSection = () => {
-    const [selectedCategory, setSelectedCategory] = useState("Web Development");
+import { DefaultCard, ProjectCard } from "./Cards/CourseCard";
 
-    // colors array for cards background colors
-    const bgColors = ['bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-pink-200', 'bg-teal-200', 'bg-red-200'];
+const SkillsSection = ({ cardType = "default", topHeader = "" }) => {
+    const isProjectCard = cardType === "projectCard";
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    const bgColors = [
+        "bg-blue-200",
+        "bg-green-200",
+        "bg-yellow-200",
+        "bg-pink-200",
+        "bg-teal-200",
+        "bg-red-200",
+    ];
+
     const getCardColor = (index) => {
-        if (index < bgColors.length || index % bgColors.length === 0) {
-            // return bgColors[index];
-            return bgColors[Math.floor(Math.random() * bgColors.length)];
-        } else {
-            return bgColors[Math.floor(Math.random() * bgColors.length)];
-        }
+        return bgColors[Math.floor(Math.random() * bgColors.length)];
     };
 
+    // For dynamic categories and data
+    const allProjects = projectData.projects || [];
+    const allCourses = courses || [];
 
-    // Filter courses based on selected category
-    const filteredCourses =
+    const activeData = isProjectCard ? allProjects : allCourses;
+
+    // Dynamically generate unique categories based on data
+    // const dynamicCategories = [
+    //     "All",
+    //     ...Array.from(
+    //         new Set(
+    //             activeData
+    //                 .map((item) => item.category)
+    //                 .filter((cat) => cat && typeof cat === "string")
+    //         )
+    //     ),
+    // ];
+
+    // Use Categories.json for category list
+    // const dynamicCategories = ["All", ...categories];
+
+    // Categories based on card type
+    const dynamicCategories = isProjectCard
+        ? [
+              "All",
+              ...new Set(
+                  allProjects
+                      .map((p) => p.category)
+                      .filter((cat) => cat && typeof cat === "string")
+              ),
+          ]
+        : ["All", ...categories];
+
+    // Filtered data
+    const filteredItems =
         selectedCategory === "All"
-            ? courses
-            : courses.filter((course) => course.category === selectedCategory);
+            ? activeData
+            : activeData.filter((item) => item.category === selectedCategory);
 
     return (
         <section className="bg-gray-100 dark:bg-gray-900/30 py-16 px-4 md:px-8 overflow-hidden">
             {/* Title */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
-                All the skills you need in one place
-            </h2>
+            {topHeader &&
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
+                    {topHeader}
+                </h2>
+            }
 
             {/* Categories */}
-            <div className="w-full flex justify-center">
-                <div className="flex border dark:border-gray-800 rounded-full p-1 flex-nowrap overflow-x-auto max-w-5xl justify-start gap-4 mb-12 px-1 scrollbar-hide">
-                    <li
-                        onClick={() => setSelectedCategory("All")}
-                        className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === "All"
-                            ? "bg-teal-500 text-gray-900 border-teal-600 shadow-md"
-                            : "bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
-                            }`}
-                    >
-                        All
-                    </li>
-                    {categories.map((cat, index) => (
+            <div className="w-full flex justify-center z-50">
+                <ul className="flex bg-white dark:bg-gray-900 border dark:border-gray-800 rounded-full p-1.5 flex-nowrap overflow-x-auto max-w-5xl justify-start gap-4 mb-12 scrollbar-hide">
+                    {dynamicCategories.map((cat, index) => (
                         <li
                             key={index}
                             onClick={() => setSelectedCategory(cat)}
-                            className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === cat
+                            className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition duration-200 ${selectedCategory === cat
                                 ? "bg-teal-500 text-gray-900 border-teal-600 shadow-md"
-                                : "bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100"
+                                : "bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-900 dark:text-gray-100"
                                 }`}
                         >
                             {cat}
                         </li>
                     ))}
-                </div>
+                </ul>
             </div>
 
             {/* Cards */}
-            {filteredCourses.length > 0 ? (
+            {filteredItems.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {filteredCourses.map((course, index) => (
-                        <div
-                            key={index}
-                            className={`rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300`}
-                        >
-                            <div className="flex items-center justify-between gap-1">
-                                <div>
-                                    {/* Title */}
-                                    <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-
-                                    {/* Instructor */}
-                                    <p className="text-sm font-medium">{course.instructor.name}</p>
-
-                                    {/* Rating */}
-                                    <div className="flex gap-1 mt-1 mb-4">
-                                        {[...Array(course.rating)].map((_, i) => (
-                                            <Star key={i} size={16} className="fill-amber-500 stroke-amber-400" />
-                                        ))}
-                                    </div>
+                    {filteredItems.map((item, index) => {
+                        if (isProjectCard) {
+                            return (
+                                <div key={item.id || index}>
+                                    {/* Ensure project has ID and all required props */}
+                                    <ProjectCard {...item} />
                                 </div>
-                                {/* <div className="flex items-center justify-center bg-red-500 min-w-20 h-20">
-                                    <p>Here image</p>
-                                </div> */}
-                            </div>
-
-                            {/* Labels */}
-                            <div className="flex flex-wrap gap-2 mb-4">
-                                <span className="bg-white text-xs px-3 py-1 rounded-full">
-                                    {course.level}
-                                </span>
-                                <span className="bg-white text-xs px-3 py-1 rounded-full">
-                                    {course.type}
-                                </span>
-                            </div>
-
-                            {/* Enroll Button */}
-                            <Button
-                                to={`details/${course.id}`}
-                                variant="info"
-                                size="sm"
-                                className="w-fit">
-                                View Details
-                            </Button>
-                        </div>
-                    ))}
+                            );
+                        } else {
+                            return (
+                                <DefaultCard
+                                    key={index}
+                                    course={item}
+                                    index={index}
+                                    getCardColor={getCardColor}
+                                />
+                            );
+                        }
+                    })}
                 </div>
             ) : (
                 <p className="text-center text-gray-600 dark:text-gray-300 mt-10 text-lg">
-                    No courses found for <strong>{selectedCategory}</strong>.
+                    No {isProjectCard ? "projects" : "courses"} found for{" "}
+                    <strong>{selectedCategory}</strong>.
                 </p>
             )}
         </section>
