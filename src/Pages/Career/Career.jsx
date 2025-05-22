@@ -9,7 +9,7 @@ import Categories from "./Categories/Categories";
 import RecommendedJobs from "./Recommend/RecommendedJobs";
 import HeroStats from "./Hero/HeroStats";
 import ShowJobs from "./Jobs/ShowJobs";
-import RealWorldChallenge from "../Home/Promotion/RealWorldChallenge"; // Unused currently
+import { getRoleFromToken } from "../../utils/GetUserRoleFromToken";
 
 export default function Careers() {
   // States for filters and results
@@ -38,20 +38,7 @@ export default function Careers() {
     console.log("Searching for:", { skill, experience, location });
   };
 
-  // Get user role from JWT token in localStorage
-  const getRoleFromToken = (token) => {
-    if (!token) return null;
-
-    try {
-      const base64Payload = token.split(".")[1];
-      const decodedPayload = JSON.parse(atob(base64Payload));
-      return decodedPayload.role || null;
-    } catch (error) {
-      console.error("Invalid token:", error);
-      return null;
-    }
-  };
-
+  // Checking the user role from token
   const token = localStorage.getItem("currentUser.token");
   const role = getRoleFromToken(token);
 

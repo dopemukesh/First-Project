@@ -18,7 +18,7 @@ const UserInfo = ({ onCloseSidebar }) => {
         name: user.name,
         email: user.email,
         role: user.role,
-        avatar: user.picture || "https://placehold.co/150x150",
+        avatar: user.profilePicture || "https://placehold.co/150x150",
       });
     }
   }, []);

@@ -1,3 +1,4 @@
+import { getRoleFromToken } from "../../utils/GetUserRoleFromToken";
 import FetchAPI from "../fetchAPI/FetchAPI";
 
 // Role-based endpoints
@@ -25,6 +26,7 @@ const getDeveloperPayload = (formData) => ({
     github: formData.github || ""
 });
 
+// User registration here
 export const registerUser = async (formData) => {
     try {
         const normalizedRole = formData.role.toLowerCase();
@@ -50,6 +52,7 @@ export const registerUser = async (formData) => {
     }
 };
 
+// User login here
 export const loginUser = async (formData) => {
     try {
         const { email, password } = formData;
@@ -71,6 +74,45 @@ export const loginUser = async (formData) => {
         return response;
     } catch (error) {
         console.error("Login error:", error);
+        throw error;
+    }
+};
+
+// User profile fetching
+export const getUserProfile = async () => {
+    try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            throw new Error("Token not found. Please login again.");
+        }
+
+        const role = getRoleFromToken(token);
+        if (!role) {
+            throw new Error("User role not found in token.");
+        }
+
+        const PROFILE_ENDPOINTS = {
+            student: "v1/students/myprofile",
+            developer: "v1/developers/myprofile",
+            recruiter: "v1/recruiters/myprofile",
+            teacher: "v1/teachers/myprofile"
+        };
+
+        const endpoint = PROFILE_ENDPOINTS[role.toLowerCase()];
+        if (!endpoint) {
+            throw new Error(`No profile endpoint found for role "${role}"`);
+        }
+
+        const response = await FetchAPI(endpoint, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        return response;
+    } catch (error) {
+        console.error("Profile fetch error:", error);
         throw error;
     }
 };

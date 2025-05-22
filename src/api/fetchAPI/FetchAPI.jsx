@@ -1,11 +1,14 @@
 // src/utils/FetchAPI.jsx
 import { BASE_URL } from "../../config.js";
 
-const FetchAPI = async (endpoint, { method = 'POST', payload = null }) => {
+const FetchAPI = async (endpoint, { method = 'POST', payload = null } = {}) => {
     try {
+        const token = localStorage.getItem("token");
+
         const headers = {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            ...(token && { Authorization: `Bearer ${token}` }) // ✅ Add token to headers
         };
 
         const config = {

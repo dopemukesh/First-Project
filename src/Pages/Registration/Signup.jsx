@@ -29,7 +29,23 @@ const Signup = () => {
     general: "",
   });
 
-  const roles = ["Student", "Developer", "Recruiter"];
+  const roles = ["Student"]; // only students can register for now
+  // const roles = ["Student", "Developer", "Recruiter"];
+
+  const matchedRoles = roles.filter(role => roles.includes(role));
+
+  // const getRoleColor = (role) => {
+  //   switch (role) {
+  //     case 'Student':
+  //       return 'text-amber-500';
+  //     case 'Recruiter':
+  //       return 'text-blue-500';
+  //     case 'Admin':
+  //       return 'text-red-500';
+  //     default:
+  //       return 'text-gray-500';
+  //   }
+  // };
 
   const inputClass =
     "w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none";
@@ -46,7 +62,7 @@ const Signup = () => {
     setErrors({ ...errors, [name]: "" });
   };
 
-
+  // handle submit for backend
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -65,14 +81,21 @@ const Signup = () => {
       // API call
       const response = await registerUser(formData);
 
+      console.log(response);
+
       // Handle successful response
-      if (response?.result?.token ) {
-        localStorage.setItem("token", response.result.token);
-        localStorage.setItem("user", JSON.stringify({
-          name: response.result.user?.name,
-          email: response.result.user?.email,
-          role: response.result.user?.role
-        }));
+      if (response.success) {
+
+        // if (response?.result?.token ) {
+        //   localStorage.setItem("token", response.result.token);
+
+        // localStorage.setItem("user", JSON.stringify({
+        //   name: response.result.user?.name,
+        //   email: response.result.user?.email,
+        //   role: response.result.user?.role
+        // }));
+
+
         navigate("/login");
         return;
       }
@@ -102,15 +125,28 @@ const Signup = () => {
     <Container className="py-14">
       <div className="flex justify-center items-center p-4">
         <div className={`max-w-xl overflow-y-scroll w-full ${bgGrads}`}>
-          <div className="flex flex-col gap-4 px-4 py-8 backdrop-blur rounded-t-2xl">
+          <div className="flex items-center gap-4 px-4 py-8 backdrop-blur rounded-t-2xl">
             <div className="w-fit"><Logo /></div>
             <div>
               <h2 className="font-semibold">Create Account</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
                 Join our community and start your journey
               </p>
             </div>
           </div>
+
+          {/* Who can register for now */}
+          {matchedRoles.length > 0 && (
+            <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+              Only{' '}
+              {matchedRoles.map((role, i) => (
+                <span key={role} className={`text-amber-500 font-semibold animate-pulse`}>
+                  {role}s
+                  {i < matchedRoles.length - 1 ? ' and ' : ''}
+                </span>
+              ))} can register for now
+            </p>
+          )}
 
           <FormDataFields
             formData={formData}

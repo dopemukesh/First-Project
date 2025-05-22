@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 // import RegistrationData from '../../api/RegistrationData'
 import GoogleSignIn from "./GoogleSignIn";
 import validateLoginForm from "../../api/utils/validateLoginForm";
-import { loginUser } from "../../api/services/authService";
+import { getUserProfile, loginUser } from "../../api/services/authService";
 
 // for app install
 import usePWAInstall from '../../hooks/usePWAInstall';
+import { getRoleFromToken } from "../../utils/GetUserRoleFromToken";
 
 const Login = () => {
   const { canInstall, promptInstall } = usePWAInstall();
@@ -39,42 +40,58 @@ const Login = () => {
     e.preventDefault();
     setErrors({ email: "", password: "" });
 
-    const validationErrors = validateLoginForm(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
     try {
-      // const payload = {
-      //   email: formData.email.trim().toLowerCase(),
-      //   password: formData.password,
-      // };
+      const validationErrors = validateLoginForm(formData);
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        return;
+      }
 
+      // 1. Login user
       const response = await loginUser(formData);
-
       console.log("Login response:", response);
 
       if (response.token) {
-        const currentUser = response.user;
+        // 2. Save token
+        const token = response.token;
+        localStorage.setItem("token", token);
 
-        localStorage.setItem("token", response.token);
-        // localStorage.setItem("currentUser", JSON.stringify({
-        //   currentUser: currentUser,
-        // }));
+        // 3. Get user profile (this internally decodes the token and hits the correct endpoint)
+        const profile = await getUserProfile();
+        console.log("User profile:", profile);
 
+        // Extract the role from token
+        const role = getRoleFromToken(token);
+
+        // Extract the specific user data using the role (e.g., profile.student or profile.recruiter)
+        const userData = profile[role];
+
+        // 4. Save user to localStorage only if "Remember Me" is checked
         if (formData.remember) {
           localStorage.setItem("currentUser", JSON.stringify({
-            email: currentUser.email,
-            name: currentUser.name,
+            ...userData,
+            role: role,
             isLoggedIn: true,
-            role: currentUser.role || 'undefined',
-            picture: currentUser.profilePicture,
           }));
         }
 
-        localStorage.setItem('showInstall', 'true');
-        window.location.href = "/"; // Redirect to the desired page after successful login
+
+        localStorage.setItem("showInstall", "true");
+
+        // 5. Redirect based on role
+        switch (profile.role) {
+          case "student":
+            window.location.href = "/";
+            break;
+          // case "developer":
+          //   window.location.href = "/developer/dashboard";
+          //   break;
+          // case "recruiter":
+          //   window.location.href = "/recruiter/dashboard";
+          //   break;
+          default:
+            window.location.href = "/";
+        }
 
       } else {
         throw new Error("Invalid login credentials");
@@ -86,9 +103,12 @@ const Login = () => {
         setErrors(prev => ({ ...prev, email: errMsg }));
       } else if (errMsg.toLowerCase().includes("password")) {
         setErrors(prev => ({ ...prev, password: errMsg }));
+      } else {
+        alert(errMsg);
       }
     }
   };
+
   // backend connection end 👆🏻
 
 
@@ -100,7 +120,7 @@ const Login = () => {
   }, [canInstall, promptInstall]);
 
 
-  
+
   return (
     <Container className="py-14">
       <div className="flex justify-center items-center p-4">
