@@ -74,6 +74,7 @@ export const AppRoutes = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/superAdmin" element={<SuperAdminPanel />} />
     </Route>
 
     {/* Protected Routes (optional: you can wrap in another layout if needed) */}

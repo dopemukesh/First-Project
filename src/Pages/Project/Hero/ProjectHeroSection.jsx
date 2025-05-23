@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../../../Components/Common/Container/Container';
 import { Button, Button01 } from '../../../Components/Common/Button/Button';
-import { NavLink } from 'react-router-dom';
 
 const ProjectHeroSection = () => {
   return (
@@ -26,8 +25,8 @@ const ProjectHeroSection = () => {
           {/* Image Section */}
           <div className='absolute right-0 -z-10 top-14'>
             <img
-              className="h-[456px] object-cover rounded-md opacity-70"
-              src="./react.png"
+              className="h-[456px] object-cover rounded-md opacity-30 md:opacity-100"
+              src="./rocketImage.png"
               alt="Project" />
           </div>
           <span className='bg-teal-400 h-[556px] lg:h-[956px] w-10 blur-[126px] md:-rotate-[30deg] -rotate-[20deg] absolute left-[50%] z-[999] -top-12'></span>

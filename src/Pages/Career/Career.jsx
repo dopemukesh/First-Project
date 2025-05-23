@@ -39,7 +39,7 @@ export default function Careers() {
   };
 
   // Checking the user role from token
-  const token = localStorage.getItem("currentUser.token");
+  const token = localStorage.getItem("token");
   const role = getRoleFromToken(token);
 
   const bgGrads =

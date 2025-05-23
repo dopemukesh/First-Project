@@ -1,7 +1,7 @@
 {
   "name": "cwt-website",
   "private": true,
-  "version": "0.1.01",
+  "version": "0.1.10",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -27,6 +27,7 @@
     "react-router-dom": "^7.0.2",
     "react-select": "^5.10.1",
     "react-slick": "^0.30.3",
+    "react-toastify": "^11.0.5",
     "scrolltrigger": "^1.0.1",
     "slick-carousel": "^1.8.1"
   },

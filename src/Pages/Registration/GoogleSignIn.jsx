@@ -3,17 +3,19 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../../Components/Common/Button/Button';
 
-const GoogleSignIn = () => {
+const GoogleSignIn = ({ labelText }) => {
+    // 🔄 UI State for loading and errors
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-
+    // 🚀 Triggered when user clicks the "Sign in with Google" button
     const login = useGoogleLogin({
+        // ✅ Success Callback after OAuth token is received
         onSuccess: async (response) => {
             setLoading(true);
             setError(null);
             try {
-                // Step 1: Get user info from Google
+                // 📡 Step 1: Fetch user profile from Google
                 const { data: userInfo } = await axios.get(
                     'https://www.googleapis.com/oauth2/v3/userinfo',
                     {
@@ -23,7 +25,7 @@ const GoogleSignIn = () => {
                     }
                 );
 
-                // Step 2: Store user info in localStorage
+                // 💾 Step 2: Store essential user data in localStorage
                 localStorage.setItem(
                     'currentUser',
                     JSON.stringify({
@@ -35,17 +37,20 @@ const GoogleSignIn = () => {
                     })
                 );
 
-                // Step 3: Redirect user
+                // 🚚 Step 3: Redirect to home after successful login
                 localStorage.setItem('showInstall', 'true');
-                window.location.href = '/'; // Redirect after login
+                window.location.href = '/';
 
             } catch (err) {
+                // ❌ Handle API failure
                 console.error('Login failed:', err);
                 setError('Failed to login with Google.');
             } finally {
                 setLoading(false);
             }
         },
+
+        // ❌ OAuth Error Callback
         onError: (err) => {
             console.error('Google login error:', err);
             setError('Google login failed.');
@@ -53,9 +58,9 @@ const GoogleSignIn = () => {
         },
     });
 
-    
     return (
         <div className="google-signin-container">
+            {/* 🔘 Sign in button using Google */}
             <Button
                 onClick={() => login()}
                 variant="outline"
@@ -64,8 +69,10 @@ const GoogleSignIn = () => {
                 disabled={loading}
             >
                 <GoogleIcon />
-                {loading ? 'Signing in...' : 'Sign in with Google'}
+                {loading ? 'Signing in...' : (<span>{labelText}</span>)}
             </Button>
+
+            {/* 🛑 Error Message if login fails */}
             {error && <div className="error-message text-red-500 mt-2">{error}</div>}
         </div>
     );
@@ -73,7 +80,7 @@ const GoogleSignIn = () => {
 
 export default GoogleSignIn;
 
-// Google Icon Component
+// 🔷 Google Logo SVG used inside the button
 const GoogleIcon = () => {
     return (
         <svg

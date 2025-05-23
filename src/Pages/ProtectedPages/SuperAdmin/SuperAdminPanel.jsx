@@ -1,18 +1,83 @@
-import React from 'react'
+import React, { useState } from 'react';
+import UserForm from './UserForm';
+import UserTable from './UserTable';
+import AllUsers from './Users/AllUsers';
+import Container from '../../../Components/Common/Container/Container';
+import EditUserModal from './EditUser/EditUserModal';
+import ThemeChange from '../../../Components/Layout/Navbar/ThemeChange';
+import { NavLink } from 'react-router-dom';
 
 const SuperAdminPanel = () => {
-  return (
-      <>
-          <div className='admin-dashboard bg-emerald-500 h-screen flex flex-col justify-center items-center'>
-              <div className='text-center py-4 px-6 bg-blue-500 text-gray-50  shadow-md rounded-lg'>
-                  <img src="https://via.placeholder.com/150" alt="Admin Logo" className='w-24 h-24 mb-4' />
-                  <h1 className='text-2xl font-semibold'>Welcome to</h1>
-                  <h1 className='text-4xl font-bold'>Super Admin Panel</h1>
-                  <p className='mt-2'>Manage your application settings and Admin, Teachers from here.</p>
-              </div>
-          </div>
-    </>
-  )
-}
+  const [users, setUsers] = useState([]);
+  const [editingUser, setEditingUser] = useState(null);
 
-export default SuperAdminPanel
+  const addUser = (newUser) => {
+    const userWithId = { ...newUser, id: Date.now(), active: true };
+    setUsers([...users, userWithId]);
+  };
+
+
+  const handleToggleStatus = (id) => {
+    setUsers(prev =>
+      prev.map(user =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
+
+
+  const handleEditUser = (user) => {
+    setEditingUser(user);
+    console.log("Editing user:", user);
+
+  };
+
+
+  const handleDeleteUser = (id) => {
+    setUsers(prev => prev.filter(user => user.id !== id));
+  };
+
+
+
+  return (
+    <Container>
+      <div className="min-h-screen">
+        <div className='flex justify-between items-center sticky top-0 py-6 px-4 backdrop-blur-lg'>
+          <h1 className="font-bold">SuperAdmin <span className='font-extralight'>Dashboard</span></h1>
+          <div className='flex items-center gap-4'>
+            <NavLink to={'/'}>Home</NavLink>
+            <ThemeChange />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 p-4">
+          <UserForm onAddUser={addUser} />
+          <UserTable
+            users={users}
+            onToggleStatus={handleToggleStatus}
+            onEdit={handleEditUser}
+            onDelete={handleDeleteUser}
+          />
+          <AllUsers />
+        </div>
+
+        {/* ✅ Render Modal properly here */}
+        {editingUser && (
+          <EditUserModal
+            user={editingUser}
+            onClose={() => setEditingUser(null)}
+            onSave={(updatedUser) => {
+              setUsers(prev =>
+                prev.map(u => u.id === updatedUser.id ? { ...u, ...updatedUser } : u)
+              );
+              setEditingUser(null); // close modal
+            }}
+
+          />
+        )}
+      </div>
+    </Container>
+  );
+};
+
+export default SuperAdminPanel;

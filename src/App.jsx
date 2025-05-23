@@ -3,10 +3,12 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AppRoutes } from "./AppRoutes";
 import ScrollToTop from "./ScrollToTop";
 import Loader from "./Loader";
+import ToastProvider from "./Components/Common/Toast/ToastProvider";
 
 const App = () => {
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <ToastProvider />
       <ScrollToTop />
       <Loader />
       <Suspense fallback={<div>Loading...</div>}>

@@ -18,12 +18,17 @@ const FormDataFields = ({
 }) => {
   return (
     <>
-      <form onSubmit={handleSubmit} className="p-4 space-y-6">
+      {/* ✅ FORM: Sign-up input fields */}
+      <form onSubmit={handleSubmit} autoComplete="off" className="p-4 space-y-6">
+
+        {/* 🔴 Error display for general form submission errors */}
         {errors.general && (
           <div className="p-3 mb-4 text-sm text-red-500 bg-red-50 dark:bg-red-900/10 rounded-lg">
             {errors.general}
           </div>
         )}
+
+        {/* 🔡 Full Name Field */}
         <div>
           <label htmlFor="fullName" className={labelTexts}>Full Name</label>
           <input
@@ -38,6 +43,7 @@ const FormDataFields = ({
           {errors.fullName && <p className="text-sm text-red-500">{errors.fullName}</p>}
         </div>
 
+        {/* 📧 Email Field */}
         <div>
           <label htmlFor="email" className={labelTexts}>Email</label>
           <input
@@ -52,6 +58,7 @@ const FormDataFields = ({
           {errors.email && <p className="mt-2 text-sm text-red-500">{errors.email}</p>}
         </div>
 
+        {/* 🔒 Password Field */}
         <div>
           <label htmlFor="password" className={labelTexts}>Password</label>
           <input
@@ -66,6 +73,7 @@ const FormDataFields = ({
           {errors.password && <p className="mt-2 text-sm text-red-500">{errors.password}</p>}
         </div>
 
+        {/* ☎️ Phone Number Field */}
         <div>
           <label htmlFor="phone" className={labelTexts}>Phone Number</label>
           <input
@@ -81,6 +89,7 @@ const FormDataFields = ({
           {errors.phone && <p className="mt-2 text-sm text-red-500">{errors.phone}</p>}
         </div>
 
+        {/* 👥 Role Selection via Dropdown */}
         <div>
           <label className={labelTexts}>Select Role</label>
           <Dropdown
@@ -95,8 +104,10 @@ const FormDataFields = ({
           />
         </div>
 
+        {/* 🔁 Conditional Fields: Show only when role is 'Developer' */}
         {formData.role.toLowerCase() === 'developer' && (
           <>
+            {/* 💼 Developer Experience Field */}
             <div>
               <label htmlFor="experience" className={labelTexts}>Experience</label>
               <input
@@ -110,6 +121,7 @@ const FormDataFields = ({
               />
             </div>
 
+            {/* 💡 Developer Interest Field */}
             <div>
               <label htmlFor="fieldOfInterest" className={labelTexts}>Field of Interest</label>
               <input
@@ -123,6 +135,7 @@ const FormDataFields = ({
               />
             </div>
 
+            {/* 🔗 LinkedIn URL Field */}
             <div>
               <label htmlFor="linkedin" className={labelTexts}>LinkedIn Profile</label>
               <input
@@ -136,6 +149,7 @@ const FormDataFields = ({
               />
             </div>
 
+            {/* 🔗 GitHub URL Field */}
             <div>
               <label htmlFor="github" className={labelTexts}>GitHub Profile</label>
               <input
@@ -151,7 +165,9 @@ const FormDataFields = ({
           </>
         )}
 
+        {/* ✅ Footer: Redirect & Submit */}
         <div className="flex items-center justify-between pt-4">
+          {/* 🔁 Redirect to login if already registered */}
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Already have an account?{" "}
             <NavLink
@@ -161,6 +177,8 @@ const FormDataFields = ({
               Sign in
             </NavLink>
           </p>
+
+          {/* ⏳ Button: Register */}
           <Button
             variant="secondary"
             type="submit"
