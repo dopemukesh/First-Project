@@ -2,8 +2,8 @@
 const theme = localStorage.getItem('theme') || 'light';
 const themeColorMeta = document.getElementById('theme-color-meta');
 
-const lightThemeColor = '#f0f9ff'; // adjust as per your light theme
-const darkThemeColor = '#0f172a';  // adjust as per your dark theme
+const lightThemeColor = '#ffffff'; // adjust as per your light theme
+const darkThemeColor = '#030712';  // adjust as per your dark theme
 
 if (themeColorMeta) {
   themeColorMeta.setAttribute('content', theme === 'dark' ? darkThemeColor : lightThemeColor);

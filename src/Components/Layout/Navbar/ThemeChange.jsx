@@ -18,7 +18,7 @@ const ThemeChange = ({ className }) => {
     const updateThemeColor = (isDark) => {
         const themeColorMeta = document.querySelector('meta[name="theme-color"]');
         if (themeColorMeta) {
-            themeColorMeta.setAttribute('content', isDark ? '#0f172a' : '#f0f9ff');
+            themeColorMeta.setAttribute('content', isDark ? '#030712' : '#ffffff');
         }
     };
 
