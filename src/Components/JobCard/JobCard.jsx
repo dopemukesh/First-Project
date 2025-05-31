@@ -4,6 +4,7 @@ import React from 'react';
 import { MapPin } from 'lucide-react';
 import { Button } from '../Common/Button/Button';
 import { BsBookmark, BsBookmarkCheckFill } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Helper function to determine background color based on job type.
@@ -25,6 +26,8 @@ const JobCard = ({
     onBookmark,
     actions // Optional custom actions (e.g., Apply button)
 }) => {
+    const navigate = useNavigate();
+
     // Predefined color palette based on job types
     const cardColors = {
         "Full Time": "bg-blue-300",
@@ -36,6 +39,10 @@ const JobCard = ({
     };
 
     const badgeClasses = "px-2 py-1 bg-white/80 rounded-full text-xs";
+
+    const handleDetails = () => {
+        navigate(`/job-details/${job.id}`);
+    };
 
     return (
         <div className={`${bgColors} text-black min-h-[250px] flex flex-col justify-between p-4 group`}>
@@ -102,7 +109,7 @@ const JobCard = ({
                     {actions ? (
                         actions
                     ) : (
-                        <Button variant="secondary" size="sm">
+                        <Button variant="secondary" size="sm" onClick={handleDetails}>
                             Get Details
                         </Button>
                     )}

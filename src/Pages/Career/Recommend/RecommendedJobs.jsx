@@ -61,7 +61,9 @@ const RecommendedJobs = () => {
             bgColors={bgColors}
             onBookmark={() => handleBookmark(job.id)} // Toggle bookmark
           />
+          
         ))}
+       
       </div>
     </Container>
   );
