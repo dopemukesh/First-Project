@@ -1,9 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {Button} from "../../Components/Common/Button/Button";
+import { NavLink, useNavigate } from "react-router-dom";
+import {Button} from "../../../Components/Common/Button/Button";
 
 
 function ProductCard({ product }) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+      navigate(`/product-details/${product.id}`);
+  };
+
   return (
     <div className="w-96 md:w-80 mt-2 group bg-inherit">
       <div>
@@ -33,11 +39,9 @@ function ProductCard({ product }) {
               {product.description}
             </p>
 
-            <NavLink to="">
-              <Button variant='primary' className="w-full">
-                <p>Buy Now</p>
-              </Button>
-            </NavLink>
+            <Button variant='primary' className="w-full" onClick={handleViewDetails}>
+              <p>View Details</p>
+            </Button>
           </div>
         </div>
       </div>

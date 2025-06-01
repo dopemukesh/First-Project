@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 
 // Custom components & utilities
 import Container from "../../Components/Common/Container/Container";
@@ -12,6 +12,9 @@ import { showErrorToast, showSuccessToast } from "../../Components/Common/Toast/
 import usePWAInstall from '../../hooks/usePWAInstall';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { from, message } = location.state || { from: '/', message: null };
   const { canInstall, promptInstall } = usePWAInstall();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -52,9 +55,9 @@ const Login = () => {
         localStorage.setItem("showInstall", "true");
 
         showSuccessToast("Login successful!");
-
+        
         setTimeout(() => {
-          window.location.href = "/";
+          navigate(from || '/');
         }, 1000);
       } else {
         throw new Error("Invalid login credentials");
@@ -78,6 +81,12 @@ const Login = () => {
   useEffect(() => {
     if (canInstall) promptInstall();
   }, [canInstall, promptInstall]);
+
+  useEffect(() => {
+    if (message) {
+      showErrorToast(message);
+    }
+  }, [message]);
 
   return (
     <Container className="py-14">

@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Full-Stack Web Development Bootcamp",
+    "description": "Learn to build modern web applications using HTML, CSS, JavaScript, React, and Node.js.",
+    "type": "training",
+    "platform": "Udemy",
+    "link": "https://www.udemy.com/course/the-complete-web-development-bootcamp/",
+    "image": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 19.99,
+    "duration": "55 hours",
+    "level": "Beginner",
+    "rating": 4.8,
+    "reviews": 120000,
+    "language": "English",
+    "certificate": true,
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "MongoDB"],
+    "instructor": {
+      "name": "Angela Yu",
+      "image": "https://avatars.githubusercontent.com/u/1?v=4",
+      "company": "App Brewery"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Python for Data Science and Machine Learning",
+    "description": "Master Python and its applications in data science, including pandas, NumPy, and scikit-learn.",
+    "type": "training",
+    "platform": "Coursera",
+    "link": "https://www.coursera.org/specializations/data-science-python",
+    "image": "https://images.pexels.com/photos/669622/pexels-photo-669622.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 49.99,
+    "duration": "4 months (at 4 hrs/week)",
+    "level": "Intermediate",
+    "rating": 4.7,
+    "reviews": 90000,
+    "language": "English",
+    "certificate": true,
+    "skills": ["Python", "Pandas", "NumPy", "Matplotlib", "Machine Learning", "scikit-learn"],
+    "instructor": {
+      "name": "Andrew Ng",
+      "image": "https://avatars.githubusercontent.com/u/2?v=4",
+      "company": "Stanford University"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Advanced JavaScript Concepts",
+    "description": "Dive deeper into closures, prototypal inheritance, and other advanced JavaScript topics.",
+    "type": "training",
+    "platform": "Pluralsight",
+    "link": "https://www.pluralsight.com/courses/javascript-advanced",
+    "image": "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 29.99,
+    "duration": "12 hours",
+    "level": "Advanced",
+    "rating": 4.6,
+    "reviews": 25000,
+    "language": "English",
+    "certificate": true,
+    "skills": ["Closures", "Scope", "Prototypes", "Asynchronous JavaScript", "ES6+"],
+    "instructor": {
+      "name": "Will Sentance",
+      "image": "https://avatars.githubusercontent.com/u/3?v=4",
+      "company": "Codesmith"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Git and GitHub Mastery",
+    "description": "A comprehensive course on version control with Git and using GitHub effectively.",
+    "type": "training",
+    "platform": "LinkedIn Learning",
+    "link": "https://www.linkedin.com/learning/git-essential-training/",
+    "image": "https://images.pexels.com/photos/1181253/pexels-photo-1181253.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 24.99,
+    "duration": "6 hours",
+    "level": "Beginner",
+    "rating": 4.5,
+    "reviews": 30000,
+    "language": "English",
+    "certificate": true,
+    "skills": ["Git Basics", "Branching", "Merging", "GitHub Workflow", "CLI Git"],
+    "instructor": {
+      "name": "Kevin Skoglund",
+      "image": "https://avatars.githubusercontent.com/u/4?v=4",
+      "company": "LinkedIn Learning"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Top 10 VS Code Tips and Tricks",
+    "description": "A quick video showcasing the best tips and tricks for improving productivity with VS Code.",
+    "type": "video",
+    "platform": "YouTube",
+    "link": "https://www.youtube.com/watch?v=ifTF3ags0XI",
+    "image": "https://img.youtube.com/vi/ifTF3ags0XI/maxresdefault.jpg",
+    "price": 0,
+    "duration": "15 minutes",
+    "level": "All Levels",
+    "rating": 4.9,
+    "reviews": 5000,
+    "language": "English",
+    "certificate": false,
+    "skills": ["VS Code Shortcuts", "Extensions", "Debugging", "Themes", "Productivity"],
+    "instructor": {
+      "name": "Ben Awad",
+      "image": "https://avatars.githubusercontent.com/u/5?v=4",
+      "company": "Self-employed"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Intro to Cybersecurity Specialization",
+    "description": "Understand the fundamentals of cybersecurity, including network security, risk management, and cryptography.",
+    "type": "training",
+    "platform": "edX",
+    "link": "https://www.edx.org/professional-certificate/intro-to-cybersecurity",
+    "image": "https://images.pexels.com/photos/5380648/pexels-photo-5380648.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 39.99,
+    "duration": "3 months (at 5 hrs/week)",
+    "level": "Beginner",
+    "rating": 4.6,
+    "reviews": 15000,
+    "language": "English",
+    "certificate": true,
+    "skills": ["Cybersecurity Basics", "Network Security", "Cryptography", "Risk Management"],
+    "instructor": {
+      "name": "Jonathan S. Weissman",
+      "image": "https://avatars.githubusercontent.com/u/6?v=4",
+      "company": "RIT (Rochester Institute of Technology)"
+    }
+  }
+]
