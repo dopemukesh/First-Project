@@ -2,9 +2,16 @@
 // ReDesigned and developed by:
 // - Mukesh Yadav
 
-import { Button } from "../../Components/Common/Button/Button";
+import { Button } from "../../../Components/Common/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 function Card({ book }) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    navigate(`/book-details/${book.id}`);
+  };
+
   return (
     <div className="w-full max-w-lg sm:max-w-lg">
       <div className="flex flex-col md:flex-row items-center overflow-hidden bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -33,7 +40,9 @@ function Card({ book }) {
             <Button variant="secondary" size="sm">
               View Demo
             </Button>
-            <Button size="sm">Buy Now</Button>
+            <Button size="sm" onClick={handleViewDetails}>
+              View Details
+            </Button>
           </div>
         </div>
       </div>

@@ -3,9 +3,9 @@ import Home from "./Pages/Home/Home";
 import Projects from "./Pages/Project/Projects";
 import About from "./Pages/About/About";
 import Store from "./Pages/Store/Store";
-import StoreBooks from "./Pages/Store/StoreBooks";
-import StoreProducts from "./Pages/Store/StoreProducts";
-import StoreTranings from "./Pages/Store/StoreTranings";
+import StoreBooks from "./Pages/Store/Books/StoreBooks";
+import StoreProducts from "./Pages/Store/Product/StoreProducts";
+import StoreTranings from "./Pages/Store/Trainings/StoreTranings";
 import Error404 from "./Components/Error/Error404";
 import ProjectDetails from "./Pages/Project/ProjectDetails";
 import Community from "./Pages/Community/Community";
@@ -21,6 +21,9 @@ import AdminDashboard from "./Pages/ProtectedPages/Admins/AdminDashboard";
 import TeacherDashboard from "./Pages/ProtectedPages/Teachers/TeacherDashboard";
 import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
 import UserProfile from "./Pages/UserProfile/UserProfile";
+import BookDetails from "./Pages/Store/Books/Bookdetails";
+import ProductDetails from "./Pages/Store/Product/Productdetails";
+import TrainingDetails from "./Pages/Store/Trainings/Trainingdetails";
 
 // Layouts
 import MainLayout from "./Components/Layout/allLayouts/MainLayout";
@@ -61,6 +64,9 @@ export const AppRoutes = () => (
         <Route path="products" element={<StoreProducts />} />
         <Route path="tranings" element={<StoreTranings />} />
       </Route>
+      <Route path="/book-details/:id" element={<BookDetails />} />
+      <Route path="/product-details/:id" element={<ProductDetails />} />
+      <Route path="/training-details/:id" element={<TrainingDetails />} />
 
       {/* Catch-all */}
       <Route path="*" element={<Error404 />} />
