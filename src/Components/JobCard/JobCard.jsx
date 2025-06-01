@@ -28,6 +28,20 @@ const JobCard = ({
 }) => {
     const navigate = useNavigate();
 
+    const handleDetails = () => {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser?.isLoggedIn) {
+            navigate(`/job-details/${job.id}`);
+        } else {
+            navigate('/login', { 
+                state: { 
+                    from: `/job-details/${job.id}`,
+                    message: 'Please login to view job details' 
+                } 
+            });
+        }
+    };
+
     // Predefined color palette based on job types
     const cardColors = {
         "Full Time": "bg-blue-300",
@@ -39,10 +53,6 @@ const JobCard = ({
     };
 
     const badgeClasses = "px-2 py-1 bg-white/80 rounded-full text-xs";
-
-    const handleDetails = () => {
-        navigate(`/job-details/${job.id}`);
-    };
 
     return (
         <div className={`${bgColors} text-black min-h-[250px] flex flex-col justify-between p-4 group`}>
