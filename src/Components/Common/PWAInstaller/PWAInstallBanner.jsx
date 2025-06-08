@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import usePWAInstall from '../../../hooks/usePWAInstall';
-import { Button } from '../Button/Button';
+import { Button01 } from '../Button/Button';
 import { motion } from 'framer-motion'
 
 const PWAInstallBanner = () => {
@@ -23,42 +23,51 @@ const PWAInstallBanner = () => {
     if (!showBanner) return null;
 
     return (
-        <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: '100%', opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="fixed flex justify-center h-full top-0 w-full bg-gray-950/50 backdrop-blur-md p-4 z-[99999999999999999999]">
+        <div
+            className="fixed inset-0 flex justify-center items-center bg-gray-100/50 dark:bg-gray-950/50 backdrop-blur-xl z-[9999999] transition-all duration-500 ease-in-out">
             <motion.div
-                initial={{ y: -150, opacity: 0 }}
-                animate={{ y: 0, opacity: 1}}
-                className='flex flex-col flex-1 max-w-sm h-fit bg-white dark:bg-gray-800 border dark:border-gray-600 shadow-lg p-4 rounded-2xl '>
+                initial={{ y: "-50%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: "-50%", opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="flex flex-col w-full md:max-w-sm h-full md:h-fit bg-white dark:bg-gray-950 md:border border-gray-300 dark:border-gray-800 shadow-xl p-8 md:rounded-2xl md:overflow-hidden"
+            >
+                <div className="h-full grid place-content-center md:mb-8 relative">
+                    <img
+                        src="./icons/download-icon.svg"
+                        alt="cwt-logo"
+                        className="h-64 md:h-24 animate-bounce"
+                    />
+                    <i className="w-56 h-56 bg-teal-500/50 absolute blur-[96px] z-0 bottom-24 md:bottom-4"></i>
+                </div>
 
-                <div className='flex items-start gap-4'>
-                    <img src="./logo/cwtLogo-animatedColor.svg" alt="cwt-logo" className='h-9 bg-gray-700 p-1.5 rounded-lg' />
-                    <p className="text-sm font-medium">
-                        Install
-                        <span className='text-teal-600 dark:text-teal-500'> {'"CodeWithTechries"'} </span>
-                        app on your device?
+                <div className="flex flex-col items-center justify-end text-center gap-3">
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                        Your Coding Journey Starts Here
+                    </h1>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                        Join the CodeWithTechries community! Explore, collaborate, and grow with fellow developers.
                     </p>
                 </div>
-                <div className="flex gap-2 mt-4 justify-end">
-                    <Button
+
+                <div className="flex flex-col gap-4 mt-6">
+                    <Button01
                         onClick={handleInstallClick}
-                        variant='info'
-                        size='ssm'
+                        width="w-full"
+                        rounded="xl"
                     >
-                        Install
-                    </Button>
-                    <Button
+                        Download App
+                    </Button01>
+                    <button
                         onClick={() => setShowBanner(false)}
-                        variant='secondary'
-                        size='ssm'
+                        className="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
                     >
-                        Dismiss
-                    </Button>
+                        Skip
+                    </button>
                 </div>
             </motion.div>
-        </motion.div>
+        </div>
+
     );
 };
 

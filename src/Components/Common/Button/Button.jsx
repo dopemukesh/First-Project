@@ -75,6 +75,7 @@ export const Button = ({
 export const Button01 = ({
   children,
   onClick,
+  width,
   className = "",
   type = "button",
   size = "md",
@@ -96,7 +97,7 @@ export const Button01 = ({
   const commonClasses = `shadow-xl shadow-teal-500/50 hover:shadow-xl hover:shadow-teal-500/80 flex items-center justify-center rounded-${rounded || "lg"
     } whitespace-nowrap active:scale-95 transition-all duration-500 font-medium ${sizeClasses[size] || sizeClasses.md
     } ${variantClass} ${disabled ? "opacity-50 cursor-not-allowed" : ""
-    } ${className}`;
+    } ${className || width}`;
 
   // ✅ Agar "to" prop hai, toh <Link> use karega
   const ButtonElement = to ? (
@@ -115,7 +116,7 @@ export const Button01 = ({
   );
 
   return (
-    <div className="p-2 rounded-3xl w-fit border border-teal-500/30 dark:border-teal-500/10 transition-all duration-200 ease-in-out">
+    <div className={`p-2 rounded-3xl ${width || 'w-fit'} border border-teal-500/30 dark:border-teal-500/10 transition-all duration-200 ease-in-out`}>
       <div className="p-2 rounded-2xl border border-teal-500/30 transition-all duration-100 ease-in">
         {ButtonElement}
       </div>

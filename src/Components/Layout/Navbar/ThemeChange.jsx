@@ -5,10 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { BiMoon } from "react-icons/bi";
 import { MdOutlineWbSunny } from "react-icons/md";
 
-
-const ThemeChange = ({className}) => {
+const ThemeChange = ({ className }) => {
     const [isDark, setIsDark] = useState(() => {
-        // Check localStorage first, fallback to classList
         const savedTheme = localStorage.getItem('theme')
         if (savedTheme !== null) {
             return savedTheme === 'dark'
@@ -16,17 +14,29 @@ const ThemeChange = ({className}) => {
         return document.documentElement.classList.contains('dark')
     })
 
+    // Helper function to update <meta name="theme-color">
+    const updateThemeColor = (isDark) => {
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeColorMeta) {
+            themeColorMeta.setAttribute('content', isDark ? '#030712' : '#ffffff');
+        }
+    };
+
+
     useEffect(() => {
-        // Update all instances when theme changes
+        // Update theme on load
+        updateThemeColor(isDark)
+
         const updateTheme = (e) => {
             setIsDark(e.detail.isDark)
+            updateThemeColor(e.detail.isDark)
         }
         window.addEventListener('themeChange', updateTheme)
         return () => window.removeEventListener('themeChange', updateTheme)
     }, [])
 
     useEffect(() => {
-        // Update classList and localStorage when isDark changes
+        // Update classList, localStorage, and meta theme-color
         if (isDark) {
             document.documentElement.classList.add('dark')
             localStorage.setItem('theme', 'dark')
@@ -34,13 +44,13 @@ const ThemeChange = ({className}) => {
             document.documentElement.classList.remove('dark')
             localStorage.setItem('theme', 'light')
         }
+        updateThemeColor(isDark)
     }, [isDark])
 
     const toggleTheme = () => {
         const newIsDark = !isDark
         setIsDark(newIsDark)
 
-        // Dispatch custom event to notify other instances
         window.dispatchEvent(new CustomEvent('themeChange', {
             detail: { isDark: newIsDark }
         }))
