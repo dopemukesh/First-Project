@@ -24,6 +24,7 @@ import UserProfile from "./Pages/UserProfile/UserProfile";
 import BookDetails from "./Pages/Store/Books/Bookdetails";
 import ProductDetails from "./Pages/Store/Product/Productdetails";
 import TrainingDetails from "./Pages/Store/Trainings/Trainingdetails";
+import CheckoutPage from "./Pages/Store/CheckoutPage";
 
 // Layouts
 import MainLayout from "./Components/Layout/allLayouts/MainLayout";
@@ -63,10 +64,13 @@ export const AppRoutes = () => (
         <Route path="books" element={<StoreBooks />} />
         <Route path="products" element={<StoreProducts />} />
         <Route path="tranings" element={<StoreTranings />} />
-      </Route>
+      </Route >
       <Route path="/book-details/:id" element={<BookDetails />} />
       <Route path="/product-details/:id" element={<ProductDetails />} />
       <Route path="/training-details/:id" element={<TrainingDetails />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+    
+
 
       {/* Catch-all */}
       <Route path="*" element={<Error404 />} />

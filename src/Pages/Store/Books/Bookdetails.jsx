@@ -85,7 +85,7 @@ const BookDetails = () => {
                             </div>
                             <div className="space-x-4">
                                
-                                <Button as="a" href={book.buyLink} target="_blank">
+                                <Button onClick={() => navigate(`/checkout`)}>
                                     Buy Now
                                 </Button>
                             </div>
