@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "name": "Eloquent JavaScript",
+    "author": "Marijn Haverbeke",
+    "description": "A modern introduction to JavaScript, covering language features and programming techniques.",
+    "image": "https://eloquentjavascript.net/img/cover.jpg",
+    "publicationYear": 2018,
+    "publisher": "No Starch Press",
+    "pages": 472,
+    "rating": 4.5,
+    "isbn": "9781593279509",
+    "language": "English",
+    "genres": ["Programming", "JavaScript", "Software Development"],
+    "price": "$25.99",
+    "availability": "In Stock",
+    "format": "Paperback",
+    "buyLink": "https://eloquentjavascript.net/",
+    "previewLink": "https://eloquentjavascript.net/00_intro.html",
+    "reviews": [
+      {
+        "user": "Alice",
+        "comment": "Great book for beginners and experienced developers alike!",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "You Don't Know JS",
+    "author": "Kyle Simpson",
+    "description": "A deep dive into JavaScript concepts and its core mechanisms.",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg",
+    "publicationYear": 2015,
+    "publisher": "O'Reilly Media",
+    "pages": 278,
+    "rating": 4.6,
+    "isbn": "9781491904244",
+    "language": "English",
+    "genres": ["Programming", "JavaScript"],
+    "price": "$32.00",
+    "availability": "In Stock",
+    "format": "Paperback",
+    "buyLink": "https://www.oreilly.com/library/view/you-dont-know/9781491905159/",
+    "previewLink": "https://github.com/getify/You-Dont-Know-JS",
+    "reviews": [
+      {
+        "user": "Bob",
+        "comment": "Explains JavaScript in depth. A must-read for serious devs.",
+        "rating": 4.8
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Clean Code",
+    "author": "Robert C. Martin",
+    "description": "A handbook of Agile software craftsmanship, focusing on writing clean and maintainable code.",
+    "image": "https://m.media-amazon.com/images/I/41jEbK-jG+L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+    "publicationYear": 2008,
+    "publisher": "Prentice Hall",
+    "pages": 464,
+    "rating": 4.7,
+    "isbn": "9780132350884",
+    "language": "English",
+    "genres": ["Software Engineering", "Programming Practices"],
+    "price": "$40.00",
+    "availability": "In Stock",
+    "format": "Hardcover",
+    "buyLink": "https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884",
+    "previewLink": "https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884",
+    "reviews": [
+      {
+        "user": "Charlie",
+        "comment": "Changed the way I write code forever!",
+        "rating": 5
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "The Pragmatic Programmer",
+    "author": "Andrew Hunt and David Thomas",
+    "description": "Classic advice for software developers on coding practices and career growth.",
+    "image": "https://m.media-amazon.com/images/I/41uPjEenkFL._SX396_BO1,204,203,200_.jpg",
+    "publicationYear": 1999,
+    "publisher": "Addison-Wesley",
+    "pages": 352,
+    "rating": 4.8,
+    "isbn": "9780135957059",
+    "language": "English",
+    "genres": ["Software Development", "Career", "Best Practices"],
+    "price": "$39.99",
+    "availability": "Limited Stock",
+    "format": "Paperback",
+    "buyLink": "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
+    "previewLink": "https://books.google.com/books/about/The_Pragmatic_Programmer.html?id=2ABzDwAAQBAJ",
+    "reviews": [
+      {
+        "user": "Diana",
+        "comment": "Timeless advice for developers. A bookshelf essential.",
+        "rating": 4.9
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "JavaScript: The Good Parts",
+    "author": "Douglas Crockford",
+    "description": "A concise guide to the best features of JavaScript, written by Douglas Crockford.",
+    "image": "https://m.media-amazon.com/images/I/81kqrwS1nNL.jpg",
+    "publicationYear": 2008,
+    "publisher": "O'Reilly Media",
+    "pages": 176,
+    "rating": 4.3,
+    "isbn": "9780596517748",
+    "language": "English",
+    "genres": ["Programming", "JavaScript"],
+    "price": "$29.99",
+    "availability": "Out of Stock",
+    "format": "Paperback",
+    "buyLink": "https://www.oreilly.com/library/view/javascript-the-good/9780596517748/",
+    "previewLink": "https://books.google.com/books/about/JavaScript.html?id=PXa2bby0oQ0C",
+    "reviews": [
+      {
+        "user": "Ella",
+        "comment": "Short but insightful. Good for experienced JS developers.",
+        "rating": 4.1
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Effective Java",
+    "author": "Joshua Bloch",
+    "description": "Best practices for Java programming, authored by Joshua Bloch.",
+    "image": "https://m.media-amazon.com/images/I/518FqJvR9aL._SX396_BO1,204,203,200_.jpg",
+    "publicationYear": 2018,
+    "publisher": "Addison-Wesley",
+    "pages": 416,
+    "rating": 4.9,
+    "isbn": "9780134685991",
+    "language": "English",
+    "genres": ["Programming", "Java"],
+    "price": "$45.00",
+    "availability": "In Stock",
+    "format": "Hardcover",
+    "buyLink": "https://www.pearson.com/store/p/effective-java/P100000465335",
+    "previewLink": "https://books.google.com/books/about/Effective_Java.html?id=ka2VUBqHiWkC",
+    "reviews": [
+      {
+        "user": "Frank",
+        "comment": "Indispensable for serious Java developers.",
+        "rating": 5
+      }
+    ]
+  }
+]

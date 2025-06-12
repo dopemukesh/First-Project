@@ -1,0 +1,220 @@
+[
+  {
+    "id": 1,
+    "name": "Mechanical Keyboard",
+    "description": "A high-quality keyboard with customizable keys and tactile feedback, perfect for programmers.",
+    "image": "https://www.getwox.com/wp-content/uploads/2020/12/Mechanical-Keyboards.jpg",
+    "price": 120,
+    "finalPrice": 99,
+    "discount": "17%",
+    "tags": ["hardware", "keyboard", "programming"],
+    "brand": "KeyChron",
+    "rating": 4.6,
+    "reviews": [
+      {
+        "user": "Alice",
+        "comment": "Very satisfying typing experience. Great for long coding sessions.",
+        "rating": 5
+      },
+      {
+        "user": "Ben",
+        "comment": "Customizable and sturdy. A little noisy though.",
+        "rating": 4
+      }
+    ],
+    "availability": "In Stock",
+    "warranty": "1 Year Manufacturer Warranty",
+    "colorOptions": ["Black", "White", "Gray"],
+    "features": [
+      "Hot-swappable keys",
+      "RGB backlight",
+      "USB-C support",
+      "Bluetooth and wired modes"
+    ],
+    "specs": {
+      "Key Switch": "Gateron Red",
+      "Connectivity": "Bluetooth 5.1 / Wired",
+      "Battery Life": "Up to 72 hours",
+      "Weight": "900g"
+    },
+    "deliveryOptions": ["Standard (3-5 days)", "Express (1-2 days)"],
+    "returnPolicy": "10-day easy return with full refund",
+    "buyLink": "https://www.keychron.com/products/keychron-k6"
+  },
+  {
+    "id": 2,
+    "name": "Monitor Arm",
+    "description": "An adjustable arm for monitors, helping to optimize desk space and ergonomics.",
+    "image": "https://images.steelcase.com/image/upload/v1424370228/www.steelcase.com/12-0002605.jpg",
+    "price": 80,
+    "finalPrice": 65,
+    "discount": "19%",
+    "tags": ["hardware", "monitor", "ergonomics"],
+    "brand": "Ergotron",
+    "rating": 4.4,
+    "reviews": [
+      {
+        "user": "Maya",
+        "comment": "Sturdy and easy to install. Cleared up a lot of desk space.",
+        "rating": 5
+      }
+    ],
+    "availability": "In Stock",
+    "warranty": "2 Years",
+    "colorOptions": ["Black", "Silver"],
+    "features": [
+      "Full motion adjustment",
+      "Cable management system",
+      "Supports up to 32-inch monitors"
+    ],
+    "specs": {
+      "Max Load": "9 kg",
+      "Material": "Aluminum",
+      "Tilt": "±90°",
+      "Rotation": "360°"
+    },
+    "deliveryOptions": ["Standard (3-5 days)", "Free Store Pickup"],
+    "returnPolicy": "15-day return window",
+    "buyLink": "https://www.ergotron.com/products/product-details/45-241"
+  },
+  {
+    "id": 3,
+    "name": "Headphones",
+    "description": "High-quality headphones to block out distractions and focus on coding.",
+    "image": "https://tse3.mm.bing.net/th?id=OIP.jje6rG-fFTT2zePCDxS9hgHaHa&pid=Api&P=0&h=180",
+    "price": 200,
+    "finalPrice": 149,
+    "discount": "25%",
+    "tags": ["hardware", "audio", "focus"],
+    "brand": "Sony",
+    "rating": 4.8,
+    "reviews": [
+      {
+        "user": "Rahul",
+        "comment": "Noise cancellation is top-notch. Best for working in busy environments.",
+        "rating": 5
+      }
+    ],
+    "availability": "Limited Stock",
+    "warranty": "1 Year",
+    "colorOptions": ["Black", "Blue"],
+    "features": [
+      "Active noise cancellation",
+      "Bluetooth and wired connectivity",
+      "Long battery life"
+    ],
+    "specs": {
+      "Type": "Over-Ear",
+      "Battery Life": "30 hours",
+      "Charging Port": "USB-C",
+      "Weight": "250g"
+    },
+    "deliveryOptions": ["Standard", "Next Day Delivery"],
+    "returnPolicy": "7-day replacement only",
+    "buyLink": "https://www.sony.com/electronics/headband-headphones/wh-1000xm4"
+  },
+  {
+    "id": 4,
+    "name": "Programming Books Bundle",
+    "description": "A set of popular programming books, including Clean Code, The Pragmatic Programmer, and more.",
+    "image": "https://images.pexels.com/photos/5904936/pexels-photo-5904936.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 150,
+    "finalPrice": 129,
+    "discount": "14%",
+    "tags": ["books", "education", "programming"],
+    "brand": "Multiple Publishers",
+    "rating": 4.9,
+    "reviews": [
+      {
+        "user": "Priya",
+        "comment": "Must-have for every developer. Clean Code is my favorite.",
+        "rating": 5
+      }
+    ],
+    "availability": "In Stock",
+    "warranty": "Not Applicable",
+    "colorOptions": ["Multi-color Covers"],
+    "features": [
+      "Covers multiple programming paradigms",
+      "Great for interviews and professional growth"
+    ],
+    "specs": {
+      "Books Included": "Clean Code, Pragmatic Programmer, Refactoring, etc.",
+      "Total Pages": "Approx 1800",
+      "Format": "Paperback"
+    },
+    "deliveryOptions": ["Standard Shipping", "Free Delivery"],
+    "returnPolicy": "7-day return if books are unused",
+    "buyLink": "https://www.amazon.in/Best-Programming-Books-Set/dp/B0BS9Z3KFL"
+  },
+  {
+    "id": 5,
+    "name": "External SSD",
+    "description": "A portable solid-state drive with fast read/write speeds, ideal for storing code projects.",
+    "image": "https://images.pexels.com/photos/4195335/pexels-photo-4195335.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 100,
+    "finalPrice": 89,
+    "discount": "11%",
+    "tags": ["hardware", "storage", "programming"],
+    "brand": "Samsung",
+    "rating": 4.7,
+    "reviews": [
+      {
+        "user": "Dev",
+        "comment": "Very fast and reliable. Small enough to carry in a pocket.",
+        "rating": 5
+      }
+    ],
+    "availability": "In Stock",
+    "warranty": "3 Years",
+    "colorOptions": ["Black", "Red", "Gray"],
+    "features": [
+      "USB 3.2 Gen 2",
+      "Shock resistant",
+      "AES 256-bit encryption"
+    ],
+    "specs": {
+      "Capacity": "1TB",
+      "Speed": "1050MB/s read, 1000MB/s write",
+      "Weight": "58g"
+    },
+    "deliveryOptions": ["Standard", "Express"],
+    "returnPolicy": "10-day return",
+    "buyLink": "https://www.samsung.com/portable-ssd-t7"
+  },
+  {
+    "id": 6,
+    "name": "Code Editor Subscription",
+    "description": "A one-year subscription to a premium code editor like JetBrains IntelliJ or Sublime Text.",
+    "image": "https://images.pexels.com/photos/5082561/pexels-photo-5082561.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "price": 120,
+    "finalPrice": 99,
+    "discount": "18%",
+    "tags": ["software", "tools", "coding"],
+    "brand": "JetBrains",
+    "rating": 4.9,
+    "reviews": [
+      {
+        "user": "Ankit",
+        "comment": "Love the smart features in IntelliJ. Worth every penny.",
+        "rating": 5
+      }
+    ],
+    "availability": "Digital Delivery",
+    "warranty": "1 Year Access",
+    "colorOptions": [],
+    "features": [
+      "Smart code completion",
+      "Built-in debugger",
+      "Version control support"
+    ],
+    "specs": {
+      "Platform": "Windows, Mac, Linux",
+      "License": "1 Year Subscription",
+      "Editor Options": "IntelliJ, WebStorm, PyCharm, etc."
+    },
+    "deliveryOptions": ["Instant Email Delivery"],
+    "returnPolicy": "Non-refundable (digital product)",
+    "buyLink": "https://www.jetbrains.com/store/"
+  }
+]
