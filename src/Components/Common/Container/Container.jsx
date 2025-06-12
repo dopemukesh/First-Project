@@ -6,9 +6,9 @@ const Container = ({ children, className = "", style = {} , ref }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      initial={{ y: 50 }}
+      whileInView={{ y: 0 }}
+      transition={{ duration: 0.2, ease: "easeIn" }}
       className={`w-full flex justify-center ${className}`}
       style={style}
     >

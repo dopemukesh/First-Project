@@ -1,40 +1,53 @@
 import { Routes, Route } from "react-router-dom";
+
+// Pages
 import Home from "./Pages/Home/Home";
-import Projects from "./Pages/Project/Projects";
 import About from "./Pages/About/About";
+import Community from "./Pages/Community/Community";
+import Projects from "./Pages/Project/Projects";
+import ProjectDetails from "./Pages/Project/ProjectDetails";
 import Store from "./Pages/Store/Store";
 import StoreBooks from "./Pages/Store/StoreBooks";
 import StoreProducts from "./Pages/Store/StoreProducts";
 import StoreTranings from "./Pages/Store/StoreTranings";
-import Error404 from "./Components/Error/Error404";
-import ProjectDetails from "./Pages/Project/ProjectDetails";
-import Community from "./Pages/Community/Community";
-import Career from "./Pages/Career/Career";
-import PostJob from "./Pages/Career/PostJob/PostJob";
-import Signup from "./Pages/Registration/Signup";
-import Login from "./Pages/Registration/Login";
-import ForgetPassword from "./Pages/Registration/ForgetPassword";
 import Courses from "./Pages/Courses/Cources";
 import CourseDetails from "./Pages/Courses/CourseDetail/CourseDetails";
-import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import Career from "./Pages/Career/Career";
+import PostJob from "./Pages/Career/PostJob/PostJob";
+import Login from "./Pages/Registration/Login";
+import Signup from "./Pages/Registration/Signup";
+import ForgetPassword from "./Pages/Registration/ForgetPassword";
+import Error404 from "./Components/Error/Error404";
+
+// Profile Pages
+import UserProfile from "./Pages/UserProfile/UserProfile";
+import ProfileDashboard from "./Pages/UserProfile/UserDataComps/ProfileDashboard";
+import Notification from "./Pages/UserProfile/UserDataComps/Notification";
+import EditForm from "./Pages/UserProfile/RoleSpecific/EditForm";
+
+// Protected Pages
 import AdminDashboard from "./Pages/ProtectedPages/Admins/AdminDashboard";
 import TeacherDashboard from "./Pages/ProtectedPages/Teachers/TeacherDashboard";
 import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
-import UserProfile from "./Pages/UserProfile/UserProfile";
 
 // Layouts
 import MainLayout from "./Components/Layout/allLayouts/MainLayout";
 import AuthLayout from "./Components/Layout/allLayouts/AuthLayout";
 import DashboardLayout from "./Components/Layout/allLayouts/DashboardLayout";
 
+// Route Guards
+import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import ProfileEditForm from "./Pages/UserProfile/UserDataComps/ProfileEditForm";
+
 export const AppRoutes = () => (
   <Routes>
-    {/* Main layout (with header & footer) */}
+
+    {/* Main layout with header/footer */}
     <Route element={<MainLayout />}>
+      {/* Home and static pages */}
       <Route path="/" index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/community" element={<Community />} />
-      <Route path="/profile" element={<UserProfile />} />
 
       {/* Courses */}
       <Route path="/classes">
@@ -62,22 +75,30 @@ export const AppRoutes = () => (
         <Route path="tranings" element={<StoreTranings />} />
       </Route>
 
-      {/* Catch-all */}
+      {/* Fallback */}
       <Route path="*" element={<Error404 />} />
-
-      {/* Promotion */}
-      
     </Route>
 
-    {/* Auth layout (without header & footer) */}
+    {/* Auth layout without header/footer */}
     <Route element={<AuthLayout />}>
+      {/* Auth pages */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Signup />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
+
+      {/* Profile section */}
+      <Route path="/profile" element={<UserProfile />}>
+        <Route index element={<ProfileDashboard />} />
+        <Route path="edit" element={<EditForm />} />
+        <Route path="editProfile" element={<ProfileEditForm />} />
+        <Route path="notification" element={<Notification />} />
+      </Route>
+
+      {/* Standalone admin route under AuthLayout (optional placement) */}
       <Route path="/superAdmin" element={<SuperAdminPanel />} />
     </Route>
 
-    {/* Protected Routes (optional: you can wrap in another layout if needed) */}
+    {/* Protected dashboard routes with dashboard layout */}
     <Route element={<DashboardLayout />}>
       <Route
         path="/teacher-dashboard"
@@ -104,5 +125,6 @@ export const AppRoutes = () => (
         }
       />
     </Route>
+
   </Routes>
 );
