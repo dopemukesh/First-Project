@@ -26,12 +26,12 @@ function Footer() {
     },
   ];
 
-  const emails = ['info@codewithtechries.com','bbjnijsjni']
+  const emails = ['info@codewithtechries.com', 'bbjnijsjni']
 
   return (
     <footer
       id="footer"
-      className="flex justify-center border-t border-gray-700 bg-gradient-to-t from-gray-950 to-gray-900 px-4 md:px-16 py-12"
+      className="flex justify-center border-t border-gray-700/70 bg-gray-900/30 backdrop-blur-md px-4 md:px-16 py-12"
     >
       <div className="container max-w-6xl">
         <div className="grid md:grid-cols-4 gap-8">
@@ -66,7 +66,10 @@ function Footer() {
 
           {/* Social Links */}
           <div className="space-y-4">
-            <h3 className="text-teal-600 font-medium whitespace-nowrap">Quick links</h3>
+            <h3 className="text-teal-600 font-medium whitespace-nowrap group">
+              Quick links
+              <span className="opacity-0 group-hover:opacity-100 text-gray-500"> //</span>
+            </h3>
             <div className="flex flex-col space-y-2">
               {footerLinks.map((link) => (
                 <NavLink
@@ -82,10 +85,12 @@ function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-teal-600 font-medium whitespace-nowrap">Contact</h3>
-            <div className="text-gray-400 contact-info">
-              <p>
-                <span aria-hidden="true">📞 </span>
+            <h3 className="text-teal-600 font-medium whitespace-nowrap group">
+              Contact
+              <span className="opacity-0 group-hover:opacity-100 text-gray-500"> //</span>
+            </h3>
+            <div className="text-gray-400 contact-info flex flex-col space-y-2">
+              <p className="text-gray-400 hover:text-teal-600 transition-colors w-fit">
                 <a
                   href="tel:+916398250310"
                   aria-label="Call us at +916398250310"
@@ -93,20 +98,18 @@ function Footer() {
                   +91 6398250310
                 </a>
               </p>
-              <p>
-                <span aria-hidden="true">✉️ </span>
+              <p className="text-gray-400 hover:text-teal-600 transition-colors w-fit">
                 <a
                   href="mailto:info@codewithtechries.com"
                   aria-label="Email us at info@codewithtechries.com"
                 >
-                  
+
                   {emails[0].length > 18
                     ? `${emails[0].slice(0, 18)}...`
                     : emails[0]}
                 </a>
               </p>
-              <p>
-                <span aria-hidden="true">✉️ </span>
+              <p className="text-gray-400 hover:text-teal-600 transition-colors w-fit">
                 <a
                   href="mailto:reach.cwt@gmail.com"
                   aria-label="Email us at reach.cwt@gmail.com"
@@ -118,7 +121,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-700/70 mt-8 pt-8 text-center text-gray-400">
           <p>
             &copy; {new Date().getFullYear()} CodeWithTechries. All rights
             reserved.
