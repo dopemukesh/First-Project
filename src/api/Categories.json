@@ -1,11 +1,11 @@
 [
-    "Web Development",
-    "App Development",
-    "Basic Programming",
-    "DSA",
-    "Service Security",
-    "Data Science",
-    "AI/ML",
-    "Design and Editing",
-    "Digital Marketing"
+  { "title": "Web Development", "value": "web-development" },
+  { "title": "App Development", "value": "app-development" },
+  { "title": "Basic Programming", "value": "basic-programming" },
+  { "title": "DSA", "value": "dsa" },
+  { "title": "Service Security", "value": "service-security" },
+  { "title": "Data Science", "value": "data-science" },
+  { "title": "AI/ML", "value": "ai-ml" },
+  { "title": "Design and Editing", "value": "design-and-editing" },
+  { "title": "Digital Marketing", "value": "digital-marketing" }
 ]

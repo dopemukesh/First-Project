@@ -23,7 +23,11 @@ const Cources = () => {
   return (
     <>
       <LiveClasses />
-      <SkillsSection topHeader="All the skills you need in one place" />
+      <SkillsSection
+        topHeader="All the skills you need in one place"
+        parentRoute={'classes'}
+        category
+      />
       <SubscriptionSection />
       <Testimonial />
     </>

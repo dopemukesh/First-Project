@@ -173,19 +173,19 @@ const PriceCard = ({className}) => {
             >
               Enroll now
             </Button>
-            <Button
+            {/* <Button
               variant='outline'
               className='w-full border-teal-600 dark:border-teal-500 text-teal-600 dark:text-teal-500'
             >
               Add to cart
-            </Button>
+            </Button> */}
           </div>
 
           {/* Money Back Guarantee */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500">
+            {/* <p className="text-sm text-gray-500">
               30-Day Money-Back Guarantee
-            </p>
+            </p> */}
           </div>
 
           {/* Course Includes */}
@@ -201,7 +201,7 @@ const PriceCard = ({className}) => {
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
               <span>📱</span>
-              <span>Access on mobile and TV</span>
+              <span>Access on mobile and laptop</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
               <span>🏆</span>
@@ -214,9 +214,9 @@ const PriceCard = ({className}) => {
             <button className="text-gray-500 hover:text-teal-500 transition-colors">
               <span>Share</span>
             </button>
-            <button className="text-gray-500 hover:text-teal-500 transition-colors">
+            {/* <button className="text-gray-500 hover:text-teal-500 transition-colors">
               <span>Gift this course</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

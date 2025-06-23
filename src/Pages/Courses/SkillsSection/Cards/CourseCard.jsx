@@ -3,44 +3,52 @@ import { Button } from "../../../../Components/Common/Button/Button";
 // import projectData from "../../../../api/ProjectDetails.json";
 
 // Default course card component
-export const DefaultCard = ({ course, index, getCardColor }) => (
-    <div
-        key={index}
-        className={`rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300`}
-    >
-        <div className="flex items-center justify-between gap-1">
-            <div>
-                <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-                <p className="text-sm font-medium">{course.instructor.name}</p>
-                <div className="flex gap-1 mt-1 mb-4">
-                    {[...Array(course.rating)].map((_, i) => (
-                        <Star key={i} size={16} className="fill-amber-500 stroke-amber-400" />
-                    ))}
+export const DefaultCard = ({ course, index, getCardColor }) => {
+
+    const slug = course.title.toLowerCase().replace(/\s+/g, '-');
+
+    return (
+        <div
+            key={index}
+            className={`rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300`}
+        >
+            <div className="flex items-center justify-between gap-1">
+                <div>
+                    <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+                    <p className="text-sm font-medium">{course.instructor.name}</p>
+                    <div className="flex gap-1 mt-1 mb-4">
+                        {[...Array(course.rating)].map((_, i) => (
+                            <Star key={i} size={16} className="fill-amber-500 stroke-amber-400" />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-white text-xs px-3 py-1 rounded-full">{course.level}</span>
-            <span className="bg-white text-xs px-3 py-1 rounded-full">{course.type}</span>
-        </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-white text-xs px-3 py-1 rounded-full">{course.level}</span>
+                <span className="bg-white text-xs px-3 py-1 rounded-full">{course.type}</span>
+            </div>
 
-        <Button
-            to={`details/${course.id}`}
-            variant="info"
-            size="sm"
-            className="w-fit"
-        >
-            View Details
-        </Button>
-    </div>
-);
+            <Button
+                to={`${slug}/${course.id}`}
+                variant="info"
+                size="sm"
+                className="w-fit"
+            >
+                View Details
+            </Button>
+        </div>
+    );
+};
 
 // Project card component
 export const ProjectCard = ({ title, description, image, userName, userImage, userRole, id }) => {
+
+    const slug = title.toLowerCase().replace(/\s+/g, '-');
+
     return (
         <div
-            className="bg-white/5 backdrop-blur-md p-5 h-fit shadow-xl border border-gray-300/50 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
+            className="bg-white/5 backdrop-blur-md p-5 h-fit shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
         >
             <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-4">
                 {title || "Untitled"}
@@ -91,8 +99,12 @@ export const ProjectCard = ({ title, description, image, userName, userImage, us
                         </div>
                     </div>
 
-                    <Button to={`details/${id}`} variant="secondary">
-                        Read More
+                    <Button 
+                    to={`${slug}/${id}`} 
+                    variant="secondary"
+                    size="sm"
+                    >
+                        Contribute
                     </Button>
                 </div>
             </div>

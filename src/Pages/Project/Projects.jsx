@@ -36,7 +36,7 @@ const Projects = () => {
           </div>
         </div>
       </Container>
-      <SkillsSection cardType="projectCard" topHeader="Our Projects" />
+      <SkillsSection cardType="projectCard" topHeader="Our Projects" parentRoute={'projects'} />
     </>
   );
 };

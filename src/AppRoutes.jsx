@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
 import Home from "./Pages/Home/Home";
@@ -51,8 +51,9 @@ export const AppRoutes = () => (
 
       {/* Courses */}
       <Route path="/classes">
-        <Route index element={<Courses />} />
-        <Route path="details/:id" element={<CourseDetails />} />
+        <Route index element={<Navigate to="web-development" replace />} />
+        <Route path=":category" element={<Courses />} />
+        <Route path=":category/:title/:id" element={<CourseDetails />} />
       </Route>
 
       {/* Career */}
@@ -63,8 +64,9 @@ export const AppRoutes = () => (
 
       {/* Projects */}
       <Route path="/projects">
-        <Route index element={<Projects />} />
-        <Route path="details/:id" element={<ProjectDetails />} />
+        <Route index element={<Navigate to="all" replace />} />
+        <Route path=":category" element={<Projects />} />
+        <Route path=":category/:title/:id" element={<ProjectDetails />} />
       </Route>
 
       {/* Store */}

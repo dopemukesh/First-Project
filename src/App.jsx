@@ -9,7 +9,7 @@ const App = () => {
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <ToastProvider />
-      <ScrollToTop />
+      <ScrollToTop skipPaths={['/classes', '/projects']} />
       <Loader />
       <Suspense fallback={<div>Loading...</div>}>
         <AppRoutes />
