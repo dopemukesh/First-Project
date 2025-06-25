@@ -1,8 +1,11 @@
+// src/Components/Sections/PlanetSection.jsx
+
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, spring, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { Link } from 'react-router-dom';
 
 import Rocket from '../../../assets/spaceAssets/rocket2.svg';
 import Container from '../../../Components/Common/Container/Container';
@@ -31,27 +34,40 @@ const planets = [
     { id: 9, image: Planet09 },
 ];
 
-const courseCategory = ['Web Development', 'DSA', 'App Development', 'Basic Programming', 'Data Science', 'AI/ML']
+const courseCategory = [
+    'Web Development',
+    'DSA',
+    'App Development',
+    'Basic Programming',
+    'Data Science',
+    'AI/ML',
+];
+
+// Map to IDs on Classes page
+const categoryToId = {
+    'Web Development': 'web-development',
+    'DSA': 'data-science-ai',
+    'App Development': 'web-development',
+    'Basic Programming': 'web-development',
+    'Data Science': 'data-science-ai',
+    'AI/ML': 'data-science-ai',
+};
+
 const PlanetSection = () => {
     const rocketRef = useRef(null);
     const [isPhone, setIsPhone] = useState(false);
 
-    // Check screen size on mount and resize
     useEffect(() => {
         const checkDevice = () => {
             setIsPhone(window.matchMedia('(max-width: 767px)').matches);
         };
-
         checkDevice();
         window.addEventListener('resize', checkDevice);
-
         return () => window.removeEventListener('resize', checkDevice);
     }, []);
 
-    // Animate rocket based on current path
     useEffect(() => {
         if (!rocketRef.current) return;
-
         const animation = gsap.to(rocketRef.current, {
             duration: 10,
             motionPath: {
@@ -66,28 +82,29 @@ const PlanetSection = () => {
                 end: 'top -2800',
                 scrub: 1,
                 markers: false,
-            }
+            },
         });
-
         return () => {
-            animation.kill(); // Clean up previous animation
+            animation.kill();
         };
-    }, [isPhone]); // Re-run animation when device type changes
+    }, [isPhone]);
 
     return (
         <Container>
-            <div id='explore-community' className="relative mb-28 transition-all duration-300 scroll-smooth">
-
-                {/* Conditional SVG rendering */}
-                {isPhone ?
-                    (<div className="absolute top-24 -left-8  h-fit flex justify-center w-full">
+            <div id="explore-community" className="relative mb-28 transition-all duration-300 scroll-smooth">
+                {isPhone ? (
+                    <div className="absolute top-24 -left-8 h-fit flex justify-center w-full">
                         <img ref={rocketRef} src={Rocket} alt="Rocket" className="h-14" />
                         <svg height={1700} viewBox="0 0 252 1997" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path id='path' d="M1.37012 1.13135L250.768 250.529L1.37012 499.927L250.768 749.325L1.37012 998.723L250.768 1248.12L1.37012 1497.52L250.768 1746.92L1.37012 1996.31" stroke="transparent" />
+                            <path
+                                id="path"
+                                d="M1.37012 1.13135L250.768 250.529L1.37012 499.927L250.768 749.325L1.37012 998.723L250.768 1248.12L1.37012 1497.52L250.768 1746.92L1.37012 1996.31"
+                                stroke="transparent"
+                            />
                         </svg>
-                    </div>)
-                    :
-                    (<div className="absolute z-50 top-40 flex justify-center w-full">
+                    </div>
+                ) : (
+                    <div className="absolute z-50 top-40 flex justify-center w-full">
                         <img ref={rocketRef} src={Rocket} alt="Rocket" className="h-20" />
                         <svg
                             width="697"
@@ -102,14 +119,15 @@ const PlanetSection = () => {
                                 stroke="transparent"
                             />
                         </svg>
-                    </div>)
-                }
+                    </div>
+                )}
 
-                {/* Planet section */}
                 <div className="w-full px-4">
                     {planets.map((planet, index) => {
                         const ref = useRef(null);
                         const isInView = useInView(ref, { amount: 0.5 });
+                        const course = courseCategory[index % courseCategory.length];
+                        const hash = categoryToId[course];
 
                         return (
                             <div
@@ -117,32 +135,38 @@ const PlanetSection = () => {
                                 className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative w-full`}
                             >
                                 <div ref={ref} className="flex max-w-md justify-center">
-                                    <div
-                                        className="flex items-center justify-center p-6 rounded-full relative z-50 cursor-pointer">
+                                    <Link
+                                        to={`/classes#${hash}`}
+                                        className="flex items-center justify-center p-6 rounded-full relative z-50 cursor-pointer"
+                                    >
                                         <motion.img
                                             initial={{ y: 300, opacity: 0 }}
                                             animate={isInView && { y: 0, opacity: 1 }}
                                             transition={{ duration: 0.3 }}
-                                            src={planet.image} alt="Planet" className="w-40 md:w-64" />
+                                            src={planet.image}
+                                            alt="Planet"
+                                            className="w-40 md:w-64"
+                                        />
                                         <motion.div
                                             initial={{ y: 300, opacity: 0 }}
-                                            animate={isInView && { y: 0, opacity: 1 , type:spring}}
-                                            className='absolute w-48 h-48 bg-teal-600 rounded-full mt-8 -z-50 blur-[76px]'></motion.div>
+                                            animate={isInView && { y: 0, opacity: 1, type: spring }}
+                                            className="absolute w-48 h-48 bg-teal-600 rounded-full mt-8 -z-50 blur-[76px]"
+                                        />
                                         <motion.div
-                                            initial={index % 2 === 0 ? { x: -100, scaleX: 0 } : { x: 100, scaleX: 0 }}
-                                            animate=
-                                            {
+                                            initial={
+                                                index % 2 === 0 ? { x: -100, scaleX: 0 } : { x: 100, scaleX: 0 }
+                                            }
+                                            animate={
                                                 isInView
                                                     ? { x: 0, scaleX: 1, opacity: 1 }
                                                     : { x: index % 2 === 0 ? -100 : 100, scaleX: 0, opacity: 0 }
                                             }
                                             transition={{ duration: 0.7 }}
-                                            className={`absolute top-[40%] ${index % 2 === 0 ? 'left-[90%] md:left-[95%]' : 'right-[90%] md:right-[95%]'} mt-4 bg-teal-500/20 text-teal-800 dark:text-teal-500 px-4 py-2 border-x-[6px] border-teal-600 dark:border-teal-500 backdrop-blur-xl -z-10`}>
-                                            <p className="whitespace-nowrap text-sm font-medium">
-                                                {courseCategory[index % courseCategory.length]}
-                                            </p>
+                                            className={`absolute top-[40%] ${index % 2 === 0 ? 'left-[90%] md:left-[95%]' : 'right-[90%] md:right-[95%]'} mt-4 bg-teal-500/20 text-teal-800 dark:text-teal-500 px-4 py-2 border-x-[6px] border-teal-600 dark:border-teal-500 backdrop-blur-xl -z-10`}
+                                        >
+                                            <p className="whitespace-nowrap text-sm font-medium">{course}</p>
                                         </motion.div>
-                                    </div>
+                                    </Link>
                                 </div>
                             </div>
                         );
@@ -154,5 +178,3 @@ const PlanetSection = () => {
 };
 
 export default PlanetSection;
-
-
