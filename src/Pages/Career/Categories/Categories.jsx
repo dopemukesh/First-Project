@@ -6,6 +6,7 @@ import {
   Palette,
   Shield,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const color = [
   "red-500",
@@ -18,26 +19,32 @@ const color = [
 const categories = [
   {
     name: "Digital Marketing",
+    id: "digital-marketing",
     icon: <Megaphone className={`text-${color[0]}`} size={32} />,
   },
   {
     name: "Web Development",
+    id: "web-development",
     icon: <Laptop className={`text-${color[1]}`} size={32} />,
   },
   {
     name: "Data Science & AI",
+    id: "data-science-ai",
     icon: <Database className={`text-${color[2]}`} size={32} />,
   },
   {
     name: "Cloud Computing",
+    id: "cloud-computing",
     icon: <Cloud className={`text-${color[3]}`} size={32} />,
   },
   {
     name: "UI/UX Design",
+    id: "ui-ux-design",
     icon: <Palette className={`text-${color[4]}`} size={32} />,
   },
   {
     name: "Cybersecurity",
+    id: "cybersecurity",
     icon: <Shield className={`text-${color[5]}`} size={32} />,
   },
 ];
@@ -60,21 +67,19 @@ export default function Categories() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {categories.map((cat, index) => (
-            <div
+            <Link
               key={index}
-              className={`${bgGrad} p-6 flex flex-col items-center justify-center hover:scale-105 transition duration-700`}
+              to={`#`}
+              className={`${bgGrad} p-6 flex flex-col items-center justify-center hover:scale-105 transition duration-700 cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal-500`}
             >
               <div className="mb-4 bg-[#101720] p-3 rounded-full">
                 {cat.icon}
               </div>
               <h3 className={`text-sm whitespace-nowrap md:text-lg font-semibold mb-1 text-center`}>{cat.name}</h3>
-              <a
-                href="#"
-                className="text-sm text-teal-600 dark:text-teal-500 flex items-center gap-1"
-              >
+              <span className="text-sm text-teal-600 dark:text-teal-500 flex items-center gap-1">
                 View all <span className="ml-1">&rarr;</span>
-              </a>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
       </div>

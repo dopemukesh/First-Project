@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X, Plus, ChevronRight, ChevronDown, ChevronUp } from 'lucide-react';
 
 const CheckoutPage = () => {
+  const location = useLocation();
+  const training = location.state?.training;   // 👈 training ko receive kiya
+
   const [selectedPayment, setSelectedPayment] = useState('axis');
   const [showOrderSummary, setShowOrderSummary] = useState(true);
   const [debitCardExpanded, setDebitCardExpanded] = useState(true);
@@ -113,14 +117,18 @@ const CheckoutPage = () => {
               <div className="flex items-center space-x-4 mb-6">
                 {uploadedImg ? (
                   <img src={uploadedImg} alt="Product" className="w-16 h-16 object-cover rounded-lg" />
+                ) : training ? (
+                  <img src={training.image} alt={training.name} className="w-16 h-16 object-cover rounded-lg" />
                 ) : (
                   <div className="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center text-gray-400">
                     IMG
                   </div>
                 )}
                 <div className="flex-1">
-                  <div className="text-gray-300 text-sm">Product Name</div>
-                  <div className="text-xl font-semibold">$100</div>
+                  <div className="text-gray-300 text-sm">{training ? training.name : 'Product Name'}</div>
+                  <div className="text-xl font-semibold">
+                    {training ? (training.price > 0 ? `$${training.price}` : 'Free') : '$100'}
+                  </div>
                 </div>
                 <input type="file" onChange={handleImgUpload} className="text-xs" />
               </div>
@@ -150,7 +158,7 @@ const CheckoutPage = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Order</span>
-                    <span>$100.00</span>
+                    <span>{training ? (training.price > 0 ? `$${training.price}.00` : 'Free') : '$100.00'}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Delivery</span>
@@ -159,7 +167,13 @@ const CheckoutPage = () => {
                   <hr className="border-gray-600" />
                   <div className="flex justify-between font-semibold">
                     <span>Total</span>
-                    <span>$102.00</span>
+                    <span>
+                      {training ? (
+                        training.price > 0 ? `$${training.price + 2}.00` : '$2.00'
+                      ) : (
+                        '$102.00'
+                      )}
+                    </span>
                   </div>
                 </div>
               </div>

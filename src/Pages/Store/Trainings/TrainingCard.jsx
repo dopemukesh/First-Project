@@ -10,7 +10,7 @@ function TrainingCard({ training }) {
   }
 
   const handleViewDetails = () => {
-    navigate(`/training-details/${training.id}`);
+   navigate(`/checkout`, { state: { training } });
   };
 
   return (

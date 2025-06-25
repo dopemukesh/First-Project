@@ -1,47 +1,64 @@
 import { Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "../../../../Components/Common/Button/Button";
-// import projectData from "../../../../api/ProjectDetails.json";
 
 // Default course card component
-export const DefaultCard = ({ course, index, getCardColor }) => (
-    <div
-        key={index}
-        className={`rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300`}
-    >
-        <div className="flex items-center justify-between gap-1">
-            <div>
-                <h3 className="text-lg font-bold mb-2">{course.title}</h3>
-                <p className="text-sm font-medium">{course.instructor.name}</p>
-                <div className="flex gap-1 mt-1 mb-4">
-                    {[...Array(course.rating)].map((_, i) => (
-                        <Star key={i} size={16} className="fill-amber-500 stroke-amber-400" />
-                    ))}
+export const DefaultCard = ({ course, index, getCardColor }) => {
+    return (
+        <Link
+            to={`details/${course.id}`}
+            className={`block rounded-2xl ${getCardColor(index)} p-6 text-black relative hover:shadow-lg transition duration-300 cursor-pointer`}
+        >
+            <div className="flex items-center justify-between gap-1">
+                <div>
+                    <h3 className="text-lg font-bold mb-2">{course.title}</h3>
+                    <p className="text-sm font-medium">{course.instructor.name}</p>
+                    <div className="flex gap-1 mt-1 mb-4">
+                        {[...Array(course.rating)].map((_, i) => (
+                            <Star
+                                key={i}
+                                size={16}
+                                className="fill-amber-500 stroke-amber-400"
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-white text-xs px-3 py-1 rounded-full">{course.level}</span>
-            <span className="bg-white text-xs px-3 py-1 rounded-full">{course.type}</span>
-        </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-white text-xs px-3 py-1 rounded-full">
+                    {course.level}
+                </span>
+                <span className="bg-white text-xs px-3 py-1 rounded-full">
+                    {course.type}
+                </span>
+            </div>
 
-        <Button
-            to={`details/${course.id}`}
-            variant="info"
-            size="sm"
-            className="w-fit"
-        >
-            View Details
-        </Button>
-    </div>
-);
+            <div>
+                <Button
+                    variant="info"
+                    size="sm"
+                    className="w-fit pointer-events-none"
+                >
+                    View Details
+                </Button>
+            </div>
+        </Link>
+    );
+};
 
 // Project card component
-export const ProjectCard = ({ title, description, image, userName, userImage, userRole, id }) => {
+export const ProjectCard = ({
+    title,
+    description,
+    image,
+    userName,
+    userImage,
+    userRole,
+    id,
+}) => {
     return (
-        <div
-            className="bg-white/5 backdrop-blur-md p-5 h-fit shadow-xl border border-gray-300/50 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
-        >
+        <div className="bg-white/5 backdrop-blur-md p-5 h-fit shadow-xl border border-gray-300/50 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
             <h3 className="font-medium text-gray-800 dark:text-gray-200 mb-4">
                 {title || "Untitled"}
             </h3>
@@ -62,8 +79,9 @@ export const ProjectCard = ({ title, description, image, userName, userImage, us
 
             <div className="mt-4 flex flex-col justify-between h-40">
                 <p className="text-gray-500 dark:text-gray-400 my-2">
-                    {(description?.length > 100 ? description.slice(0, 100) + "..." : description) ||
-                        "No description available."}
+                    {description?.length > 100
+                        ? description.slice(0, 100) + "..."
+                        : description || "No description available."}
                 </p>
 
                 <div className="flex items-center justify-between">
