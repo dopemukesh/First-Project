@@ -69,13 +69,10 @@ export const AppRoutes = () => (
       <Route path="/book-details/:id" element={<BookDetails />} />
       <Route path="/product-details/:id" element={<ProductDetails />} />
       <Route path="/training-details/:id" element={<TrainingDetails />} />
-<<<<<<< main
       <Route path="/checkout" element={<CheckoutPage />} />
     
 
-=======
        <Route path="/job-details/:id" element={<JobDetails />} />
->>>>>>> main
 
       {/* Catch-all */}
       <Route path="*" element={<Error404 />} />
