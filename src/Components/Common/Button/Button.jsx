@@ -24,6 +24,8 @@ export const Button = ({
       "border border-gray-800 dark:border-white bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200 text-white dark:text-gray-900",
     tertiary:
       "bg-purple-500 text-white border border-purple-400 hover:bg-gradient-to-bl from-purple-400 to-purple-600/50",
+    orange:
+      "bg-gradient-to-t from-orange-500 to-orange-400 text-white hover:bg-gradient-to-bl from-orange-500 to-orange-400",
     outline:
       "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-500 hover:bg-white/50 dark:hover:bg-gray-900",
     danger:

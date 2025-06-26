@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
 
 export const defaultPrices = {
-    original: "4999",
-    discount: "60"
+  // original: "",
+  // discount: "" // discount in percentage
 };
 
-export const useDiscountCalculator = (originalPrice, discountPercent) => {
-    const [prices, setPrices] = useState({
-        original: originalPrice || defaultPrices.original,
-        discount: discountPercent || defaultPrices.discount,
-        calculated: "0"
-    });
+export const useDiscountCalculator = (originalPrice, discountPercent, sellPrice) => {
+  const [prices, setPrices] = useState({
+    original: originalPrice || defaultPrices.original,
+    discount: discountPercent || defaultPrices.discount,
+    sell: sellPrice || null,
+    calculated: "0"
+  });
 
-    useEffect(() => {
-        const price = Number(prices.original);
-        const discount = Number(prices.discount);
-        const calculatedPrice = (price * (1 - discount / 100)).toFixed();
+  useEffect(() => {
+    const price = Number(prices.original);
+    const discount = prices.sell
+      ? 100 - (Number(prices.sell) / price) * 100
+      : Number(prices.discount);
 
-        setPrices(prev => ({
-            ...prev,
-            calculated: calculatedPrice
-        }));
-    }, [prices.original, prices.discount]);
+    const calculatedPrice = (price * (1 - discount / 100)).toFixed();
 
-    return prices;
+    setPrices(prev => ({
+      ...prev,
+      discount: discount.toFixed(0),
+      calculated: calculatedPrice
+    }));
+  }, [prices.original, prices.discount, prices.sell]);
+
+  return prices;
 };

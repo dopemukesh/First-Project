@@ -16,7 +16,8 @@
         "level": "Advanced Level",
         "type": "Live + Recorded",
         "rating": 4,
-        "price": "2499/-",
+        "price": "2000",
+        "actualPrice": "4499",
         "lastUpdated": "4/2025",
         "language": "English",
         "learningPoints": [
@@ -62,7 +63,8 @@
         "level": "Intermediate",
         "type": "Live + Recorded",
         "rating": 5,
-        "price": "2999/-",
+        "price": "2000",
+        "actualPrice": "3999",
         "lastUpdated": "4/2025",
         "language": "English",
         "learningPoints": [
@@ -108,7 +110,8 @@
         "level": "Advanced",
         "type": "Live",
         "rating": 5,
-        "price": "2199/-",
+        "price": "2199",
+        "actualPrice": "5999",
         "lastUpdated": "4/2025",
         "language": "English",
         "learningPoints": [
