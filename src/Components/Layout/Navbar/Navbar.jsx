@@ -44,19 +44,16 @@ const Navbar = () => {
     if (isLoggedIn && userData) {
       return (
         <div className="hidden md:flex items-center gap-4 ">
-          <div onClick={handleProfileClick} className="flex flex-col flex-1 cursor-default">
-            {/* <p className="text-[10px] text-gray-500 dark:text-gray-400">
-              Welcome back
-            </p> */}
-            {/* <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">
-              {userData.name}
-            </p> */}
-            <div className="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-              <img
-                src={userData.picture}
-                alt={userData.name}
-                className="w-full h-full object-cover"
-              />
+          <div onClick={handleProfileClick} className="flex items-center gap-4 flex-1 cursor-pointer">
+            <div className="flex justify-center items-center w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              {userData.picture ?
+                <img
+                  src={userData.picture}
+                  alt={userData.name}
+                  className="w-full h-full object-cover"
+                /> :
+                <b>{userData.name.split(' ').map(w => w[0].toUpperCase()).slice(0, 2).join('')}</b>
+              }
             </div>
           </div>
           {/* <div
