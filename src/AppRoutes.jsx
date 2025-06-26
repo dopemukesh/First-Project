@@ -39,6 +39,7 @@ import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
 import MainLayout from "./Components/Layout/allLayouts/MainLayout";
 import AuthLayout from "./Components/Layout/allLayouts/AuthLayout";
 import DashboardLayout from "./Components/Layout/allLayouts/DashboardLayout";
+import JobDetails from "./Pages/Career/Jobs/Job-details";
 
 // Route Guards
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
@@ -80,7 +81,14 @@ export const AppRoutes = () => (
         <Route path="books" element={<StoreBooks />} />
         <Route path="products" element={<StoreProducts />} />
         <Route path="tranings" element={<StoreTranings />} />
-      </Route>
+      </Route >
+      <Route path="/book-details/:id" element={<BookDetails />} />
+      <Route path="/product-details/:id" element={<ProductDetails />} />
+      <Route path="/training-details/:id" element={<TrainingDetails />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+    
+
+       <Route path="/job-details/:id" element={<JobDetails />} />
 
       {/* Fallback */}
       <Route path="*" element={<Error404 />} />
