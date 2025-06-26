@@ -7,9 +7,9 @@ import Community from "./Pages/Community/Community";
 import Projects from "./Pages/Project/Projects";
 import ProjectDetails from "./Pages/Project/ProjectDetails";
 import Store from "./Pages/Store/Store";
-import StoreBooks from "./Pages/Store/StoreBooks";
-import StoreProducts from "./Pages/Store/StoreProducts";
-import StoreTranings from "./Pages/Store/StoreTranings";
+import StoreBooks from "./Pages/Store/Books/StoreBooks";
+import StoreProducts from "./Pages/Store/Product/StoreProducts";
+import StoreTranings from "./Pages/Store/Trainings/StoreTranings";
 import Courses from "./Pages/Courses/Cources";
 import CourseDetails from "./Pages/Courses/CourseDetail/CourseDetails";
 import Career from "./Pages/Career/Career";
@@ -18,6 +18,11 @@ import Login from "./Pages/Registration/Login";
 import Signup from "./Pages/Registration/Signup";
 import ForgetPassword from "./Pages/Registration/ForgetPassword";
 import Error404 from "./Components/Error/Error404";
+
+import BookDetails from "./Pages/Store/Books/Bookdetails";
+import ProductDetails from "./Pages/Store/Product/Productdetails";
+import TrainingDetails from "./Pages/Store/Trainings/Trainingdetails";
+import CheckoutPage from "./Pages/Store/CheckoutPage";
 
 // Profile Pages
 import UserProfile from "./Pages/UserProfile/UserProfile";
@@ -34,6 +39,7 @@ import SuperAdminPanel from "./Pages/ProtectedPages/SuperAdmin/SuperAdminPanel";
 import MainLayout from "./Components/Layout/allLayouts/MainLayout";
 import AuthLayout from "./Components/Layout/allLayouts/AuthLayout";
 import DashboardLayout from "./Components/Layout/allLayouts/DashboardLayout";
+import JobDetails from "./Pages/Career/Jobs/Job-details";
 
 // Route Guards
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
@@ -75,7 +81,14 @@ export const AppRoutes = () => (
         <Route path="books" element={<StoreBooks />} />
         <Route path="products" element={<StoreProducts />} />
         <Route path="tranings" element={<StoreTranings />} />
-      </Route>
+      </Route >
+      <Route path="/book-details/:id" element={<BookDetails />} />
+      <Route path="/product-details/:id" element={<ProductDetails />} />
+      <Route path="/training-details/:id" element={<TrainingDetails />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+    
+
+       <Route path="/job-details/:id" element={<JobDetails />} />
 
       {/* Fallback */}
       <Route path="*" element={<Error404 />} />
