@@ -19,6 +19,11 @@ import Signup from "./Pages/Registration/Signup";
 import ForgetPassword from "./Pages/Registration/ForgetPassword";
 import Error404 from "./Components/Error/Error404";
 
+import BookDetails from "./Pages/Store/Books/Bookdetails";
+import ProductDetails from "./Pages/Store/Product/Productdetails";
+import TrainingDetails from "./Pages/Store/Trainings/Trainingdetails";
+import CheckoutPage from "./Pages/Store/CheckoutPage";
+
 // Profile Pages
 import UserProfile from "./Pages/UserProfile/UserProfile";
 import ProfileDashboard from "./Pages/UserProfile/UserDataComps/ProfileDashboard";
