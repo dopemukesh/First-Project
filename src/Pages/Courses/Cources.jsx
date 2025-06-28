@@ -26,7 +26,7 @@ const Cources = () => {
       <SkillsSection
         topHeader="All the skills you need in one place"
         parentRoute={'classes'}
-        category
+        endpoint={'v1/classes/all'}
       />
       <SubscriptionSection />
       <Testimonial />

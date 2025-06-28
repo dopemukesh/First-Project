@@ -65,9 +65,9 @@ const SearchBox = ({
                 </motion.div>
               ) : (
                 <motion.div key="shape" initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -100, opacity: 0 }} className="flex items-center h-5 w-fit">
-                  <motion.img src="./icons/html.svg" alt="HTML" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.6, ease: "easeInOut" }} />
-                  <motion.img src="./icons/js.svg" alt="JavaScript" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.4, ease: "easeInOut" }} />
-                  <motion.img src="./icons/react.svg" alt="React" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }} />
+                  <motion.img src="/icons/html.svg" alt="HTML" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.6, ease: "easeInOut" }} />
+                  <motion.img src="/icons/js.svg" alt="JavaScript" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.4, ease: "easeInOut" }} />
+                  <motion.img src="/icons/react.svg" alt="React" className="h-5 rounded-full -me-1 border-2 border-white" initial={{ x: -120 }} animate={{ x: 0 }} transition={{ duration: 0.2, ease: "easeInOut" }} />
                 </motion.div>
               )}
             </AnimatePresence>

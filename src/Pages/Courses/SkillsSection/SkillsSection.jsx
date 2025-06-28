@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-
-import courses from "../../../api/Courses.json";
-import categories from "../../../api/Categories.json"; // Now each category is { title, value }
+import React, { useState, useEffect } from "react";
+import categories from "../../../api/Categories.json"; // Optional: can be moved to backend too
 import projectData from "../../../api/ProjectDetails.json";
-
 import { DefaultCard, ProjectCard } from "./Cards/CourseCard";
 import { NavLink, useParams } from "react-router-dom";
+import FetchAPI from "../../../api/fetchAPI/FetchAPI2";
 
-const SkillsSection = ({ cardType = "default", topHeader = "", parentRoute = "classes" }) => {
+const SkillsSection = ({ cardType = "default", topHeader = "", parentRoute, endpoint }) => {
     const isProjectCard = cardType === "projectCard";
-    const { category } = useParams(); // read route param
+    const { category } = useParams();
     const [selectedCategory, setSelectedCategory] = useState(category || "all");
+
+    const [allCourses, setAllCourses] = useState([]);
 
     const bgColors = [
         "bg-blue-200",
@@ -26,39 +26,49 @@ const SkillsSection = ({ cardType = "default", topHeader = "", parentRoute = "cl
         return bgColors[Math.floor(Math.random() * bgColors.length)];
     };
 
-    // Data source
-    const allProjects = projectData.projects || [];
-    const allCourses = courses || [];
+    const [allProjects, setAllProjects] = useState([]);
     const activeData = isProjectCard ? allProjects : allCourses;
 
-    // For route-safe comparison (convert to lowercase and kebab-case if needed)
+    // Fetch courses from backend
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await FetchAPI(endpoint, { method: "get" });
+
+                if (isProjectCard) {
+                    setAllProjects(res?.projects || []);
+                } else {
+                    setAllCourses(res?.data || []);
+                }
+            } catch (err) {
+                console.error("Failed to fetch data:", err.message);
+            }
+        };
+
+        fetchData();
+    }, [endpoint, isProjectCard]);
+
     const normalize = (str) => str?.toLowerCase().replace(/\s+/g, "-");
 
-    // Filtered Data
     const filteredItems =
         selectedCategory === "all"
             ? activeData
-            : activeData.filter((item) =>
-                  normalize(item.category) === selectedCategory
-              );
+            : activeData.filter((item) => normalize(item.category) === selectedCategory);
 
-    // Final categories list (if projectCard use string-based logic instead)
     const dynamicCategories = isProjectCard
         ? [
-              { title: "All", value: "all" },
-              ...Array.from(
-                  new Set(
-                      allProjects.map((p) => p.category).filter(Boolean)
-                  )
-              ).map((cat) => ({
-                  title: cat,
-                  value: normalize(cat),
-              })),
-          ]
+            { title: "All", value: "all" },
+            ...Array.from(
+                new Set(allProjects.map((p) => p.category).filter(Boolean))
+            ).map((cat) => ({
+                title: cat,
+                value: normalize(cat),
+            })),
+        ]
         : [{ title: "All", value: "all" }, ...categories];
 
     return (
-        <section className="bg-gray-100 dark:bg-gray-900/30 py-16 px-4 md:px-8 overflow-hidden">
+        <section className="py-16 px-4 md:px-4 overflow-hidden">
             {topHeader && (
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
                     {topHeader}
@@ -66,23 +76,31 @@ const SkillsSection = ({ cardType = "default", topHeader = "", parentRoute = "cl
             )}
 
             {/* Category Pills */}
-            <div className="w-full flex justify-center z-50">
-                <ul className="flex bg-white dark:bg-gray-900 border dark:border-gray-800 rounded-full p-1.5 flex-nowrap overflow-x-auto max-w-5xl justify-start gap-4 mb-12 scrollbar-hide">
+            <div className="w-full flex justify-center z-50 relative">
+                <ul className="flex py-2 px-6 flex-nowrap overflow-x-auto max-w-full justify-start gap-3 border-b dark:border-gray-800 scrollbar-hide">
                     {dynamicCategories.map((cat, index) => (
                         <NavLink
                             to={`/${parentRoute}/${cat.value}`}
                             key={index}
                             onClick={() => setSelectedCategory(cat.value)}
-                            className={`border dark:border-gray-700 list-none cursor-pointer px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition duration-200 ${
-                                selectedCategory === cat.value
-                                    ? "bg-teal-500 text-gray-900 border-teal-600 shadow-md"
-                                    : "bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-900 dark:text-gray-100"
-                            }`}
+                            className={`list-none cursor-pointer px-2 py-2 text-xs font-medium whitespace-nowrap transition duration-200 relative ${selectedCategory === cat.value
+                                ? "text-teal-600 dark:text-teal-500"
+                                : "text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
+                                }`}
                         >
                             {cat.title}
+                            {selectedCategory === cat.value && (
+                                // <span className="ml-1 text-xs text-gray-500">(active)</span>
+                                <i className="absolute -bottom-2 left-0 h-1.5 rounded-t-xl w-full bg-teal-600 dark:bg-teal-500"></i>
+                            )}
                         </NavLink>
                     ))}
                 </ul>
+                {/* Decorative fading shadows for scroll edges to look smooth */}
+                <div className="pointer-events-none absolute inset-0 flex justify-between">
+                    <div className="w-8 h-full bg-gradient-to-r from-white dark:from-gray-950 to-transparent"></div>
+                    <div className="w-8 h-full bg-gradient-to-l from-white dark:from-gray-950 to-transparent"></div>
+                </div>
             </div>
 
             {/* Cards */}
@@ -105,7 +123,7 @@ const SkillsSection = ({ cardType = "default", topHeader = "", parentRoute = "cl
                 </div>
             ) : (
                 <p className="text-center text-gray-600 dark:text-gray-300 mt-10 text-lg">
-                    No {isProjectCard ? "projects" : "courses"} found for{" "}
+                    No {isProjectCard ? "projects" : "classes"} found for{" "}
                     <strong>{selectedCategory}</strong>.
                 </p>
             )}

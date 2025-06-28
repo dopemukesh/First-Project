@@ -6,14 +6,14 @@ const Logo = ({ children, className }) => {
       <div className="w-8 h-8">
         {/* Light Mode Logo */}
         <img
-          src="./logo/cwtLogo-animatedColor.svg"
+          src="/logo/cwtLogo-animatedColor.svg"
           alt="site-logo"
           className="block dark:hidden w-full h-full"
         />
 
         {/* Dark Mode Logo */}
         <img
-          src="./logo/cwtLogo-animatedColor.svg" // <-- Change to your dark mode logo
+          src="/logo/cwtLogo-animatedColor.svg" // <-- Change to your dark mode logo
           alt="site-logo-dark"
           className="hidden dark:block w-full h-full"
         />
