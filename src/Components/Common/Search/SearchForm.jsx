@@ -85,6 +85,13 @@ const SearchForm = ({ placeholderText, closeForm }) => {
     }
   };
 
+  // Clear search input and results
+  const handleClearSearch = () => {
+  setSearchQuery('');
+  setResults([]); // agar results ko bhi empty karna ho
+};
+
+
   return (
     <form onSubmit={handleSearchSubmit} className="w-full relative">
       <div className={`flex flex-col gap-2 bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur ${(searchQuery?.length || 0) > 0 ? 'rounded-t-xl' : 'rounded-3xl'
@@ -132,6 +139,7 @@ const SearchForm = ({ placeholderText, closeForm }) => {
           onSelect={handleSelect}
           setResults={setResults}
           onLoadingChange={handleSearchLoading}
+          onClear={handleClearSearch}
         />
       )}
     </form>

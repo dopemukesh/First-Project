@@ -8,13 +8,13 @@ export const RESULT_TYPES = {
     },
     // Developer related
     Developer: {
-        icon: '🫢',
+        icon: '🧑‍💻',
         field: 'name',
         display: (result) => `${result.value}`,
         category: 'people'
     },
     Recruiter: {
-        icon: '🧑‍💻',
+        icon: '🧙‍♂️',
         field: 'name',
         display: (result) => `${result.value}`,
         category: 'people'
@@ -28,7 +28,7 @@ export const RESULT_TYPES = {
         category: 'opportunities'
     },
     Job: {
-        icon: '🔧',
+        icon: '📑',
         field: 'position',
         display: (result) => `${result.value} (Job Opportunity)`,
         category: 'opportunities'

@@ -44,6 +44,7 @@ import JobDetails from "./Pages/Career/Jobs/Job-details";
 // Route Guards
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 import ProfileEditForm from "./Pages/UserProfile/UserDataComps/ProfileEditForm";
+import PublicProfiles from "./Pages/UserProfile/PublicProfile/PublicProfiles";
 
 export const AppRoutes = () => (
   <Routes>
@@ -82,13 +83,14 @@ export const AppRoutes = () => (
         <Route path="products" element={<StoreProducts />} />
         <Route path="tranings" element={<StoreTranings />} />
       </Route >
+
       <Route path="/book-details/:id" element={<BookDetails />} />
       <Route path="/product-details/:id" element={<ProductDetails />} />
       <Route path="/training-details/:id" element={<TrainingDetails />} />
       <Route path="/checkout" element={<CheckoutPage />} />
-    
 
-       <Route path="/job-details/:id" element={<JobDetails />} />
+      {/* job routes */}
+      <Route path="/job-details/:id" element={<JobDetails />} />
 
       {/* Fallback */}
       <Route path="*" element={<Error404 />} />
@@ -108,6 +110,9 @@ export const AppRoutes = () => (
         <Route path="editProfile" element={<ProfileEditForm />} />
         <Route path="notification" element={<Notification />} />
       </Route>
+
+      {/* publicProfile routes from search */}
+      <Route path="/:role/:nameSlug/:id" element={<PublicProfiles />} />
 
       {/* Standalone admin route under AuthLayout (optional placement) */}
       <Route path="/superAdmin" element={<SuperAdminPanel />} />

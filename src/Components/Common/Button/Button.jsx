@@ -28,6 +28,8 @@ export const Button = ({
       "bg-gradient-to-t from-orange-500 to-orange-400 text-white hover:bg-gradient-to-bl from-orange-500 to-orange-400",
     outline:
       "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-800 dark:border-gray-500 hover:bg-white/50 dark:hover:bg-gray-900",
+    outline2:
+      "bg-transparent text-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900",
     danger:
       "bg-red-500 text-white hover:bg-red-600 border border-red-600",
     warning:
