@@ -67,7 +67,7 @@ const GoogleSignIn = ({ labelText }) => {
                 size="sm"
                 className="w-full flex items-center justify-center gap-2"
                 // disabled={loading}
-                disabled // disabled due to some technical issues
+                // disabled // disabled due to some technical issues
             >
                 <GoogleIcon />
                 {loading ? 'Signing in...' : (<span>{labelText}</span>)}
