@@ -50,7 +50,7 @@ export const Button = ({
   };
 
   const commonClasses = `flex ${sizeClasses[size] || sizeClasses.md
-    } items-center justify-center gap-2 rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
+    } items-center justify-center gap-2 font-normal rounded-${rounded} whitespace-nowrap ${!disabled && "active:scale-95"
     } transition-all duration-500 font-medium ${variantClasses[variant] || variantClasses.primary
     } ${disabled ? "opacity-40 grayscale cursor-not-allowed" : ""} ${className}`;
 

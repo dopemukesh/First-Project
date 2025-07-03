@@ -33,30 +33,30 @@ const LeaderboardCard = () => {
     ];
 
     const bgGrads =
-        "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl";
+        "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 rounded-2xl";
 
     return (
         <>
             <div className="flex justify-center">
                 <motion.div
                     ref={leaderboardRef}
-                    className={`w-full max-w-3xl ${bgGrads} p-6 sm:p-8 mb-4`}
+                    className={`w-full max-w-xl ${bgGrads} mb-4`}
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={isLeaderboardInView ? { scale: 1, opacity: 1 } : {}}
                     transition={{ duration: 1 }}
                 >
-                    <div className="flex justify-between items-center border-b border-gray-300 dark:border-gray-700 pb-3">
-                        <h3 className="text-lg font-semibold">Top Leaderboard</h3>
-                        <h3 className="font-medium text-teal-600 dark:text-teal-500">
+                    <div className="flex justify-between items-center border-b border-gray-300 dark:border-gray-800 p-4">
+                        <h3 className="font-medium">Top Leaderboard</h3>
+                        <h3 className="text-teal-600 dark:text-teal-500">
                             Contributions
                         </h3>
                     </div>
                     {/* Leaderboard List */}
-                    <div className="space-y-6 mt-4">
+                    <div className="py-4">
                         {users.map((user, index) => (
                             <motion.div
                                 key={index}
-                                className="flex items-center justify-between gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 px-2 py-1 rounded-lg"
+                                className="flex items-center justify-between gap-4 cursor-pointer px-4 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-100/5"
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={isLeaderboardInView ? { opacity: 1, x: 0 } : {}}
                                 transition={{ duration: 1, delay: index * 0.2 }}
@@ -68,13 +68,13 @@ const LeaderboardCard = () => {
                                         className="w-10 h-10 rounded-full border-2 border-gray-500"
                                     />
                                     <div className="flex flex-col space-y-1">
-                                        <h4 className="font-semibold">{user.name}</h4>
+                                        <h4 className="text-sm font-semibold">{user.name}</h4>
                                         <p className="text-sm text-gray-500">
                                             {user.description}
                                         </p>
                                     </div>
                                 </div>
-                                <span className="text-lg font-bold text-teal-600 dark:text-teal-500">
+                                <span className="text-sm text-teal-600 dark:text-teal-500">
                                     {user.points}
                                 </span>
                             </motion.div>

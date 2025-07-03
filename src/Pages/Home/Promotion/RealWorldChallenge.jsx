@@ -12,7 +12,7 @@ const RealWorldChallenge = () => {
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
 
   const bgGrads =
-    "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl";
+    "bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-3xl";
 
   return (
     <>
@@ -26,10 +26,10 @@ const RealWorldChallenge = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl w-full">
+            <h2 className="text-3xl text-gray-900 dark:text-white font-semibold max-w-3xl w-full">
               Unlock Your True Potential with Real World Challenges
             </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500 dark:text-gray-400">
               Push your limits, solve real problems, and turn ideas into reality.
             </p>
             <div className="pt-8 md:pt-3">

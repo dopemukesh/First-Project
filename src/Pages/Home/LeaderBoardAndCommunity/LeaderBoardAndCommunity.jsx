@@ -32,7 +32,7 @@ const LeaderBoardAndCommunity = () => {
         <LeaderboardCard refProp={ref} isInView={isInView} />
 
         {/* Podcast Section */}
-        <Podcasts refProp={ref} isInView={isInView} />
+        {/* <Podcasts refProp={ref} isInView={isInView} /> */}
 
       </div>
     </Container>

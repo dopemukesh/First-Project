@@ -8,18 +8,18 @@ import Podcast from "../../../api/PodcastData.json";
 
 const Podcasts = () => {
 
-  const podcastRef = useRef(null);
-  const isPodcastInView = useInView(podcastRef, {
-    triggerOnce: true,
-    margin: "-50px",
-  });
+    const podcastRef = useRef(null);
+    const isPodcastInView = useInView(podcastRef, {
+        triggerOnce: true,
+        margin: "-50px",
+    });
 
 
-  const bgGrads =
-    "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl";
+    const bgGrads =
+        "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border dark:border-gray-800 rounded-2xl";
 
 
-// const Podcasts = () => {
+    // const Podcasts = () => {
     return (
         <>
             {/* Podcast Section */}

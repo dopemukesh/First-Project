@@ -31,7 +31,7 @@ function Footer() {
   return (
     <footer
       id="footer"
-      className="flex justify-center border-t dark:border-gray-700/70 bg-white dark:bg-gray-900/30 backdrop-blur-md px-4 md:px-16 py-12"
+      className="flex justify-center border-t dark:border-gray-800 bg-white dark:bg-gray-900/30 backdrop-blur-md px-4 md:px-16 py-12"
     >
       <div className="container max-w-6xl">
         <div className="grid md:grid-cols-4 gap-8">
@@ -119,7 +119,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="border-t dark:border-gray-700/70 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t dark:border-gray-800 mt-8 pt-8 text-center text-gray-500">
           <p>
             &copy; {new Date().getFullYear()} CodeWithTechries. All rights
             reserved.
