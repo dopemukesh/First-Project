@@ -18,7 +18,7 @@ import {
 } from "date-fns";
 import { motion } from "motion/react";
 
-const Calendar = () => {
+const Calendar = ({ onSelect }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
@@ -40,14 +40,18 @@ const Calendar = () => {
   }, []);
 
   const handleDateClick = (date) => {
-    if (!isSameMonth(date, currentMonth)) {
-      setCurrentMonth(startOfMonth(date));
-      setSelectedDate(date);
-    } else {
-      setSelectedDate(date);
-      setShowCalendar(false);
-    }
-  };
+  if (!isSameMonth(date, currentMonth)) {
+    setCurrentMonth(startOfMonth(date));
+    setSelectedDate(date);
+  } else {
+    setSelectedDate(date);
+    setShowCalendar(false);
+  }
+  if (onSelect) {
+    onSelect(format(date, "yyyy-MM-dd"));
+  }
+};
+
 
   const handleYearClick = () => {
     setShowYearDropdown(!showYearDropdown);
@@ -73,6 +77,7 @@ const Calendar = () => {
 
       days.push(
         <button
+        type="button"
           key={currentDate.toISOString()}
           className={`p-2 text-center w-10 h-10 rounded-2xl transition-all ${
             isSameDay(currentDate, selectedDate)
@@ -98,6 +103,7 @@ const Calendar = () => {
   return (
     <div className="relative w-full" ref={calendarRef}>
       <button
+      type="button"
         onClick={() => setShowCalendar(!showCalendar)}
         className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500"
       >
@@ -115,6 +121,7 @@ const Calendar = () => {
           {/* Month & Year Selector */}
           <div className="flex justify-between items-center mb-2">
             <button
+            type="button"
               onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
               className=" w-8 h-8 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
             >
@@ -123,6 +130,7 @@ const Calendar = () => {
             <span className="font-semibold flex gap-2">
               {format(currentMonth, "MMMM")}{" "}
               <button
+              type="button"
                 className="text-teal-600 dark:text-teal-500"
                 onClick={handleYearClick}
               >
@@ -130,6 +138,7 @@ const Calendar = () => {
               </button>
             </span>
             <button
+              type="button"
               onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
               className=" w-8 h-8 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
             >
@@ -142,6 +151,7 @@ const Calendar = () => {
             <div className="absolute bg-white dark:bg-gray-700 shadow-lg rounded-lg p-2 max-h-40 overflow-y-auto z-50">
               {futureYears.map((year) => (
                 <button
+                type="button"
                   key={year}
                   onClick={() => handleYearChange(year)}
                   className={`block w-full text-center px-3 py-1 hover:bg-gray-200 dark:hover:bg-gray-500 hover:text-gray-800 dark:hover:text-white rounded-md ${

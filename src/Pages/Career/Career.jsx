@@ -10,6 +10,7 @@ import RecommendedJobs from "./Recommend/RecommendedJobs";
 import HeroStats from "./Hero/HeroStats";
 import ShowJobs from "./Jobs/ShowJobs";
 import { getRoleFromToken } from "../../utils/GetUserRoleFromToken";
+import AllJobsFetcher from "./Jobs/AllJobs";
 
 export default function Careers() {
   // States for filters and results
@@ -168,6 +169,9 @@ export default function Careers() {
 
       {/* Recommendations */}
       <RecommendedJobs />
+
+      {/* All jobs */}
+      <AllJobsFetcher />
 
       {/* Stats */}
       <HeroStats />
