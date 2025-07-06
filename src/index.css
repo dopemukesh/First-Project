@@ -25,3 +25,20 @@
   animation: blink 1s step-start infinite;
 }
 /* for typewriter */
+
+/* for jobType background */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(to left, #2CFBCD, #149E8F, #2CFBCD);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite alternate;
+}
+/* for jobType background */

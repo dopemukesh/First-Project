@@ -3,11 +3,14 @@ import { Button01 } from "../../../Components/Common/Button/Button";
 import Container from "../../../Components/Common/Container/Container";
 import { motion } from "motion/react";
 import SearchBox from "../../../Components/Common/Search/SearchBox";
+import { getRoleFromToken } from "../../../utils/GetUserRoleFromToken";
 
 const HeroUI = () => {
+  // State to track user login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
 
+  // Load user data from localStorage on mount
   useEffect(() => {
     const storedUser = localStorage.getItem("currentUser");
     if (storedUser) {
@@ -17,13 +20,54 @@ const HeroUI = () => {
     }
   }, []);
 
+  // Get user role from JWT token
+  // const role = getRoleFromToken(localStorage.getItem("token"));
+  const role = "developer"; // For testing purposes, you can set a default role
+
+  // Role-based headings
+  const roleHeadings = {
+    recruiter: 'Transform Hiring with',
+    student: 'Transform Your Learning with',
+    developer: 'Transform Your Coding Career with',
+    teacher: 'Transform Your Teaching with',
+  };
+
+  // Change the heading text based on role
+  const headingText =
+    isLoggedIn && role && roleHeadings[role]
+      ? roleHeadings[role]
+      : 'Transform Your Tech Career with';
+
+  // role-specific subtexts
+  const roleSubtexts = {
+    recruiter: "Find top talent and grow your team with our trusted hiring tools.",
+    student: "Learn cutting-edge skills with mentorship and live projects.",
+    developer: "Level up your skills, collaborate, and land your dream job.",
+    teacher: "Create impactful learning experiences for eager students.",
+  };
+
+  // fallback subtext
+  const subText =
+    isLoggedIn && role && roleSubtexts[role]
+      ? roleSubtexts[role]
+      : "Master in-demand skills, contribute to real projects, and connect with top techies, all in one community-driven platform.";
+
+
+  // Render role-based button
   const renderButton = () => {
-    if (isLoggedIn && userData) {
-      return (
-        <Button01 to="/classes">
-          Start Learning
-        </Button01>
-      );
+    if (isLoggedIn && userData && role) {
+      switch (role) {
+        case "recruiter":
+          return <Button01 to="/career/post-job">Post a Job</Button01>;
+        case "student":
+          return <Button01 to="/classes">Start Learning</Button01>;
+        case "developer":
+          return <Button01 to="/career">Find a job</Button01>;
+        case "teacher":
+          return <Button01 to="/classes">Start a class</Button01>;
+        default:
+          return <Button01 to="/register">Get Started</Button01>;
+      }
     }
     return <Button01 to="/register">Get Started</Button01>;
   };
@@ -40,17 +84,14 @@ const HeroUI = () => {
           </div>
 
           <div className="flex flex-col my-8 space-y-6 items-center">
-            <h1 className="text-3xl sm:text-4xl md:text-7xl max-w-3xl font-semibold text-center">
-              Transform Your Tech Career with{" "}
+            <h1 className="text-3xl sm:text-4xl md:text-6xl max-w-3xl font-semibold text-center">
+              {headingText} {" "}
               <span className="text-teal-600 dark:text-teal-500">
                 &quot;CWT&quot;
               </span>
             </h1>
             <p className="px-4 text-gray-500 dark:text-gray-400 text-center max-w-xl">
-              {isLoggedIn 
-                ? "Continue your learning journey with our amazing resources"
-                : "Master in-demand skills, contribute to real projects, and connect with top techies, all in one community-driven platform."
-              }
+              {subText}
             </p>
           </div>
           <div id="getStarted">

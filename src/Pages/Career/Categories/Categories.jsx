@@ -7,6 +7,7 @@ import {
   Shield,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import Container from "../../../Components/Common/Container/Container";
 
 const color = [
   "red-500",
@@ -54,7 +55,8 @@ const bgGrad =
 
 export default function Categories() {
   return (
-    <div className="bg-transparent flex flex-col items-center justify-center px-4 py-16">
+    <Container className="py-14 px-4">
+      <div className="bg-transparent flex flex-col items-center justify-center">
       <div className={`w-full`}>
         <div className="flex flex-col items-center text-center mb-14 gap-4">
           <h2 className="text-3xl md:text-4xl text-gray-900 dark:text-white font-semibold max-w-3xl">
@@ -84,5 +86,6 @@ export default function Categories() {
         </div>
       </div>
     </div>
+      </Container>
   );
 }
