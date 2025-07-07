@@ -43,7 +43,7 @@ const JobPosting = () => {
   ];
 
   const jobTypes = [
-    "Full-Time",
+    "Full-time",
     "Part-time",
     "Internship",
     "Contract",

@@ -26,6 +26,14 @@ const getDeveloperPayload = (formData) => ({
     github: formData.github || ""
 });
 
+// Developer specific fields
+const getRecruiterPayload = (formData) => ({
+    position: formData.openings,
+    linkedin: formData.linkedin || "",
+    companyWebsite: formData.companyWebsite,
+    openPositions: formData.openPositions || "N/A",
+});
+
 // User registration here
 export const registerUser = async (formData) => {
     try {
@@ -37,8 +45,12 @@ export const registerUser = async (formData) => {
 
         const payload = {
             ...getCommonPayload(formData),
-            ...(normalizedRole === "developer" && getDeveloperPayload(formData))
+            ...(normalizedRole === "developer" && getDeveloperPayload(formData)),
+            ...(normalizedRole === "recruiter" && getRecruiterPayload(formData)),
         };
+
+        console.log("Recruiter Payload : ", payload);
+
 
         const response = await FetchAPI(ROLE_ENDPOINTS[normalizedRole], {
             method: "POST",

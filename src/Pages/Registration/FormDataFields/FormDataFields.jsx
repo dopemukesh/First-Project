@@ -16,6 +16,9 @@ const FormDataFields = ({
   handleSubmit,
   setFormData
 }) => {
+
+  const position = ["Available", "Not Available"]
+
   return (
     <>
       {/* ✅ FORM: Sign-up input fields */}
@@ -165,11 +168,45 @@ const FormDataFields = ({
           </>
         )}
 
+        {formData.role.toLowerCase() === 'recruiter' && (
+          <>
+            {/* 🏢 Company Name Field for Recruiters */}
+            {/* 👥 Role Selection via Dropdown */}
+            <div>
+              <label className={labelTexts}>Openings</label>
+              <Dropdown
+                className={inputClass}
+                options={position}
+                name="openings"
+                placeholder="Select"
+                defaultSelected={formData.position}
+                onSelect={(selectedPosition) =>
+                  setFormData({ ...formData, openings: selectedPosition })
+                }
+              />
+            </div>
+
+            {/* 💼 Recruiter company website */}
+            <div>
+              <label htmlFor="companyWebsite" className={labelTexts}>Company Website</label>
+              <input
+                id="companyWebsite"
+                type="text"
+                name="companyWebsite"
+                className={inputClass}
+                placeholder="e.g., https://example.com"
+                value={formData.companyWebsite}
+                onChange={handleChange}
+              />
+            </div>
+          </>
+        )}
+
         {/* ✅ Footer: Redirect & Submit */}
         <div className="flex items-center justify-between pt-4">
           {/* 🔁 Redirect to login if already registered */}
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Already have an account?{" "}
+            Already have an account ?{" "}
             <NavLink
               to="/login"
               className="text-teal-600 dark:text-teal-500 hover:underline"

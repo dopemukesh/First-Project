@@ -29,6 +29,9 @@ const Signup = () => {
     fieldOfInterest: "",
     linkedin: "",
     github: "",
+    position: "Available", // New field for openings
+    openPositions: [],
+    companyWebsite: "",
   });
 
   const [errors, setErrors] = useState({
@@ -157,7 +160,7 @@ const Signup = () => {
 
           {/* Google Sign In */}
           <div className="my-4 mx-4">
-            <GoogleSignIn labelText='Sign up with Google'/>
+            <GoogleSignIn labelText='Sign up with Google' />
           </div>
 
         </div>

@@ -21,8 +21,8 @@ const HeroUI = () => {
   }, []);
 
   // Get user role from JWT token
-  // const role = getRoleFromToken(localStorage.getItem("token"));
-  const role = "developer"; // For testing purposes, you can set a default role
+  const role = getRoleFromToken(localStorage.getItem("token"));
+  // const role = "developer"; // ye testing ke liye
 
   // Role-based headings
   const roleHeadings = {
