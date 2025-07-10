@@ -12,13 +12,14 @@ const RealWorldChallenge = () => {
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.2 });
 
   const bgGrads =
-    "bg-white dark:bg-gray-900/50 backdrop-blur border border-gray-200 dark:border-gray-800 rounded-3xl";
+    "bg-white dark:bg-white/5 backdrop-blur border border-gray-200 dark:border-gray-700/50 rounded-2xl";
 
   return (
     <>
       {/* Real World Challenges Section */}
       <Container className="py-14 px-4">
-        <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between overflow-hidden ${bgGrads}`}>
+        <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between overflow-hidden ${bgGrads} relative`}>
+          <i className="w-96 h-56 bg-white/20 absolute blur-[96px] z-0 left-[30%] -bottom-56"></i>
           {/* Left Content */}
           <motion.div
             className="md:w-1/2 flex flex-col justify-center items-center md:items-start space-y-4 text-center md:text-left md:p-8 py-8"
