@@ -19,7 +19,7 @@ const RealWorldChallenge = () => {
       {/* Real World Challenges Section */}
       <Container className="py-14 px-4">
         <div ref={ref} className={`w-full flex flex-col-reverse md:flex-row gap-8 items-center justify-between overflow-hidden ${bgGrads} relative`}>
-          <i className="w-96 h-56 bg-white/20 absolute blur-[96px] z-0 left-[30%] -bottom-56"></i>
+          <i className="w-96 h-56 bg-sky-500/40 absolute blur-[96px] z-0 left-[30%] -bottom-56"></i>
           {/* Left Content */}
           <motion.div
             className="md:w-1/2 flex flex-col justify-center items-center md:items-start space-y-4 text-center md:text-left md:p-8 py-8"
