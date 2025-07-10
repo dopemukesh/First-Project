@@ -52,7 +52,7 @@ const Navbar = () => {
                   alt={userData.name}
                   className="w-full h-full object-cover"
                 /> :
-                <b>{userData.name.split(' ').map(w => w[0].toUpperCase()).slice(0, 2).join('')}</b>
+                <p>{userData.name.split(' ').map(w => w[0].toUpperCase()).slice(0, 2).join('')}</p>
               }
             </div>
           </div>
@@ -75,7 +75,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-950/90 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
+      <div className="bg-white/80 dark:bg-gray-950/80 backdrop-blur-2xl px-4 py-3 w-full sticky top-0 z-[999]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-8">
             {/* Logo */}

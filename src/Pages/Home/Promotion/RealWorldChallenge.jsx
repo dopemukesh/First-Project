@@ -4,8 +4,16 @@ import earth1 from "../../../assets/earth1.png";
 import Container from "../../../Components/Common/Container/Container";
 import { Button } from "../../../Components/Common/Button/Button";
 import usePWAInstall from "../../../hooks/usePWAInstall";
+import { useLocation } from "react-router-dom";
 
-const RealWorldChallenge = () => {
+const RealWorldChallenge = ({ skipPaths = [] }) => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  // Partial matching: hide if currentPath starts with any of the skipPaths
+  const shouldSkip = skipPaths.some(path => currentPath.startsWith(path));
+  if (shouldSkip) return null;
+
   const { canInstall, promptInstall } = usePWAInstall();
 
   const ref = useRef(null);

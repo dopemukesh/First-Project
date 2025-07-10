@@ -16,7 +16,7 @@ const MainLayout = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div className="flex-grow">
+            <div className="flex-grow overflow-hidden">
                 <Outlet />
             </div>
             <RealWorldChallenge refProp={ref} isInView={isInView} />

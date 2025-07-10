@@ -70,14 +70,14 @@ const UserProfile = () => {
 
   return (
     <>
-        {/* Sticky header */}
-        <ProfileHeader userData={userData} showHeader={showHeader} />
-      <Container className="min-h-screen text-gray-800 dark:text-white">
+      {/* Sticky header */}
+      <ProfileHeader userData={userData} showHeader={showHeader} />
+      <Container className="min-h-screen">
 
         {/* Main layout */}
         <div className="flex flex-col md:flex-row gap-4 p-4">
           {/* Sidebar */}
-          <aside className="w-full md:w-1/4 rounded-lg shadow-sm p-4 space-y-4">
+          <aside className="w-full md:w-1/4 py-4 space-y-4">
             <div className="flex items-center gap-4">
               <img
                 src={userData.avatar}
@@ -114,7 +114,7 @@ const UserProfile = () => {
               </div>
 
               <div className="flex gap-4 mt-4">
-                <Button variant="outline" size="ssm" to={'editProfile'}>
+                <Button variant="outline2" size="ssm" to={'editProfile'}>
                   Edit Profile
                 </Button>
                 <Button variant="danger" size="ssm" onClick={handleLogout}>

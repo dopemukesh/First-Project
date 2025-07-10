@@ -27,8 +27,8 @@ const Community = () => {
     if (isLoggedIn) {
       return (
         <>
-          <a href='#explore-community'><Button01 >Start Exploring 👇🏻</Button01></a>
-          <Button variant="outline" to="/classes" className="w-fit">See Classes</Button>
+          <a href='#explore-community'><Button01 >Explore now</Button01></a>
+          <Button variant="outline2" to="/classes" className="w-fit">See classes</Button>
         </>
       );
     }

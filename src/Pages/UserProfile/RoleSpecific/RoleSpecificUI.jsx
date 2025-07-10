@@ -11,7 +11,7 @@ const RoleSpecificUI = ({ role, userData }) => {
                 {role === "student" && (
                     <>
                         <HeadIcon text="Education" icon={<MdEdit />} />
-                        <div className="border-y dark:border-gray-700/60 bg-gray-50 dark:bg-gray-900 py-2 px-4 text-sm">
+                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
                             {userData.education?.length > 0 ? (
                                 userData.education.map((edu, index) => (
                                     <div key={index} className="mb-2">
@@ -29,7 +29,7 @@ const RoleSpecificUI = ({ role, userData }) => {
                 {role === "developer" && (
                     <>
                         <HeadIcon text="Work Experience" iconText={'Edit'} color={'text-rose-600 dark:text-rose-500'} />
-                        <div className="border-y dark:border-gray-700/60 bg-gray-50 dark:bg-gray-900 py-2 px-4 text-sm">
+                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
 
                             {Array.isArray(userData.experience) && userData.experience?.length > 0 ? (
                                 <div className="border-l-[1.2px] border-dashed border-gray-300 dark:border-gray-700 space-y-2 relative flex-col-reverse">
@@ -52,7 +52,7 @@ const RoleSpecificUI = ({ role, userData }) => {
                         </div>
 
                         <HeadIcon text="Project" iconText={'Edit'} color={'text-rose-600 dark:text-rose-500'} />
-                        <div className="border-y dark:border-gray-700/60 bg-gray-50 dark:bg-gray-900 flex flex-col gap-6 py-2 px-4 text-sm">
+                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 flex flex-col gap-6 py-2 px-4 text-sm">
                             {userData.project?.length > 0 ? (
                                 userData.project.map((proj, index) => (
                                     <div key={index} className="flex flex-col gap-1">
@@ -78,7 +78,7 @@ const RoleSpecificUI = ({ role, userData }) => {
                 {role === "recruiter" && (
                     <>
                         <HeadIcon text="Open Positions" icon={<MdEdit />} />
-                        <div className="border-y dark:border-gray-700/60 bg-gray-50 dark:bg-gray-900 py-2 px-4 text-sm">
+                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
                             {userData.openPositions?.length > 0 ? (
                                 userData.openPositions.map((job, index) => (
                                     <div key={index} className="mb-2">

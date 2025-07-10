@@ -41,16 +41,22 @@ const courseCategory = [
     'Basic Programming',
     'Data Science',
     'AI/ML',
+    'Digital Marketing',
+    'Service Security',
+    'Design'
 ];
 
 // Map to IDs on Classes page
 const categoryToId = {
     'Web Development': 'web-development',
-    'DSA': 'data-science-ai',
-    'App Development': 'web-development',
-    'Basic Programming': 'web-development',
-    'Data Science': 'data-science-ai',
-    'AI/ML': 'data-science-ai',
+    'DSA': 'dsa',
+    'App Development': 'app-development',
+    'Basic Programming': 'basic-programing',
+    'Data Science': 'data-science',
+    'AI/ML': 'ai-ml',
+    'Digital Marketing' : 'digital-mrketing',
+    'Service Security' : 'service-security',
+    'Design' : 'design-and-editing'
 };
 
 const PlanetSection = () => {
@@ -122,7 +128,7 @@ const PlanetSection = () => {
                     </div>
                 )}
 
-                <div className="w-full px-4">
+                <div className="w-full md:px-4">
                     {planets.map((planet, index) => {
                         const ref = useRef(null);
                         const isInView = useInView(ref, { amount: 0.5 });
@@ -136,7 +142,7 @@ const PlanetSection = () => {
                             >
                                 <div ref={ref} className="flex max-w-md justify-center">
                                     <Link
-                                        to={`/classes#${hash}`}
+                                        to={`/classes/${hash}`}
                                         className="flex items-center justify-center p-6 rounded-full relative z-50 cursor-pointer"
                                     >
                                         <motion.img
@@ -164,7 +170,7 @@ const PlanetSection = () => {
                                             transition={{ duration: 0.7 }}
                                             className={`absolute top-[40%] ${index % 2 === 0 ? 'left-[90%] md:left-[95%]' : 'right-[90%] md:right-[95%]'} mt-4 bg-teal-500/20 text-teal-800 dark:text-teal-500 px-4 py-2 border-x-[6px] border-teal-600 dark:border-teal-500 backdrop-blur-xl -z-10`}
                                         >
-                                            <p className="whitespace-nowrap text-sm font-medium">{course}</p>
+                                            <p className="whitespace-nowrap text-xs font-medium">{course}</p>
                                         </motion.div>
                                     </Link>
                                 </div>

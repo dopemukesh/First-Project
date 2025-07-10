@@ -100,7 +100,7 @@ const ProfileDashboard = () => {
             {/* About */}
             <div className="mt-4">
                 <HeadIcon text="About" icon={<MdEdit />} />
-                <div className="bg-gray-50 dark:bg-gray-900 px-4 py-3 rounded-sm text-sm">
+                <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 px-4 py-3 rounded-sm text-sm">
                     <ExpandableTextbox text={userData.bio} limit={150} />
                 </div>
             </div>
