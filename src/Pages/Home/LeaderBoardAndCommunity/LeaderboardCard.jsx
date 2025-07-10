@@ -33,21 +33,23 @@ const LeaderboardCard = () => {
     ];
 
     const bgGrads =
-        "bg-gradient-to-tl from-white/10 via-transparent via-30% to-white/10 backdrop-blur border border-gray-200 dark:border-gray-700/50 rounded-2xl";
+        "bg-white dark:bg-white/5 backdrop-blur border border-gray-200 dark:border-gray-700/50 rounded-2xl";
 
     return (
         <>
             <div className="flex justify-center">
                 <motion.div
                     ref={leaderboardRef}
-                    className={`w-full max-w-xl ${bgGrads} mb-4`}
+                    className={`w-full max-w-xl ${bgGrads} mb-4 relative overflow-hidden`}
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={isLeaderboardInView ? { scale: 1, opacity: 1 } : {}}
                     transition={{ duration: 1 }}
                 >
+                    <i className="w-56 h-56 bg-teal-500/30 absolute blur-[96px] z-0 left-[30%] -bottom-56"></i>
+                    
                     <div className="flex justify-between items-center border-b border-gray-300 dark:border-gray-800 p-4">
-                        <h3 className="font-medium">Top Leaderboard</h3>
-                        <h3 className="text-teal-600 dark:text-teal-500">
+                        <h3 className="text-sm font-medium">Top Leaderboard</h3>
+                        <h3 className="text-sm text-teal-600 dark:text-teal-500">
                             Contributions
                         </h3>
                     </div>
