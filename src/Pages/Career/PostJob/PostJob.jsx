@@ -67,8 +67,8 @@ const JobPosting = () => {
 
   // direct value lene ke liye calendar se
   const handleDateChange = (field) => (dateValue) => {
-  setFormData((prev) => ({ ...prev, [field]: dateValue }));
-};
+    setFormData((prev) => ({ ...prev, [field]: dateValue }));
+  };
 
 
   const handleSkillsChange = (skills) => {
@@ -249,7 +249,7 @@ const JobPosting = () => {
             <div className="col-span-2">
               <label className={labelTexts}>Company Description</label>
               <textarea
-                className={inputClass}
+                className="w-full h-28 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500 outline-none"
                 value={formData.companyDescription}
                 onChange={handleChange("companyDescription")}
               />
@@ -291,7 +291,10 @@ const JobPosting = () => {
 
             {/* Recruitment Period */}
             <div>
-              <label className={labelTexts}>Recruitment Period</label>
+              <label className={labelTexts}>
+                Recruitment Period {" "}
+                <span className="text-[10px] text-gray-500 font-normal">(Today’s date cannot be selected)</span>
+              </label>
               <Calendar onSelect={handleDateChange("recruitmentPeriod")} />
             </div>
 

@@ -40,17 +40,27 @@ const Calendar = ({ onSelect }) => {
   }, []);
 
   const handleDateClick = (date) => {
-  if (!isSameMonth(date, currentMonth)) {
-    setCurrentMonth(startOfMonth(date));
-    setSelectedDate(date);
-  } else {
-    setSelectedDate(date);
+    // Get current time
+    const now = new Date();
+    const selectedWithTime = new Date(date);
+    selectedWithTime.setHours(now.getHours());
+    selectedWithTime.setMinutes(now.getMinutes());
+    selectedWithTime.setSeconds(now.getSeconds());
+
+    if (!isSameMonth(selectedWithTime, currentMonth)) {
+      setCurrentMonth(startOfMonth(selectedWithTime));
+    }
+
+    setSelectedDate(selectedWithTime);
     setShowCalendar(false);
-  }
-  if (onSelect) {
-    onSelect(format(date, "yyyy-MM-dd"));
-  }
-};
+
+    if (onSelect) {
+      onSelect(format(selectedWithTime, "yyyy-MM-dd HH:mm:ss")); // ✅ date + time
+    }
+
+    // console.log("Selected Date:", selectedWithTime);
+  };
+
 
 
   const handleYearClick = () => {
@@ -77,15 +87,14 @@ const Calendar = ({ onSelect }) => {
 
       days.push(
         <button
-        type="button"
+          type="button"
           key={currentDate.toISOString()}
-          className={`p-2 text-center w-10 h-10 rounded-2xl transition-all ${
-            isSameDay(currentDate, selectedDate)
-              ? "bg-teal-500 text-gray-800"
-              : isCurrentMonth
+          className={`p-2 text-center w-10 h-10 rounded-2xl transition-all ${isSameDay(currentDate, selectedDate)
+            ? "bg-teal-500 text-gray-800"
+            : isCurrentMonth
               ? "hover:bg-gray-200 dark:hover:bg-gray-700"
               : "opacity-40 hover:opacity-80"
-          }`}
+            }`}
           onClick={() => handleDateClick(currentDate)}
         >
           {format(currentDate, "d")}
@@ -103,7 +112,7 @@ const Calendar = ({ onSelect }) => {
   return (
     <div className="relative w-full" ref={calendarRef}>
       <button
-      type="button"
+        type="button"
         onClick={() => setShowCalendar(!showCalendar)}
         className="w-full h-10 px-3 py-2 border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900/10 backdrop-blur rounded-lg text-left focus:border-teal-600 dark:focus:border-teal-500"
       >
@@ -121,7 +130,7 @@ const Calendar = ({ onSelect }) => {
           {/* Month & Year Selector */}
           <div className="flex justify-between items-center mb-2">
             <button
-            type="button"
+              type="button"
               onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
               className=" w-8 h-8 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
             >
@@ -130,7 +139,7 @@ const Calendar = ({ onSelect }) => {
             <span className="font-semibold flex gap-2">
               {format(currentMonth, "MMMM")}{" "}
               <button
-              type="button"
+                type="button"
                 className="text-teal-600 dark:text-teal-500"
                 onClick={handleYearClick}
               >
@@ -151,14 +160,13 @@ const Calendar = ({ onSelect }) => {
             <div className="absolute bg-white dark:bg-gray-700 shadow-lg rounded-lg p-2 max-h-40 overflow-y-auto z-50">
               {futureYears.map((year) => (
                 <button
-                type="button"
+                  type="button"
                   key={year}
                   onClick={() => handleYearChange(year)}
-                  className={`block w-full text-center px-3 py-1 hover:bg-gray-200 dark:hover:bg-gray-500 hover:text-gray-800 dark:hover:text-white rounded-md ${
-                    year === currentMonth.getFullYear()
-                      ? "bg-teal-500 text-gray-800"
-                      : ""
-                  }`}
+                  className={`block w-full text-center px-3 py-1 hover:bg-gray-200 dark:hover:bg-gray-500 hover:text-gray-800 dark:hover:text-white rounded-md ${year === currentMonth.getFullYear()
+                    ? "bg-teal-500 text-gray-800"
+                    : ""
+                    }`}
                 >
                   {year}
                 </button>

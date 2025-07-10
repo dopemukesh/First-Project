@@ -26,8 +26,8 @@ const Projects = () => {
       {/* Hero section of the projects page */}
       <ProjectHeroSection />
       <Container>
-        <div className="px-4 pb-6">
-          <div className="mb-10 space-y-2">
+        <div className="px-4">
+          <div className="space-y-2">
             <p className="text-sm text-teal-600 dark:text-teal-500 font-semibold">Featured</p>
             <h2 className="text-2xl font-semibold">Our Projects</h2>
             <p className="text-gray-500 dark:text-gray-400">
@@ -38,7 +38,7 @@ const Projects = () => {
       </Container>
       <SkillsSection 
       cardType="projectCard" 
-      topHeader="Our Projects" 
+      // topHeader="Our Projects" 
       parentRoute={'projects'}
       endpoint={'v1/projects/all'} 
       />
