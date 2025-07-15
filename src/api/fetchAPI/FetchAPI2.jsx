@@ -86,7 +86,7 @@ const FetchAPI = async (
         const response = await apiClient(config);
 
         console.log('Response Status:', response.status);
-        console.log('Response Data:', response.data?.message);
+        console.log('Response Data:', response.data?.message || response.data);
 
         if (response.status === 201 && response.data?.token && response.data?.user) {
             localStorage.setItem("token", response.data.token);
@@ -99,11 +99,19 @@ const FetchAPI = async (
         let errorMessage = 'An unknown error occurred';
 
         if (error.response) {
-            errorMessage = error.response.data?.message || error.response.data?.error || `Server error: ${error.response.status}`;
+            // Server responded with an error status
+            errorMessage = error.response.data?.message ||
+                error.response.data?.error ||
+                `Server error: ${error.response.status}`;
+        } else if (error.code === 'ERR_NETWORK' || error.message === 'Failed to fetch') {
+            // No internet or DNS/network issue
+            errorMessage = 'No internet connection. Please check your network.';
         } else if (error.request) {
-            errorMessage = 'No response from server';
+            // Request made, but no response received
+            errorMessage = 'No response from server. Please refresh/try again.';
         } else {
-            errorMessage = error.message;
+            // Other unknown error
+            errorMessage = error.message || 'An unexpected error occurred';
         }
 
         console.error("API Error Details:", {

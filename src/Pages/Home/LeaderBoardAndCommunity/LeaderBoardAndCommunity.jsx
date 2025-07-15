@@ -4,10 +4,11 @@ import earth from "../../../assets/earth4.png";
 import Container from "../../../Components/Common/Container/Container";
 import LeaderboardCard from "./LeaderboardCard";
 import Podcasts from "../Podcasts/Podcasts";
+import Leaderboard from "./Leaderboard/Leaderboard";
 
 const LeaderBoardAndCommunity = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <Container className="py-14 z-10 relative overflow-hidden">
@@ -29,8 +30,11 @@ const LeaderBoardAndCommunity = () => {
         </div>
 
         {/* Leaderboard Card */}
-        <LeaderboardCard refProp={ref} isInView={isInView} />
+        {/* <LeaderboardCard refProp={ref} isInView={isInView} /> */}
 
+        {/* Leaderboard */}
+        <Leaderboard />
+        
         {/* Podcast Section */}
         {/* <Podcasts refProp={ref} isInView={isInView} /> */}
 
