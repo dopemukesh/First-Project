@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaFacebookF, FaYoutube, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import ShauryaImg from '../../../public/images/Shaurya img.png';
-import { Branch1, Branch2 } from './Branch/Branches';
+import { Branch1, Branch2, Branch3 } from './Branch/Branches';
 import Container from '../../Components/Common/Container/Container';
 
 const About = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <Container className="bg-gradient-to-t from-gray-200 dark:from-gray-900 to-transparent px-4 py-14">
+      <Container className="bg-gradient-to-t from-gray-200 dark:from-gray-900 to-transparent px-4 pt-14">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:place-items-center">
           {/* Left */}
           <div className="">
@@ -57,7 +57,7 @@ const About = () => {
         </div>
 
         {/* Vision & Mission */}
-        <div className="bg-gray-50 dark:bg-gray-800 mt-12 rounded-2xl p-4 md:flex items-center gap-4">
+        <div className="bg-gray-50 -mb-12 dark:bg-gray-800 shadow-2xl mt-12 rounded-2xl p-4 md:flex items-center gap-4">
           <div className="space-y-2">
             <h2 className="font-semibold">Vision</h2>
             <p className="text-gray-600 dark:text-gray-400">
@@ -80,7 +80,7 @@ const About = () => {
       <section className='py-14'>
         <Branch1 />
         <Branch2 />
-        <Branch1 />
+        <Branch3 />
       </section>
 
       {/* Timeline Section */}
