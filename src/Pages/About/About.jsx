@@ -169,7 +169,7 @@ function TimelineItem({ year, title, description, image, side, tagline }) {
     >
       {/* Timeline marker */}
       <div className="relative md:hidden">
-        <div className="-ms-3.5 md:-mt-10 text-teal-600 dark:text-teal-500 text-2xl font-semibold p-2 w-fit bg-white dark:bg-gray-950">{year}</div>
+        <div className="-ms-3.5 md:-mt-10 text-teal-600 dark:text-teal-500 text-2xl font-semibold p-2 w-fit bg-gray-100 dark:bg-gray-950">{year}</div>
       </div>
 
       {/* Content */}
