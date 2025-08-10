@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Mukesh Yadav",
+        "position": "Frontend Developer",
+        "description": "Frontend Developer skilled in React.js, Tailwind CSS, and JavaScript, creating fast, responsive, and modern web applications.",
+        "image": "./images/members/mukeshYadav.jpg"
+    },
+    {
+        "name": "Shaurya Yadav",
+        "position": "Founder & CEO",
+        "description": "Leading CodeWithTechries with a vision to make tech education accessible, focusing on innovation and community growth.",
+        "image": "./images/shauryaImage.png"
+    }
+]

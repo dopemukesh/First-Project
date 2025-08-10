@@ -45,6 +45,7 @@ import JobDetails from "./Pages/Career/Jobs/Job-details";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 import ProfileEditForm from "./Pages/UserProfile/UserDataComps/ProfileEditForm";
 import PublicProfiles from "./Pages/UserProfile/PublicProfile/PublicProfiles";
+import About3 from "./Pages/About/About3";
 
 export const AppRoutes = () => (
   <Routes>
@@ -53,7 +54,7 @@ export const AppRoutes = () => (
     <Route element={<MainLayout />}>
       {/* Home and static pages */}
       <Route path="/" index element={<Home />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/about" element={<About3 />} />
       <Route path="/community" element={<Community />} />
 
       {/* Courses */}
