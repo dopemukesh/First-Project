@@ -113,7 +113,7 @@ const HeroUI = () => {
           className="z-10 flex flex-col items-center overflow-hidden rounded-2xl p-2 mb-14 bg-white/5"
         >
           <div className="rounded-xl overflow-hidden border-8 border-white/10">
-            <img src="./images/vsCode-project.png" alt="" className="" />
+            <img src="./images/vsCode-project.webp" alt="" className="" />
           </div>
         </motion.div>
       </Container>

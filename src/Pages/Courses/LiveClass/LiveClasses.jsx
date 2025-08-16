@@ -8,7 +8,7 @@ import ClassCard from "./ClassCard";
 import Container from "../../../Components/Common/Container/Container";
 import TypeWriterText from '../../../Components/Common/TypeWriter/TypeWriterText';
 
-import shauryaImage from '../../../assets/images/shauryaImage.png';
+import shauryaImage from '../../../assets/images/shauryaImage.webp';
 
 const LiveClasses = () => {
     return (
