@@ -86,12 +86,21 @@ const About = () => {
                   I guide and mentor aspiring developers and students to grow by building and doing.
                 </p>
               </div>
-              <div>
+
+              <div className='flex flex-col gap-3 border-s-2 border-teal-600 px-4'>
                 <p>
-                  <span className="text-gray-800 dark:text-white italic font-semibold">“If you can manifest it, you can achieve it.”</span><br />
-                  <span className="text-gray-400">– Mr. Shaurya</span>
+                  <span className='text-xl text-teal-600 dark:text-teal-500'>"</span>
+                  If you can manifest it, you can achieve it.
+                  <span className='text-xl text-teal-600 dark:text-teal-500'>"</span>
                 </p>
+                <div className='flex items-center gap-2'>
+                  <img src={"./images/shauryaImage.webp"}
+                    alt="profile-pic"
+                    className='h-6 w-6 object-cover rounded-full bg-gray-200 dark:bg-gray-700' />
+                  <p className="text-sm">– Mr. Shaurya, <span className="text-gray-400">Founder & CEO</span></p>
+                </div>
               </div>
+
             </div>
           </div>
 

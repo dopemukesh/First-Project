@@ -111,8 +111,8 @@ const Timeline = () => {
 
                                 {/* Content */}
                                 <div className="flex-1 max-w-md">
-                                    <div className="rounded-xl p-4">
-                                        <div className={`space-y-2 ${side === "right" ? "" : "md:text-right"}`}>
+                                    <div className="rounded-xl px-4">
+                                        <div className={`space-y-2 ${side === "right" ? "text-start md:text-left" : "text-start md:text-right"}`}>
                                             {tagline &&
                                                 <i className="text-gray-500 dark:text-gray-400">
                                                     {tagline}
