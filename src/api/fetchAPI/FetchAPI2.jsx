@@ -81,12 +81,12 @@ const FetchAPI = async (
         // Debug logs
         // console.log('Request URL:', `${BASE_URL}/${endpoint}`);
         // console.log('Request Config:', config);
-        console.log('Request Config:', { method: config.method, headers: config.headers, data: config.data });
+        // console.log('Request Config:', { method: config.method, headers: config.headers, data: config.data });
 
         const response = await apiClient(config);
 
         console.log('Response Status:', response.status);
-        console.log('Response Data:', response.data?.message || response.data);
+        // console.log('Response Data:', response.data?.message || response.data);
 
         if (response.status === 201 && response.data?.token && response.data?.user) {
             localStorage.setItem("token", response.data.token);
