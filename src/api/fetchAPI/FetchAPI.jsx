@@ -18,7 +18,7 @@ const FetchAPI = async (endpoint, { method = 'POST', payload = null } = {}) => {
         };
 
         // Debug logs
-        console.log('Request URL:', `${BASE_URL}/${endpoint}`);
+        // console.log('Request URL:', `${BASE_URL}/${endpoint}`);
         console.log('Request Config:', config);
 
         const response = await fetch(`${BASE_URL}/${endpoint}`, config);
@@ -34,7 +34,7 @@ const FetchAPI = async (endpoint, { method = 'POST', payload = null } = {}) => {
         try {
             data = responseText ? JSON.parse(responseText) : null;
         } catch (e) {
-            console.error('Failed to parse response as JSON:', responseText);
+            // console.error('Failed to parse response as JSON:', responseText);
             throw new Error('Invalid JSON response from server');
         }
 
@@ -44,7 +44,7 @@ const FetchAPI = async (endpoint, { method = 'POST', payload = null } = {}) => {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user", JSON.stringify(data.user));
             }
-            console.log('Response Data:', data);
+            // console.log('Response Data:', data);
             return data;
         }
 
