@@ -156,29 +156,74 @@ const RoleSpecificUI = ({ role, userData, onAdd, onEdit }) => {
 
   // RECRUITER SECTION
   const renderRecruiterSection = () => (
-    <SectionCard
-      icon={<MdEdit />}
-      title="Open Positions"
-      textBtn="Add"
-      onClick={() => onAdd && onAdd("openPositions")}
-    >
-      {Array.isArray(userData?.openPositions) &&
-        userData.openPositions.length > 0 ? (
-        userData.openPositions.map((job, idx) => (
-          <div key={idx} className="mb-2">
-            <div className="font-semibold">{job.title}</div>
-            <div className="text-sm text-gray-500">
-              {job.location} | {job.salaryRange}
+    <>
+      <SectionCard
+        title="Company Details"
+        textBtn="Add"
+        onClick={() => onAdd && onAdd("openPositions")}
+      >
+        {userData && (
+          <div className="space-y-3">
+            {/* Company Header: Name, Website, Type */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-gray-700 dark:text-gray-300">
+              <span className="font-medium">
+                {userData.companyName || "Company Name"}
+              </span>
+
+              {userData.companyWebsite && (
+                <a
+                  href={userData.companyWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-600"
+                >
+                  Website
+                </a>
+              )}
+
+              {userData.companyType && (
+                <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 rounded-md text-xs font-medium">
+                  {userData.companyType}
+                </span>
+              )}
             </div>
-            <div className="text-sm text-gray-500">
-              Posted on: {formatDate(job.postedOn, "MMM yyyy")}
+
+            {/* Company Description */}
+            <div>
+              <ExpandableTextbox
+                text={userData.companyDescription || "No description provided."}
+                limit={150}
+                textClass="text-gray-600 dark:text-gray-400 text-sm leading-relaxed"
+              />
             </div>
           </div>
-        ))
-      ) : (
-        <NoData text="No open positions listed yet." section="openPositions" />
-      )}
-    </SectionCard>
+        )}
+      </SectionCard>
+
+      <SectionCard
+        // icon={<MdEdit />}
+        title="Open Positions"
+        textBtn="Add"
+        onClick={() => onAdd && onAdd("openPositions")}
+      >
+        {Array.isArray(userData?.openPositions) &&
+          userData.openPositions.length > 0 ? (
+          userData.openPositions.map((job, idx) => (
+            <div key={idx} className="mb-2">
+              <div className="font-semibold">{job.title}</div>
+              <div className="text-sm text-gray-500">
+                {job.location} | {job.salaryRange}
+              </div>
+              <div className="text-sm text-gray-500">
+                Posted on: {formatDate(job.postedOn, "MMM yyyy")}
+              </div>
+            </div>
+          ))
+        ) : (
+          <NoData text="No open positions listed yet." section="openPositions" />
+        )}
+      </SectionCard>
+    </>
   );
 
   return (

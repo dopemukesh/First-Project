@@ -33,6 +33,9 @@ const ProfileEditForm = () => {
     "degree",
     "collegeName",
     "skills",
+    "companyName",
+    "companyWebsite",
+    "companyDescription",
   ];
 
   const [formData, setFormData] = useState({});
