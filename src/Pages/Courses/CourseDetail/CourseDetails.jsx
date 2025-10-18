@@ -1,155 +1,175 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Button } from '../../../Components/Common/Button/Button';
-import courses from "../../../api/Courses.json";
-import { NavLink, useParams } from 'react-router-dom';
-import Container from '../../../Components/Common/Container/Container';
-import { IoIosArrowForward } from 'react-icons/io';
-import CourseFeedback from './CourseFeedback'
-import RazorpayCheckoutButton from '../../../Components/PaymentButtons/RazorPayCheckoutButton';
-import PriceCard from './ProductPrice/PriceCard';
+import React, { useState, useEffect } from "react";
+import { Button } from "../../../Components/Common/Button/Button";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
+import Container from "../../../Components/Common/Container/Container";
+import { IoIosArrowForward } from "react-icons/io";
+import CourseFeedback from "./CourseFeedback/CourseFeedback";
+import RazorpayCheckoutButton from "../../../Components/PaymentButtons/RazorPayCheckoutButton";
+import PriceCard from "./ProductPrice/PriceCard";
+import FetchAPI from "../../../api/fetchAPI/FetchAPI";
 
+import InstructorInfo from "./comp/InstructorInfo";
+import FeatureList from "./comp/FeatureList";
+import RelatedTopics from "./comp/RelatedTopics";
+import WhatYouWillLearn from "./comp/WhatYouWillLearn";
 
 const CourseDetails = () => {
-  const { id } = useParams();  // id is a string from useParams
-  const courseData = courses.find((course) => course.id.toString() === id);  // convert course.id to string for comparison
-  const [reviews, setReviews] = useState(courseData?.ratings?.reviews || []);
+  const { className, id } = useParams();
+  const navigate = useNavigate();
+  const [courseData, setCourseData] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!courseData) {
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const res = await FetchAPI("v1/classes/all", { method: "get" });
+        if (res && Array.isArray(res.classes)) {
+          const course = res.classes.find((c) => c._id === id);
+          if (course) {
+            setCourseData(course);
+          } else {
+            setError("Course not found.");
+          }
+        } else {
+          setError("No classes found in response.");
+        }
+      } catch (err) {
+        setError(err.message || "Failed to fetch courses.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourse();
+  }, [id]);
+
+  const averageRating =
+    reviews.length > 0
+      ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
+      : "0.0";
+
+  if (loading) {
     return (
-      <div className="text-center text-white mt-10">
-        <h1 className="text-2xl font-bold">Course Not Found</h1>
-        <p className="text-gray-400">The course you are looking for does not exist.</p>
+      <div className="text-center mt-10">
+        <h1 className="text-2xl font-bold">Loading...</h1>
       </div>
     );
   }
 
-
-  const averageRating = reviews.length > 0
-    ? (reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length).toFixed(1)
-    : "0.0";
-
-
-  const bgBorder = "bg-gray-100 dark:bg-gray-900 border dark:border-gray-800";
+  if (error || !courseData) {
+    return (
+      <div className="flex justify-center w-full pt-14">
+        <div className='p-3 text-center flex items-center justify-center gap-2'>
+          <div className='space-y-4 py-4'>
+            <div className='space-y-2'>
+              <h2 className='font-bold text-xl'>No data found for this course</h2>
+              <p className='text-sm text-gray-400 dark:text-gray-500 max-w-md'>
+                Sorry we couldn't find any data related to
+                <span className='font-mono'> "{id}"</span>. Please check your&nbsp;
+                <span className='font-mono px-1 bg-gray-200 dark:bg-white/10'>network</span> or try again.
+              </p>
+            </div>
+            <div className='flex justify-center'>
+              <Button
+                variant='secondary'
+                rounded='full'
+                size='sm'
+                to={-1}
+              >
+                Go Back
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Container className="min-h-screen py-14">
       <div className="px-4">
-        {/* Course Header */}
+        {/* Header with back link, initials and title */}
         <div className="mb-8">
-          <div className={`flex items-center gap-1 text-sm bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border dark:border-gray-800 rounded-lg w-fit px-3 py-2 mb-4 sticky top-16`}>
-            <NavLink
-              to={-1}
-              className='whitespace-nowrap flex items-center gap-1 text-gray-400'
-            >
+          <div className="flex items-center gap-1 text-sm text-gray-400 w-fit py-2 mb-4 sticky top-16">
+            <NavLink to={-1} className="flex items-center gap-1">
               Back <IoIosArrowForward />
             </NavLink>
-            <p className=''>{courseData.title}</p>
+
+            <span
+              className="whitespace-nowrap lowercase overflow-x-auto max-w-52 md:max-w-md"
+              title={courseData.className}
+            >
+              {courseData.className.split(" ").map(word => word.charAt(0)).join("")}
+            </span>
           </div>
-          <h1 className="text-4xl font-semibold mb-4 max-w-2xl">{courseData.subtitle}</h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-3xl">{courseData.description}</p>
+
+          <div>
+            <h1 className="text-2xl md:text-3xl font-semibold mb-4 max-w-2xl">{courseData.className}</h1>
+            <p className="text-sm text-gray-600 dark:text-gray-400 max-w-3xl">{courseData.longDescription}</p>
+          </div>
 
           <div className="space-y-4 mt-4">
-            <div className='flex gap-4'>
-              <span className="text-gray-400 dark:text-gray-500">Last updated : {courseData.lastUpdated}</span>
-              <span className="text-sm flex items-center text-gray-700 dark:text-gray-500 border border-gray-700 rounded-md px-2">{courseData.language}</span>
+            <div className="flex gap-4">
+              <span className="text-sm text-gray-400 dark:text-gray-500">
+                {courseData.createdAt === courseData.updatedAt ? "Created: " : "Last updated: "}
+                {new Date(
+                  courseData.createdAt === courseData.updatedAt
+                    ? courseData.createdAt
+                    : courseData.updatedAt
+                ).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
+
+              <span className="text-sm flex items-center text-gray-700 dark:text-gray-500 border border-gray-700 rounded-md px-2">
+                {courseData.language}
+              </span>
             </div>
 
-            <div className='flex gap-4 w-fit'>
-              <Button
-                variant='secondary'
-                size='sm'
-              >
-                Download Syllabus
-              </Button>
-              {/* <Button
-                // variant='tertiary'
-                size='sm'
-              >
-                Enroll Now
-              </Button> */}
+            <div className="flex gap-4 w-fit">
+              <Button variant="secondary" size="sm">Download Syllabus</Button>
               <RazorpayCheckoutButton course={courseData} />
             </div>
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
-            {/* What you'll learn */}
-            <section className={`${bgBorder} p-6 rounded-xl mb-8`}>
-              <h3 className="text-xl font-semibold mb-4">What you'll learn</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {courseData.learningPoints.map((point, index) => (
-                  <div key={index} className="flex gap-3">
-                    <span className="text-teal-600 dark:text-teal-500">✓</span>
-                    <p className="text-gray-600 dark:text-gray-400">{point}</p>
-                  </div>
-                ))}
-              </div>
-              {/* <button className="text-teal-600 dark:text-teal-500 mt-4 hover:text-teal-700">Show more</button> */}
-            </section>
+          <div className="md:col-span-2 space-y-8">
+            {/* What You'll Learn Section */}
+            <WhatYouWillLearn points={courseData.whatYouWillLearn} />
 
             {/* Related Topics */}
-            <section className="mb-8">
-              <h3 className="text-xl font-medium mb-4">Explore related topics</h3>
-              <div className="flex flex-wrap gap-2">
-                {courseData.topics.split(",").map((tag, index) => (
-                  <span key={index} className="bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-4 py-2 rounded-full text-xs">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </section>
+            <RelatedTopics topics={courseData.relatedTopics} />
 
             {/* Course Features */}
-            <section className="mb-8">
-              <h3 className="text-xl font-medium mb-4">This course includes:</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {courseData.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <span className="text-teal-600 dark:text-teal-500">✓</span>
-                    <span className="text-gray-600 dark:text-gray-400">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <FeatureList title="This course includes:" features={courseData.thisCourseIncludes} />
 
-            {/* Instructor */}
-            <section className="mb-8">
-              <h3 className="text-xl font-medium mb-4">Instructor</h3>
-              <div className="flex gap-4 p-2 rounded-xl max-w-sm">
-                <div className="min-w-24 h-24 bg-gray-700 rounded-full"></div>
-                <div>
-                  <h4 className="text-lg font-semibold">{courseData.instructor?.name}</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{courseData.instructor?.title}</p>
-                  <div className="flex flex-wrap gap-4 mt-2 text-sm">
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>⭐ {averageRating}</span>
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>👥 {courseData.instructor?.students}</span>
-                    <span className='text-gray-500 border dark:border-gray-900 rounded-md px-1.5 py-0.5'>📚 {courseData.instructor?.courses}</span>
-                  </div>
-                </div>
-              </div>
-            </section>
+            {/* Instructor Info */}
+            <InstructorInfo
+              instructor={courseData.instructor}
+              teacherName={courseData.teacherName}
+              teacherSpecialization={courseData.teacherSpecialization}
+              teacherRating={courseData.teacherRating}
+              averageRating={averageRating}
+            />
 
-            {/* Price Card on phone */}
-            <section className="mb-8 md:hidden">
-              <PriceCard
-                data={courseData}
-              />
+            {/* Mobile Price Card */}
+            <section className="md:hidden">
+              <PriceCard data={courseData} />
             </section>
 
             {/* Student Feedback */}
-            <section className="mb-8">
+            <section>
               <CourseFeedback reviews={reviews} setReviews={setReviews} averageRating={averageRating} />
             </section>
           </div>
 
-          {/* Price Card on desktop*/}
-          <PriceCard
-            className="hidden md:block"
-            data={courseData}
-          />
-
+          {/* Desktop Price Card */}
+          <PriceCard className="hidden md:block" data={courseData} />
         </div>
       </div>
     </Container>

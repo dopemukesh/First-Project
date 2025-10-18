@@ -15,21 +15,25 @@ const getCommonPayload = (formData) => ({
     password: formData.password,
     phoneNumber: formData.phone.trim(),
     username: formData.email.split("@")[0].toLowerCase(),
+    bio: formData.bio || "N/A",
     role: formData.role.toLowerCase()
 });
 
 // Developer specific fields
 const getDeveloperPayload = (formData) => ({
-    experience: formData.experience || "0-1 years",
-    fieldOfInterest: formData.fieldOfInterest || "Web Development",
-    linkedin: formData.linkedin || "",
-    github: formData.github || ""
+    projects: formData.projects,
+    skills: formData.skills,
+    experience: formData.experience,
+    fieldOfInterest: formData.fieldOfInterest || "N/A",
+    linkedin: formData.linkedin || "N/A",
+    github: formData.github || "N/A",
+    portfolioWebsite: formData.portfolioWebsite || "N/A"
 });
 
 // Developer specific fields
 const getRecruiterPayload = (formData) => ({
     position: formData.openings,
-    linkedin: formData.linkedin || "",
+    linkedin: formData.linkedin || "N/A",
     companyWebsite: formData.companyWebsite,
     openPositions: formData.openPositions || "N/A",
 });
@@ -49,7 +53,7 @@ export const registerUser = async (formData) => {
             ...(normalizedRole === "recruiter" && getRecruiterPayload(formData)),
         };
 
-        console.log("Recruiter Payload : ", payload);
+        console.log("User Payload : ", payload);
 
 
         const response = await FetchAPI(ROLE_ENDPOINTS[normalizedRole], {
@@ -57,9 +61,10 @@ export const registerUser = async (formData) => {
             payload
         });
 
+        console.log("Registration response:", response);
         return response;
     } catch (error) {
-        console.error("Registration error:", error);
+        console.log("Registration error:", error);
         throw error;
     }
 };
@@ -107,7 +112,8 @@ export const getUserProfile = async () => {
             student: "v1/students/myprofile",
             developer: "v1/developers/myprofile",
             recruiter: "v1/recruiters/myprofile",
-            teacher: "v1/teachers/myprofile"
+            teacher: "v1/teachers/myprofile",
+            admin: "v1/admin/myprofile"
         };
 
         const endpoint = PROFILE_ENDPOINTS[role.toLowerCase()];

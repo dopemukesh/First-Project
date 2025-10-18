@@ -45,7 +45,7 @@ const TeamMember = ({ name, position, description, image, profilePic, instagram,
                             </div>
                             <div className="flex flex-col">
                                 <h2 className="text-sm font-semibold">{name}</h2>
-                                {position && <p className="text-xs text-purple-500 dark:text-purple-400">{position}</p>}
+                                {position && <p className="text-xs text-teal-600 dark:text-teal-500">{position}</p>}
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@ const TeamMember = ({ name, position, description, image, profilePic, instagram,
                             <div className="flex items-center justify-between gap-2">
                                 <div className="flex flex-col">
                                     <h2 className="text-sm font-semibold">{name}</h2>
-                                    {position && <p className="text-xs text-purple-500 dark:text-purple-400">{position}</p>}
+                                    {position && <p className="text-xs text-teal-600 dark:text-teal-500">{position}</p>}
                                 </div>
 
                                 {/* Reusable Social Buttons */}

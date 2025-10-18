@@ -59,7 +59,7 @@ const ThemeChange = ({ className }) => {
     return (
         <button
             onClick={toggleTheme}
-            className={`flex items-center justify-center h-10 w-10 p-2 rounded-full border border-gray-300 dark:border-gray-900 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors ${className}`}
+            className={`flex items-center justify-center h-10 w-10 p-2 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors ${className}`}
             aria-label="Toggle theme"
             title="Toggle theme"
             data-tooltip-target="tooltip-default"

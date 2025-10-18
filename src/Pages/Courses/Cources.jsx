@@ -2,18 +2,12 @@
 // Designed and developed by:
 // - Mukesh Yadav
 
-import Container from "../../Components/Common/Container/Container";
-import projectData from "../../api/ProjectDetails.json";
-import { Button } from "../../Components/Common/Button/Button";
-import { Navigate } from "react-router-dom";
+import React, { useRef } from "react";
 import LiveClasses from "./LiveClass/LiveClasses";
-import SkillsSection from "./SkillsSection/SkillsSection";
 import SubscriptionSection from "./Subscription/SubscriptionSection";
 import Testimonial from "./Testimonials/Testimonial";
-import CourseDetails from "./CourseDetail/CourseDetails";
-import React, { useRef } from "react";
 import { useInView } from "motion/react";
-import RealWorldChallenge from "../../Pages/Home/Promotion/RealWorldChallenge";
+import CategorySection from "./CategorySection/CategorySection";
 
 
 const Cources = () => {
@@ -23,7 +17,7 @@ const Cources = () => {
   return (
     <>
       <LiveClasses />
-      <SkillsSection
+      <CategorySection
         topHeader="All the skills you need in one place"
         parentRoute={'classes'}
         endpoint={'v1/classes/all'}

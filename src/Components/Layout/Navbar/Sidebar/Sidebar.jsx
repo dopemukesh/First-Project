@@ -6,16 +6,15 @@ import { getIcon } from "../../../../utils/NavIcons";
 import Logo from "../../../Common/Logo/Logo";
 import UserInfo from "./UserInfo";
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, onClose, role }) => {
   const { navLinks } = navData;
 
   return (
     <>
       {/* Overlay with fade animation */}
       <div
-        className={`fixed inset-0 z-[9999] transition-opacity duration-300 ease-in-out ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        } md:hidden`}
+        className={`fixed inset-0 z-[9999] transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          } md:hidden`}
       >
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm"
@@ -26,21 +25,19 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div
           className={`fixed inset-y-0 left-0 min-w-[296px] bg-white dark:bg-gray-950 
                         transform transition-all duration-300 ease-in-out
-                        ${
-                          isOpen
-                            ? "translate-x-0 opacity-100"
-                            : "-translate-x-full opacity-0"
-                        }
+                        ${isOpen
+              ? "translate-x-0 opacity-100"
+              : "-translate-x-full opacity-0"
+            }
                         overflow-y-auto z-50 h-full shadow-2xl`}
         >
           <div className="h-full flex flex-col divide-y divide-gray-300 dark:divide-gray-800">
             {/* Header with fade-in animation */}
             <div
-              className={`flex items-center justify-between px-4 py-4 transition-all duration-500 delay-100 ${
-                isOpen
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-4"
-              }`}
+              className={`flex items-center justify-between px-4 py-4 transition-all duration-500 delay-100 ${isOpen
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-4"
+                }`}
             >
               <NavLink
                 to="/"
@@ -81,15 +78,13 @@ const Sidebar = ({ isOpen, onClose }) => {
                       to={link.path}
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 ease-in-out transform 
-                        ${
-                          isOpen
-                            ? "translate-x-0 opacity-100"
-                            : "-translate-x-4 opacity-0"
+                        ${isOpen
+                          ? "translate-x-0 opacity-100"
+                          : "-translate-x-4 opacity-0"
                         }
-                        ${
-                          isActive
-                            ? "bg-gray-800 text-white"
-                            : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-teal-600 dark:hover:text-green-400"
+                        ${isActive
+                          ? "bg-gray-800 text-white"
+                          : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-teal-600 dark:hover:text-green-400"
                         }`
                       }
                       style={{
@@ -105,6 +100,21 @@ const Sidebar = ({ isOpen, onClose }) => {
               </div>
 
               <div>
+                {/* Admin Dashboard Link */}
+                {role === "admin" && (
+                  <div className="mb-4">
+                    <p className="text-xs font-normal text-gray-500 py-2">Special</p>
+                    <div className="p-2 border border-gray-200 dark:border-gray-800 rounded-xl">
+                      <NavLink
+                        to="/admin/dashboard"
+                        className="font-medium text-sm text-sky-500 hover:underline"
+                      >
+                        Admin
+                      </NavLink>
+                    </div>
+                  </div>
+                )}
+
                 {/* User info section */}
                 <UserInfo onCloseSidebar={onClose} />
               </div>

@@ -4,11 +4,11 @@ import PriceDisplay from './PriceDisplay';
 import courses from '../../../../api/Courses.json';
 import { useParams } from 'react-router-dom';
 
-const DiscountPrice = () => {
+const DiscountPrice = ( {data}) => {
     const { id } = useParams();  // id is a string from useParams
-    const courseData = courses.find((course) => course.id.toString() === id);  // convert course.id to string for comparison
+    const courseData = data.find((c) => c._id === id);
 
-    const prices = useDiscountCalculator(courseData.actualPrice, null, courseData.price);
+    const prices = useDiscountCalculator(courseData.originalPrice, null, courseData.discountedPrice);
     if (!prices) {
         return <div className="text-red-500">NaN</div>;
     }

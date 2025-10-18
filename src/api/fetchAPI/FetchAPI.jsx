@@ -28,7 +28,7 @@ const FetchAPI = async (endpoint, { method = 'POST', payload = null } = {}) => {
 
         // First get the response text
         const responseText = await response.text();
-        console.log('Response Text:', responseText);
+        // console.log('Response Text:', responseText);
 
         let data;
         try {

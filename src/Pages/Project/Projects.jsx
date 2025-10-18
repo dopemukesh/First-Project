@@ -2,9 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectHeroSection from "./Hero/ProjectHeroSection";
 import Container from "../../Components/Common/Container/Container";
-import { Button } from "../../Components/Common/Button/Button";
 import projectData from "../../api/ProjectDetails.json";
-import SkillsSection from "../Courses/SkillsSection/SkillsSection";
+import CategorySection from "../Courses/CategorySection/CategorySection";
 
 /**
  * Projects Component
@@ -36,11 +35,11 @@ const Projects = () => {
           </div>
         </div>
       </Container>
-      <SkillsSection 
-      cardType="projectCard" 
-      // topHeader="Our Projects" 
-      parentRoute={'projects'}
-      endpoint={'v1/projects/all'} 
+      <CategorySection
+        cardType="projectCard"
+        // topHeader="Our Projects" 
+        parentRoute={'projects'}
+        endpoint={'v1/projects/all'}
       />
     </>
   );

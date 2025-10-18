@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../Components/Common/Button/Button";
+import { MapPin, MoreHorizontal } from 'lucide-react'
+import { MdEdit, MdOutlineCurrencyRupee } from 'react-icons/md';
+import CopyBtn from "../../../Components/Common/Button/CopyBtn";
 
 // Custom background with glassmorphism + subtle border
 const cardBackground = `bg-gradient-to-tl from-teal-500/20 via-transparent via-30% to-white/20 backdrop-blur border border-gray-200 dark:border-gray-700/50 shadow-2xl shadow-gray-300 dark:shadow-gray-950 rounded-2xl`;
@@ -109,3 +111,65 @@ const JobCard = ({ job, actions }) => {
 };
 
 export default JobCard;
+
+export const JobCard2 = ({ job }) => {
+    const chips = `flex items-center h-5 py-0.5 px-1.5 border border-gray-300 dark:border-white/20 rounded-full text-[10px] text-gray-500 dark:text-gray-400 whitespace-nowrap`;
+
+    return (
+        <div className="job-card">
+            {/* job card */}
+            <div className='bg-white dark:bg-white/5 backdrop-blur-sm border border-gray-300 dark:border-white/10 p-2 rounded-2xl hover:shadow-md min-w-72'>
+                {/* top */}
+                <div className='flex items-center justify-between gap-4'>
+                    <div>
+                        <p className='text-xs font-medium'>{job.jobTitle}</p>
+                        <p className='text-xs text-gray-500 dark:text-gray-400'>{job.companyName}</p>
+                    </div>
+
+                    <div className='flex items-center gap-2 text-xs'>
+                        {/* <p className='text-gray-500 dark:text-gray-400'>100</p> */}
+                        <p className='text-gray-500 dark:text-gray-400'>{job.jobType}</p>
+                        {/* <p className='text-sky-500 font-semibold'>{job.salaryPerMonth}/m</p> */}
+                        <div><MoreHorizontal className='cursor-pointer bg-gray-200 dark:bg-white/10 h-5 w-5 p-0.5 rounded-md' /></div>
+                    </div>
+                </div>
+
+                {/* center */}
+                <div className='flex items-center gap-2 text-xs mt-4'>
+                    <div className='flex  items-center gap-1 text-gray-500 dark:text-gray-400'>
+                        <MapPin size={16} className='text-pink-500' />
+                        <p>{job.location}</p>
+                    </div>
+                    
+                    <div className='flex  items-center gap-1 text-sky-500 font-semibold'>
+                        <MdOutlineCurrencyRupee size={16} />
+                        <p>{job.salaryPerMonth}/m</p>
+                    </div>
+                </div>
+
+                {/* center */}
+                <div className='my-4'>
+                    <p className='text-xs text-gray-500 dark:text-gray-300'>
+                        <CopyBtn text={job.jobDescription} truncate={true} length={100} />
+                    </p>
+                </div>
+
+                {/* bottom */}
+                <div className='flex items-center gap-2 justify-between'>
+                    {/* skills */}
+                    <div className="flex items-center gap-2 overflow-x-auto">
+                        {job.skills && job.skills.map((skill, idx) => (
+                            <span key={idx} className={chips}>
+                                {skill}
+                            </span>
+                        ))}
+                    </div>
+
+                    <div className='flex items-center gap-2'>
+                        <MdEdit className='cursor-pointer bg-gray-200 dark:bg-white/10 h-5 w-5 p-0.5 rounded-md' />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

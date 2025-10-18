@@ -10,6 +10,7 @@ import { getUserProfile, loginUser } from "../../api/services/authService";
 import { getRoleFromToken } from "../../utils/GetUserRoleFromToken";
 import { showErrorToast, showSuccessToast } from "../../Components/Common/Toast/ToastProvider";
 import usePWAInstall from '../../hooks/usePWAInstall';
+import { triggerLogin } from "../../hooks/useCurrentUser";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -49,13 +50,21 @@ const Login = () => {
 
         const profile = await getUserProfile();
         const role = getRoleFromToken(token);
-        const userData = profile[role];
 
-        localStorage.setItem("currentUser", JSON.stringify({ ...userData, isLoggedIn: true }));
+        // Inside handleSubmit, after getting profile and role
+        const userData = {
+          ...profile[role],
+          role: role, // ✅ Critical: add role explicitly
+          isLoggedIn: true,
+        };
+
+        // Use triggerLogin instead of direct localStorage
+        triggerLogin(userData);
+        showSuccessToast("Login successful!");
+
         localStorage.setItem("showInstall", "true");
 
-        showSuccessToast("Login successful!");
-        
+
         setTimeout(() => {
           navigate(from || '/');
         }, 1000);
@@ -178,7 +187,7 @@ const Login = () => {
 
             {/* Google Sign In */}
             <div>
-              <GoogleSignIn labelText={'Sign in with Google'}/>
+              <GoogleSignIn labelText={'Sign in with Google'} />
             </div>
           </form>
         </div>

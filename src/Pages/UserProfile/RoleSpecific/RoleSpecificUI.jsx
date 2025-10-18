@@ -1,101 +1,193 @@
-import React from 'react'
-import { HeadIcon } from '../UserProfile'
-import { MdEdit, MdLink } from 'react-icons/md';
-import ExpandableTextbox from '../../../utils/ExpandableContent';
+// RoleSpecificUI.jsx
+import React from "react";
+import { MdEdit, MdLink, MdAdd } from "react-icons/md";
+import SectionCard from "../SectionCard";
+import ExpandableTextbox from "../../../utils/ExpandableContent";
+import { formatDate } from "../../../utils/dateFormat";
 
-const RoleSpecificUI = ({ role, userData }) => {
-    return (
-        <>
-            {/* Role-Specific ui like work/education/jobs Section */}
-            <div className="mt-6 space-y-2">
-                {role === "student" && (
-                    <>
-                        <HeadIcon text="Education" icon={<MdEdit />} />
-                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
-                            {userData.education?.length > 0 ? (
-                                userData.education.map((edu, index) => (
-                                    <div key={index} className="mb-2">
-                                        <p className="font-semibold">{edu.degree} ({edu.year})</p>
-                                        <p className="text-sm text-gray-500">{edu.institute}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-gray-500 italic">No education details added yet.</p>
-                            )}
-                        </div>
-                    </>
-                )}
+const RoleSpecificUI = ({ role, userData, onAdd, onEdit }) => {
+  const NoData = ({ text, section }) => (
+    <div className="italic text-sm text-gray-500 flex items-center justify-between">
+      {text}
+      {onAdd && (
+        <button
+          onClick={() => onAdd(section)}
+          className="text-teal-600 text-xs flex items-center gap-1 hover:underline"
+        >
+          <MdAdd /> Add
+        </button>
+      )}
+    </div>
+  );
 
-                {role === "developer" && (
-                    <>
-                        <HeadIcon text="Work Experience" iconText={'Edit'} color={'text-rose-600 dark:text-rose-500'} />
-                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
+  // STUDENT SECTION
+  const renderStudentSection = () => (
+    <>
+      <SectionCard
+        icon={<MdEdit />}
+        title="Education"
+        textBtn="Edit"
+        onClick={() => onEdit && onEdit("education")}
+      >
+        {userData?.collegeName ? (
+          <div className="mb-2">
+            <div className="font-semibold">{userData.collegeName}</div>
+            <div className="text-sm text-gray-500">{userData.degree}</div>
+          </div>
+        ) : (
+          <NoData text="No education details added yet." section="education" />
+        )}
+      </SectionCard>
 
-                            {Array.isArray(userData.experience) && userData.experience?.length > 0 ? (
-                                <div className="border-l-[1.2px] border-dashed border-gray-300 dark:border-gray-700 space-y-2 relative flex-col-reverse">
-                                    <i className="w-1.5 h-1.5 absolute -left-[3.5px] top-0 border-s-[2px] border-t-[2px] border-gray-300 dark:border-gray-700 rotate-45"></i>
-                                    <i className="w-1.5 h-1.5 absolute -left-1 bottom-0 bg-gray-50 dark:bg-gray-900 rotate-45"></i>
-
-                                    {userData.experience.map((exp, index) => (
-                                        <div key={index} className="ml-2 relative">
-                                            <i className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-700 block flex-1 absolute -left-[11.5px] bottom-1.5 rounded-full"></i>
-
-                                            <h1 className="font-semibold dark:text-gray-300">{exp.position || 'Undefined'} at {exp.company || 'Unknown'}</h1>
-                                            <p className="text-xs dark:text-gray-300">{exp.startDate || '03/2025'} - {exp.endDate || "Present"}</p>
-                                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{exp.description || 'No description found!'}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-gray-500 italic">No work experience added yet.</p>
-                            )}
-                        </div>
-
-                        <HeadIcon text="Project" iconText={'Edit'} color={'text-rose-600 dark:text-rose-500'} />
-                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 flex flex-col gap-6 py-2 px-4 text-sm">
-                            {userData.project?.length > 0 ? (
-                                userData.project.map((proj, index) => (
-                                    <div key={index} className="flex flex-col gap-1">
-                                        <h1 className="font-semibold dark:text-gray-300">{proj.title}</h1>
-                                        <ExpandableTextbox
-                                            text={proj.description}
-                                            limit={100}
-                                            textClass={'text-gray-500 dark:text-gray-400 text-xs'}
-                                        />
-                                        <div className='flex gap-2 items-center mt-2'>
-                                            <MdLink className='bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded text-base p-0.5' />
-                                            <a href={proj.url} className="text-xs text-teal-600 max-w-56 dark:text-teal-500 truncate">{proj.url}</a>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-gray-500 italic">No projects available.</p>
-                            )}
-                        </div>
-                    </>
-                )}
-
-                {role === "recruiter" && (
-                    <>
-                        <HeadIcon text="Open Positions" icon={<MdEdit />} />
-                        <div className="border-y border-dashed dark:border-gray-700/50 bg-gray-100 dark:bg-white/5 py-2 px-4 text-sm">
-                            {userData.openPositions?.length > 0 ? (
-                                userData.openPositions.map((job, index) => (
-                                    <div key={index} className="mb-2">
-                                        <p className="font-semibold">{job.title}</p>
-                                        <p className="text-sm text-gray-500">{job.location} | {job.salaryRange}</p>
-                                        <p className="text-sm text-gray-500">Posted on: {job.postedOn}</p>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-gray-500 italic">No open positions listed yet.</p>
-                            )}
-                        </div>
-                    </>
-                )}
+      <SectionCard
+        // icon={<MdEdit />}
+        title={
+          <>
+            Skills
+            <span className="text-xs font-normal text-gray-500 mt-2"> [{userData.skills.length}]</span>
+          </>
+        }
+        textBtn={userData?.skills ? "Edit" : "+ Add"}
+        onClick={() => onEdit && onEdit("skills")}
+      >
+        {userData?.skills ? (
+          <div className="mb-2">
+            <div className="flex flex-wrap gap-2">
+              {userData.skills?.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="flex items-center w-fit border border-gray-300 dark:border-white/20 px-1.5 rounded-full text-gray-700 dark:text-gray-300 text-xs"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
-        </>
-    )
-}
+          </div>
+        ) : (
+          <NoData text="No skills found." section="skills" />
+        )}
+      </SectionCard>
+    </>
+  );
+
+  // DEVELOPER SECTION
+  const renderDeveloperSection = () => (
+    <>
+      <SectionCard
+        title="Field of Interest"
+        textBtn={userData?.fieldOfInterest ? "Edit" : "Add"}
+        onClick={() => onEdit && onEdit("interest")}
+      >
+        {userData?.fieldOfInterest ? (
+          <div className="flex flex-wrap gap-2">{userData.fieldOfInterest}</div>
+        ) : (
+          <NoData text="No interests mentioned." section="interest" />
+        )}
+      </SectionCard>
+
+      <SectionCard
+        icon={<MdEdit />}
+        title="Work Experience"
+        textBtn="Add"
+        onClick={() => onAdd && onAdd("experience")}
+      >
+        {Array.isArray(userData?.experience) && userData.experience.length > 0 ? (
+          userData.experience.map((exp, idx) => (
+            <div key={idx} className="mb-4">
+              <div className="font-semibold text-sm">
+                {exp.position || "Undefined"} at {exp.company || "Unknown"}
+              </div>
+              <div className="text-xs text-gray-500 dark:text-gray-300">
+                {formatDate(exp.startDate, "MMM yyyy") || "03/2025"} -{" "}
+                {exp.endDate
+                  ? formatDate(exp.endDate, "MMM yyyy")
+                  : "Present"}
+              </div>
+              {exp.description && (
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  {exp.description}
+                </p>
+              )}
+            </div>
+          ))
+        ) : (
+          <NoData text="No work experience added yet." section="experience" />
+        )}
+      </SectionCard>
+
+      <SectionCard
+        icon={<MdEdit />}
+        title="Projects"
+        textBtn="Add"
+        onClick={() => onAdd && onAdd("projects")}
+      >
+        {Array.isArray(userData?.projects) && userData.projects.length > 0 ? (
+          userData.projects.map((proj, idx) => (
+            <div key={idx} className="mb-4">
+              <div className="font-semibold text-sm dark:text-gray-300">
+                {proj.title}
+              </div>
+              <ExpandableTextbox
+                text={proj.description}
+                limit={100}
+                textClass="text-gray-500 dark:text-gray-400 text-xs"
+              />
+              {proj.url && (
+                <div className="flex items-center gap-2 mt-2">
+                  <MdLink className="bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-600 rounded text-base p-0.5" />
+                  <a
+                    href={proj.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-teal-600 dark:text-teal-500 truncate max-w-56"
+                  >
+                    {proj.url}
+                  </a>
+                </div>
+              )}
+            </div>
+          ))
+        ) : (
+          <NoData text="No projects available." section="projects" />
+        )}
+      </SectionCard>
+    </>
+  );
+
+  // RECRUITER SECTION
+  const renderRecruiterSection = () => (
+    <SectionCard
+      icon={<MdEdit />}
+      title="Open Positions"
+      textBtn="Add"
+      onClick={() => onAdd && onAdd("openPositions")}
+    >
+      {Array.isArray(userData?.openPositions) &&
+        userData.openPositions.length > 0 ? (
+        userData.openPositions.map((job, idx) => (
+          <div key={idx} className="mb-2">
+            <div className="font-semibold">{job.title}</div>
+            <div className="text-sm text-gray-500">
+              {job.location} | {job.salaryRange}
+            </div>
+            <div className="text-sm text-gray-500">
+              Posted on: {formatDate(job.postedOn, "MMM yyyy")}
+            </div>
+          </div>
+        ))
+      ) : (
+        <NoData text="No open positions listed yet." section="openPositions" />
+      )}
+    </SectionCard>
+  );
+
+  return (
+    <div className="mt-6 flex flex-col">
+      {role === "student" && renderStudentSection()}
+      {role === "developer" && renderDeveloperSection()}
+      {role === "recruiter" && renderRecruiterSection()}
+    </div>
+  );
+};
 
 export default RoleSpecificUI;
